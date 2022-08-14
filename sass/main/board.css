@@ -46,50 +46,6 @@ body {
   transform-origin: 0 0;
   transform: scaleY(0.57735) rotate(-45deg);
 }
-#hexboard .player-hex {
-  display: inline-block;
-  position: relative;
-  width: 62.4px;
-  height: 35.103px;
-  margin: 17.55px 1.6px 2.77px;
-  color: rgba(255, 255, 255, 0.75);
-  background-color: #556e58;
-  font: 32px/35.1px sans-serif;
-  vertical-align: middle;
-}
-#hexboard .player-hex::before, #hexboard .player-hex::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 42.993px;
-  height: 42.993px;
-  background-color: inherit;
-  transform-origin: 0 0;
-  transform: scaleY(0.57735) rotate(-45deg);
-}
-#hexboard .enemy-hex {
-  display: inline-block;
-  position: relative;
-  width: 62.4px;
-  height: 35.103px;
-  margin: 17.55px 1.6px 2.77px;
-  color: rgba(255, 255, 255, 0.75);
-  background-color: #55636e;
-  font: 32px/35.1px sans-serif;
-  vertical-align: middle;
-}
-#hexboard .enemy-hex::before, #hexboard .enemy-hex::after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 42.993px;
-  height: 42.993px;
-  background-color: inherit;
-  transform-origin: 0 0;
-  transform: scaleY(0.57735) rotate(-45deg);
-}
 #hexboard .main-button {
   position: absolute;
   min-width: 200px;
@@ -108,13 +64,22 @@ body {
   right: 15px;
   background-color: #00bc29;
 }
+#hexboard .player-button:hover {
+  background-color: #006e18;
+}
 #hexboard .enemies-button {
   top: 15px;
   left: 15px;
   background-color: #b90000;
 }
+#hexboard .enemies-button:hover {
+  background-color: #820000;
+}
 #hexboard .merchant-button {
   bottom: 15px;
   right: 15px;
   background-color: #0012d7;
-}/*# sourceMappingURL=styles.css.map */
+}
+#hexboard .merchant-button:hover {
+  background-color: #000860;
+}/*# sourceMappingURL=board.css.map */

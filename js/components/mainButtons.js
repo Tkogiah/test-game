@@ -6,7 +6,10 @@ function $(id) {
         return id[0]
     }
 }
-//these are the 4 buttons on the main page
+
+//**** 3 MODAL BUTTONS ON THE MAIN PAGE ****//
+
+
 //PLAYER BUTTON
 export const playerButton = $("player-button")
 

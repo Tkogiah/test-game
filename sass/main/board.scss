@@ -1,10 +1,30 @@
 
-//HEXBOARD AND MAIN CSS START
-#hexboard {
-    width: 100vw;
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    background-image: url(/assets/castle.jpg);
+    background-position: 50% 25%;
+    font-size: 0;
+    text-align: center;
+    display: flex;
     box-sizing: border-box;
-    margin-top: 3%;
-    position: absolute;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+
+//HEXBOARD AND MAIN CSS COMPONENT
+#hexboard {
+  width: 100vw;
+  box-sizing: border-box;
+  margin-top: 3%;
+  position: absolute;
 
   .hex {
     display: inline-block;
@@ -44,20 +64,32 @@
     align-items: center;
     text-align: center;
   }
+
   .player-button {
     top: 15px;
     right: 15px;
     background-color: #00bc29;
   }
+  .player-button:hover {
+    background-color: #006e18;
+  }
+
   .enemies-button {
     top: 15px;
     left: 15px;
     background-color: #b90000;
   }
+  .enemies-button:hover {
+    background-color: #820000;
+  }
+
   .merchant-button {
     bottom: 15px;
     right: 15px;
     background-color: #0012d7;
+  }
+  .merchant-button:hover {
+    background-color: #000860;
   }
 }
 
