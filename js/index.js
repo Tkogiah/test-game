@@ -1,2 +1,2 @@
-import {playerButton} from "./components/mainButtons.js";
-import { $ } from "./components/quickFunctions.js";
+import * as mainButtons from "./mainButtons";
+import { $ } from "./quickFunctions.js";
