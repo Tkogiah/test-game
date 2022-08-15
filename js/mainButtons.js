@@ -1,13 +1,6 @@
-import * as player from "./playerModal"
+import * as player from './modals/playerModal.js'
+import {$} from './components/quickFunctions.js'
 
-function $(id) {
-    if(typeof id === 'string' || id instanceof String) {
-        return document.getElementById(id)
-    }
-    else {
-        return id[0]
-    }
-}
 
 //**** 3 MODAL BUTTONS ON THE MAIN PAGE ****//
 
@@ -17,7 +10,7 @@ export const playerButton = $("player-button")
 
 playerButton.addEventListener('click', function() {
     console.log('write player modal')
-    //player.displayPlayerModal()
+    player.displayPlayerModal()
 })
 
 //ENEMIES BUTTON
