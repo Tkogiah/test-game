@@ -10,50 +10,34 @@
     z-index: 10;
     right: 5%;
 
-    .image-container {
-        height: 150px;
-        width: 150px;
-        background-image: url('');
-        background-position: center;
-        background-size: cover;
-        position: absolute;
-        border: 3px solid gold;
-        border-radius: 15px;
-        top: 5px;
-        left: 5px;  
-    }
-    .draw-container {
-        height: 200px;
-        width: 150px;
+    .draw-pile {
         background-color: rgb(1, 17, 253);
-        position: absolute;
-        border: 3px solid gold;
-        border-radius: 15px;
         bottom: 5px;
         left: 5px;
-        font-size: 30px;  
     }
-    .discard-container {
-        height: 200px;
-        width: 150px;
+    .discard-pile {
         background-color: rgb(255, 0, 0);
-        position: absolute;
-        border: 3px solid gold;
-        border-radius: 15px;
         bottom: 5px;
         left: 165px;
-        font-size: 30px;  
+ 
     }
-    .hand-container {
-        height: 200px;
-        width: 150px;
+    .hand-pile {
         background-color: rgb(140, 0, 255);
-        position: absolute;
-        border: 3px solid gold;
-        border-radius: 15px;
         bottom: 5px;
         right: 5px;
-        font-size: 30px;
+
+        // .hand-deck {
+        //     box-sizing: border-box;
+        //     width: 80vw;
+        //     height: 80vh;
+        //     border: 3px solid black;
+        //     border-radius: 15px;
+        //     position: absolute;
+        //     background-color: rgb(155, 106, 0);
+        //     margin-top: 3%;
+        //     z-index: 11;
+        //     right: 5%;
+        // }
     }
     
 }

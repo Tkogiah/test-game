@@ -21,4 +21,35 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.image-container {
+  height: 150px;
+  width: 150px;
+  background-image: url("");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  border: 3px solid gold;
+  border-radius: 15px;
+  top: 5px;
+  left: 5px;
+}
+
+.card {
+  height: 210px;
+  width: 140px;
+  background-color: white;
+  position: absolute;
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  font-size: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.active-card {
+  border: 3px solid gold;
 }/*# sourceMappingURL=styles.css.map */

@@ -6,27 +6,44 @@ export function displayPlayerModal() {
     container.classList.add('player-main')
     container.innerHTML = 
     `
-        <div class="row container">
+        <div id='player-container' class="row container">
             <div id='player-image' class="image-container container"></div>
             
-            <div id='draw-deck' class="draw-container container center column">
+            <div id='draw-deck' class="card draw-pile">
                 <h3>${drawTotal}</h3>
             </div>
             
-            <div id='discard-deck' class="discard-container container center column">
+            <div id='discard-deck' class="card discard-pile">
                 <h3>${discardTotal}</h3>
             </div>
             
             <div id='hand-deck' 
-            class="hand-container container center column">
+            class="card hand-pile">
                 <h3>${handTotal}</h3>
             </div>
         </div>
     `
+    document.body.appendChild(container)
+    
+    let handDeck = $('hand-deck')
+    handDeck.classList.add('hand-deck')
+    handDeck.addEventListener('click', function(){
+        createHandModal()
+    })
     const imageContainer = document.createElement('div')
     const playerHandContaier = document.createElement('div')
     const playerDrawPileContainer = document.createElement('div')
     //const playerDiscardPileContainer = document.createElement('div')
-    document.body.appendChild(container)
+    
 
+}
+
+function createHandModal() {
+    const hand = document.createElement('div')
+    hand.innerHTML = 
+    `
+        <div class='container grid'>
+            <div class
+        </div>
+    `
 }
