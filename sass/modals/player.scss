@@ -1,48 +1,22 @@
 .player-main {
-    box-sizing: border-box;
-    width: 90%;
-    height: 100%;
-    border: 3px solid black;
-    border-radius: 15px;
-    position: absolute;
     background-color: green;
-    margin-top: 3%;
-    z-index: 10;
-    right: 5%;
-    top: -30px;
-
-    .draw-pile {
-        background-color: rgb(1, 17, 253);
-        bottom: 5px;
-        left: 5px;
-        
-    }
-    .discard-pile {
-        background-color: rgb(255, 0, 0);
-        bottom: 5px;
-        left: 150px;
-        
-    }
-    .hand-pile {
-        background-color: rgb(140, 0, 255);
-        bottom: 5px;
-        right: 5px;
-    }
-    .card-description {
-        height: 210px;
-        width: 716px;
-        border: 3px solid black;
-        border-radius: 16px;
-        box-sizing: border-box;
-        position: absolute;
-        bottom: 5px;
-        left: 295px;
-        background-color: white;
-        padding: 15px;
-        color: black;
-        font-weight: bold;
-        font-size: 16px;
-        text-align: left;
-    }
+}
+.draw-pile {
+    background-color: rgb(1, 17, 253);
+    bottom: 5px;
+    left: 5px;
     
 }
+.discard-pile {
+    background-color: rgb(255, 0, 0);
+    bottom: 5px;
+    left: 150px;
+    
+}
+.hand-pile {
+    background-color: rgb(140, 0, 255);
+    bottom: 5px;
+    right: 5px;
+}
+
+

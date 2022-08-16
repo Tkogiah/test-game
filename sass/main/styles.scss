@@ -39,6 +39,21 @@ body {
     align-items: center;
     text-align: center;
 }
+
+
+// **** GLOBAL MODAL CSS ***** //
+.modal-main {
+    box-sizing: border-box;
+    width: 90%;
+    height: 100%;
+    border: 3px solid black;
+    border-radius: 15px;
+    position: absolute;
+    margin-top: 3%;
+    z-index: 10;
+    right: 5%;
+    top: -30px;
+}
 .image-container {
     height: 150px;
     width: 150px;
@@ -66,4 +81,34 @@ body {
 }
 .active-card {
     border: 3px solid gold
+}
+.card-description {
+    height: 210px;
+    width: 716px;
+    border: 3px solid black;
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 5px;
+    left: 295px;
+    background-color: white;
+    padding: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+}
+.exit {
+    position: absolute;
+    padding: 15px;
+    color:white;
+    font-size: 40px;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+}
+.exit:hover {
+    color: gold;
+    cursor: pointer;
 }

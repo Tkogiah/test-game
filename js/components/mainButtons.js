@@ -1,5 +1,7 @@
-import * as player from './modals/playerModal.js'
-import {$} from './quickFunctions.js'
+import * as player from './playerModal.js'
+import * as town from './townModal.js'
+import * as enemies from './enemiesModal.js'
+import {$} from '../components/quickFunctions.js'
 
 
 //**** 3 MODAL BUTTONS ON THE MAIN PAGE ****//
@@ -9,7 +11,6 @@ import {$} from './quickFunctions.js'
 export const playerButton = $("player-button")
 
 playerButton.addEventListener('click', function() {
-    console.log('write player modal')
     player.displayPlayerModal()
 
 })
@@ -19,12 +20,11 @@ const enemiesButton = $("enemies-button")
 
 enemiesButton.addEventListener('click', function() {
     console.log('write enemies modal')
-    //enemies.displayEnemiesModal() 
+    enemies.displayEnemiesModal() 
 })
 
 //MERCHANT BUTTON
 const townButton = $("town-button")
 townButton.addEventListener('click', function() {
-    console.log('write town modal')
-    //castle.displayCastleModal() 
+    town.displayTownModal() 
 })
