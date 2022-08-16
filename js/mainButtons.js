@@ -11,6 +11,7 @@ export const playerButton = $("player-button")
 playerButton.addEventListener('click', function() {
     console.log('write player modal')
     player.displayPlayerModal()
+
 })
 
 //ENEMIES BUTTON
@@ -18,12 +19,12 @@ const enemiesButton = $("enemies-button")
 
 enemiesButton.addEventListener('click', function() {
     console.log('write enemies modal')
-    //openEnemiesModal 
+    //enemies.displayEnemiesModal() 
 })
 
 //MERCHANT BUTTON
-const merchantButton = $("merchant-button")
-merchantButton.addEventListener('click', function() {
+const townButton = $("town-button")
+townButton.addEventListener('click', function() {
     console.log('write merchant modal')
-    //openMerchantModal 
+    //castle.displayCastleModal() 
 })

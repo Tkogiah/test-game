@@ -1,7 +1,7 @@
-import {$} from '../components/quickFunctions.js'
+import * as $ from '../components/quickFunctions.js'
 
 export function displayPlayerModal() {
-    let drawTotal, discardTotal, handTotal
+    let drawTotal, discardTotal, handTotal, cardDescription
     const container = document.createElement('div')
     container.classList.add('player-main')
     container.innerHTML = 
@@ -9,31 +9,36 @@ export function displayPlayerModal() {
         <div id='player-container' class="row container">
             <div id='player-image' class="image-container container"></div>
             
-            <div id='draw-deck' class="card draw-pile">
+            <div id='draw-deck' class="card draw-pile column">
+                <div>
+                    <h3>DRAW</h3>
+                    <h3>PILE</h3>
+                </div>
                 <h3>${drawTotal}</h3>
             </div>
             
-            <div id='discard-deck' class="card discard-pile">
+            <div id='discard-deck' class="card discard-pile column">
+                <div>
+                    <h3>DISCARD</h3>
+                    <h3>PILE</h3>
+                </div>
                 <h3>${discardTotal}</h3>
             </div>
-            
+
+            <div id='card-description' class="card-description">
+                <p>${cardDescription}<p>
+            </div>
+
             <div id='hand-deck' 
-            class="card hand-pile">
+            class="card hand-pile column float-right">
+                <h3>HAND</h3>
                 <h3>${handTotal}</h3>
             </div>
         </div>
     `
-    document.body.appendChild(container)
-    
-    let handDeck = $('hand-deck')
-    handDeck.classList.add('hand-deck')
-    handDeck.addEventListener('click', function(){
-        createHandModal()
-    })
-    const imageContainer = document.createElement('div')
-    const playerHandContaier = document.createElement('div')
-    const playerDrawPileContainer = document.createElement('div')
-    //const playerDiscardPileContainer = document.createElement('div')
+        
+    document.getElementById('hexboard').appendChild(container)
+
     
 
 }
@@ -47,3 +52,4 @@ function createHandModal() {
         </div>
     `
 }
+

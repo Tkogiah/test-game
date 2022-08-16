@@ -1,7 +1,7 @@
 .player-main {
   box-sizing: border-box;
-  width: 90vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   border: 3px solid black;
   border-radius: 15px;
   position: absolute;
@@ -9,19 +9,33 @@
   margin-top: 3%;
   z-index: 10;
   right: 5%;
+  top: 5%;
 }
 .player-main .draw-pile {
   background-color: rgb(1, 17, 253);
   bottom: 5px;
   left: 5px;
+  justify-content: space-evenly;
 }
 .player-main .discard-pile {
   background-color: rgb(255, 0, 0);
   bottom: 5px;
-  left: 165px;
+  left: 150px;
+  justify-content: space-evenly;
 }
 .player-main .hand-pile {
   background-color: rgb(140, 0, 255);
   bottom: 5px;
   right: 5px;
+}
+.player-main .card-description {
+  height: 210px;
+  width: 716px;
+  border: 3px solid black;
+  border-radius: 16px;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 5px;
+  left: 295px;
+  background-color: white;
 }/*# sourceMappingURL=player.css.map */
