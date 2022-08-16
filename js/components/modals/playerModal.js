@@ -1,4 +1,4 @@
-import * as $ from '../components/quickFunctions.js'
+import * as $ from '../quickFunctions.js'
 
 export function displayPlayerModal() {
     let drawTotal, discardTotal, handTotal, cardDescription
@@ -26,7 +26,8 @@ export function displayPlayerModal() {
             </div>
 
             <div id='card-description' class="card-description">
-                <p>${cardDescription}<p>
+                <h4>${cardDescription}<h4>
+                <p>${cardDescription}</p>
             </div>
 
             <div id='hand-deck' 
@@ -35,21 +36,8 @@ export function displayPlayerModal() {
                 <h3>${handTotal}</h3>
             </div>
         </div>
-    `
-        
+    `     
     document.getElementById('hexboard').appendChild(container)
-
-    
-
 }
 
-function createHandModal() {
-    const hand = document.createElement('div')
-    hand.innerHTML = 
-    `
-        <div class='container grid'>
-            <div class
-        </div>
-    `
-}
 

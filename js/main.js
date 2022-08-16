@@ -1,1 +1,1 @@
-import * as playerButton from './mainButtons.js'
+import * as playerButton from '../js/components/mainButtons.js'

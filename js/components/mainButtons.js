@@ -1,5 +1,5 @@
 import * as player from './modals/playerModal.js'
-import {$} from './components/quickFunctions.js'
+import {$} from './quickFunctions.js'
 
 
 //**** 3 MODAL BUTTONS ON THE MAIN PAGE ****//
@@ -25,6 +25,6 @@ enemiesButton.addEventListener('click', function() {
 //MERCHANT BUTTON
 const townButton = $("town-button")
 townButton.addEventListener('click', function() {
-    console.log('write merchant modal')
+    console.log('write town modal')
     //castle.displayCastleModal() 
 })
