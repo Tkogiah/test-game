@@ -1,11 +1,12 @@
 import {$} from './quickFunctions.js'
-import {baby} from '../main.js'
+import {globalState} from '../main.js'
 
 export function displayPlayerModal() {
-    let drawTotal = baby.players.player1.decks.draw.length
-    let discardTotal = baby.players.player1.decks.discard.length
-    let handTotal = baby.players.player1.decks.hand.length
+    let drawTotal = globalState.players.player1.decks.draw.length
+    let discardTotal = globalState.players.player1.decks.discard.length
+    let handTotal = globalState.players.player1.decks.hand.length
     let cardDescription
+
     const container = document.createElement('div')
     container.classList.add('modal-main')
     container.classList.add('player-main')

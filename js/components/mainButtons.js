@@ -12,14 +12,12 @@ export const playerButton = $("player-button")
 
 playerButton.addEventListener('click', function() {
     player.displayPlayerModal()
-
 })
 
 //ENEMIES BUTTON
 const enemiesButton = $("enemies-button")
 
 enemiesButton.addEventListener('click', function() {
-    console.log('write enemies modal')
     enemies.displayEnemiesModal() 
 })
 

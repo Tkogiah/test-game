@@ -1,5 +1,5 @@
 import {$} from './quickFunctions.js'
-import {baby} from '../main.js'
+import {globalState} from '../main.js'
 
 export function displayEnemiesModal() {
     let drawTotal
