@@ -2,7 +2,8 @@ import {$} from './quickFunctions.js'
 import {baby} from '../main.js'
 
 export function displayEnemiesModal() {
-    let drawTotal, discardTotal, handTotal, cardDescription
+    let drawTotal
+    let discardTotal, handTotal, cardDescription
     const container = document.createElement('div')
     container.classList.add('modal-main')
     container.classList.add('enemies-main')
