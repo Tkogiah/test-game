@@ -23,3 +23,7 @@ class Action extends Card {
         // p.displayActivePlayer(0)    
     }
 }
+class SpeedBoots extends Card {
+    constructor(name) {}
+    super(title) {}
+}

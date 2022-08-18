@@ -7,10 +7,10 @@ class Player {
         this.location = 0,
         this.attacks = 0,
         this.movement = 0,
-        this.deck = {
-            drawPile:[],
-            handPile:['card two', 'card-two', 'card-two','card-two','card-two'],
-            discardPile: ['card-three']
+        this.decks = {
+            draw:[],
+            hand:['Action', 'Action', 'Action', 'Action', 'Action'],
+            discard: []
         },
         this.remainingAttacks = 0,
         this.remainingMovements = 0,
@@ -23,7 +23,7 @@ export class Archer extends Player {
         this.playerClass = Archer;
         this.speed = 2,
         this.range = 5,
-        this.picture = '/assets/Archer.jpg', 
+        this.picture = 'assets/archer-idle.gif', 
         this.damage = 3
     }
 }
@@ -33,7 +33,7 @@ export class Fighter extends Player {
         this.playerClass = Fighter;
         this.speed = 3,
         this.range = 2,
-        this.picture = '/assets/Fighter.png', 
+        this.picture = 'assets/warrior-idle.gif', 
         this.damage = 5
     }  
 }
@@ -43,7 +43,7 @@ export class Thief extends Player {
         this.playerClass = Thief;
         this.speed = 5,
         this.range = 3,
-        this.picture = '/assets/Thief.jpg', 
+        this.picture = 'assets/thief.idle.gif', 
         this.damage = 2
     }  
 }

@@ -1,25 +1,16 @@
 import * as playerButton from '../js/components/mainButtons.js'
+import { Thief, Fighter, Archer } from './classes/PlayerClasses.js'
 
 export let globalState = {
-    round: 0,
+    round: 0.0,
     players: {
-        player1: {
-            name: '',
-            stats: [],
-            decks: {
-                hand: ['action card',2,3,4,5],
-                draw: [1,1,1,1,1,1],
-                discard: []
-            }
-        },
-        player2: {
-            name: '',
-            stats: [],
-            decks: {
-                hand: [1,2,3,4,5],
-                draw: [1,1,1,1,1,1],
-                discard: []
-            }
-        }
+        player1: new Fighter('Fighter'),
+        player2: new Archer('Archer'),
+        player3: new Thief('Thief')
     }
 }
+
+function start() {
+    return globalState
+}
+start()
