@@ -1,5 +1,6 @@
 import * as playerButton from '../js/components/mainButtons.js'
 import { Thief, Fighter, Archer } from './classes/PlayerClasses.js'
+import {board} from './game-logic/boardCssClassesRows.js'
 
 
 export let globalState = {
@@ -15,6 +16,6 @@ export let globalState = {
 
 export let boardAudio = new Audio('assets/hexscreen.mp3')
 boardAudio.loop = true
-window.onload = (event) => {
-    boardAudio.play();
-};
+// window.onload = (event) => {
+//     boardAudio.play();
+// };

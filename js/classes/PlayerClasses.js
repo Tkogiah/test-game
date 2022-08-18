@@ -36,7 +36,7 @@ export class Fighter extends Player {
         this.range = 2,
         this.picture = 'assets/warrior-idle.gif', 
         this.damage = 5
-        this.music = 'assets/figther-music.mp3'
+        this.music = 'assets/fighter-music.mp3'
     }  
 }
 export class Thief extends Player {

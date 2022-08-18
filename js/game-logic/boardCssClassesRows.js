@@ -1,11 +1,4 @@
-import { $ } from "../components/quickFunctions.js";
-
-const board = document.querySelectorAll('.hex');
-function ffg() {
-    console.log(board)
-}
-ffg()
-
+export const board = document.querySelectorAll('.hex');
 
 board.forEach((element) => {
     if(element.id >= 1 && element.id <= 6) {
@@ -27,3 +20,4 @@ board.forEach((element) => {
         element.classList.add('row-zero')
     }
 })
+//// **** STYLES ADDED FROM board.scss ***** //

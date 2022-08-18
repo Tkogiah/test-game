@@ -1,8 +1,10 @@
 #hexboard {
   width: 100%;
   box-sizing: border-box;
-  margin-top: 4%;
   position: absolute;
+  top: 0%;
+  left: 5%;
+  transform: translate(0, 15%);
 }
 #hexboard .hex {
   display: inline-block;
@@ -26,7 +28,32 @@
   transform-origin: 0 0;
   transform: scaleY(0.57735) rotate(-45deg);
 }
-#hexboard .main-button {
+#hexboard .row-zero {
+  background-color: rgb(201, 90, 0);
+}
+#hexboard .row-one {
+  background-color: rgb(151, 68, 0);
+}
+#hexboard .row-two {
+  background-color: rgb(109, 49, 0);
+}
+#hexboard .row-three {
+  background-color: rgb(83, 36, 0);
+}
+#hexboard .row-four {
+  background-color: rgb(47, 21, 0);
+}
+#hexboard .row-five {
+  background-color: rgb(29, 14, 0);
+}
+#hexboard .hex:hover {
+  background-color: rgb(255, 0, 0);
+}
+#hexboard .hex:hover::before, #hexboard .hex:hover::after {
+  background-color: rgb(255, 0, 0);
+}
+
+.main-button {
   position: absolute;
   min-width: 200px;
   min-height: 50px;
@@ -39,27 +66,33 @@
   align-items: center;
   text-align: center;
 }
-#hexboard .player-button {
+
+.player-button {
   top: 14px;
   right: 15px;
   background-color: #00bc29;
 }
-#hexboard .player-button:hover {
+
+.player-button:hover {
   background-color: #006e18;
 }
-#hexboard .enemies-button {
+
+.enemies-button {
   top: 14px;
   left: 15px;
   background-color: #b90000;
 }
-#hexboard .enemies-button:hover {
+
+.enemies-button:hover {
   background-color: #820000;
 }
-#hexboard .town-button {
+
+.town-button {
   bottom: 0px;
   right: 15px;
   background-color: #0012d7;
 }
-#hexboard .town-button:hover {
+
+.town-button:hover {
   background-color: #000860;
 }/*# sourceMappingURL=board.css.map */
