@@ -1,6 +1,7 @@
 import {$} from './quickFunctions.js'
 import { playerModalHtml } from './playerModalHtml.js'
 import { boardAudio } from '../main.js'
+import { modalDisplay } from './modalDisplay.js'
 
 export function displayPlayerModal(currentPlayer) {
     let playerAudio = new Audio(currentPlayer.music)
@@ -10,20 +11,14 @@ export function displayPlayerModal(currentPlayer) {
     const playerHtml = playerModalHtml(currentPlayer)
 
     modalDisplay(playerHtml)
-    
+    let modal = $('modal')
+    modal.classList.add('player-main');
+
     let exit = $('exit')
     exit.addEventListener('click', function() {
         playerAudio.pause()
-        $('hexboard').removeChild(container)
+        $('hexboard').removeChild(modal)
         boardAudio.play()
     })
 }
-export function modalDisplay(playerHtml) {
-    const container = document.createElement('div')
-    container.classList.add('modal-main')
-    container.classList.add('player-main')
-    container.innerHTML = playerHtml
-    document.getElementById('hexboard').appendChild(container)
-}   
-
 

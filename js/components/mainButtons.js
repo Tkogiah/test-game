@@ -5,11 +5,9 @@ import {$} from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
 import { boardAudio } from '../main.js'
 
-
-//**** 3 MODAL BUTTONS ON THE MAIN PAGE ****//
-
-//PLAYER BUTTON
-export const playerButton = $("player-button")
+const playerButton = $("player-button")
+const enemiesButton = $("enemies-button")
+const townButton = $("town-button")
 
 playerButton.addEventListener('click', function() {
     boardAudio.pause()
@@ -19,15 +17,10 @@ playerButton.addEventListener('click', function() {
     player.displayPlayerModal(currentPlayer)
 })
 
-//ENEMIES BUTTON
-const enemiesButton = $("enemies-button")
-
 enemiesButton.addEventListener('click', function() {
     enemies.displayEnemiesModal() 
 })
 
-//MERCHANT BUTTON
-const townButton = $("town-button")
 townButton.addEventListener('click', function() {
     town.displayTownModal() 
 })

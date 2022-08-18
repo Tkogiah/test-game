@@ -1,5 +1,5 @@
-import { cardDescription } from "./cardDescription.js"
-import { playerDecks } from "./playerDecks.js"
+import { cardDescription } from "./cardDescriptionHtml.js"
+import { playerDecks } from "./playerDecksHtml.js"
 import { playerStatsHtml } from "./playerStatsHtml.js"
 
 export function playerModalHtml(player) {

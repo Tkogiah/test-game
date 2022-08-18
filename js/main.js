@@ -3,7 +3,7 @@ import { Thief, Fighter, Archer } from './classes/PlayerClasses.js'
 
 
 export let globalState = {
-    round: 0.0,
+    round: 0,
     players: {
         player1: new Fighter('Fighter'),
         player2: new Archer('Archer'),
