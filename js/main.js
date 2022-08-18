@@ -1,6 +1,7 @@
 import * as playerButton from '../js/components/mainButtons.js'
 import { Thief, Fighter, Archer } from './classes/PlayerClasses.js'
 
+
 export let globalState = {
     round: 0.0,
     players: {
@@ -10,7 +11,10 @@ export let globalState = {
     }
 }
 
-function start() {
-    return globalState
-}
-start()
+
+
+export let boardAudio = new Audio('assets/hexscreen.mp3')
+boardAudio.loop = true
+window.onload = (event) => {
+    boardAudio.play();
+};
