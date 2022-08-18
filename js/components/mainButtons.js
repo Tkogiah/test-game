@@ -14,7 +14,7 @@ playerButton.addEventListener('click', function() {
     // need to write dynamic function based on turn and not set BELOW to player1 *********
     let currentPlayer = globalState.players.player1 
     // need to write dynamic function based on turn and not set ABOVE to player1 *********
-    
+
     player.displayPlayerModal(currentPlayer)
 })
 

@@ -63,7 +63,7 @@ body {
   height: 150px;
   width: 150px;
   background-position: center;
-  background-size: cover;
+  background-size: 400px;
   position: absolute;
   border: 3px solid gold;
   border-radius: 15px;

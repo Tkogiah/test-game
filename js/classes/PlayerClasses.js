@@ -14,7 +14,8 @@ class Player {
         },
         this.remainingAttacks = 0,
         this.remainingMovements = 0,
-        this.remainingDraws = 0
+        this.remainingDraws = 0,
+        this.currentCard = '' //need to write function to put current card here
     }  
 }
 export class Archer extends Player {
@@ -43,7 +44,7 @@ export class Thief extends Player {
         this.playerClass = Thief;
         this.speed = 5,
         this.range = 3,
-        this.picture = 'assets/thief.idle.gif', 
+        this.picture = 'assets/thief-idle.gif', 
         this.damage = 2
     }  
 }
