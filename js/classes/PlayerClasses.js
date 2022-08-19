@@ -1,4 +1,4 @@
-import { Action } from "./Cards";
+import { Action } from "./Cards.js";
 
 class Player {
     constructor(playerName) {
@@ -36,7 +36,11 @@ export class Fighter extends Player {
         this.playerClass = Fighter;
         this.speed = 3,
         this.range = 2,
-        this.picture = 'assets/warrior-idle.gif', 
+        this.pictures = {
+            idle: 'assets/warrior-idle.gif',
+            move: 'assets/warrior-run.gif',
+            attack: 'assets/warrior-attack.gif'
+        } 
         this.damage = 5
         this.music = 'assets/fighter-music.mp3'
     }  

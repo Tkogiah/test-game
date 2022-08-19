@@ -11,8 +11,7 @@ class Card {
 }
 
 export class Action extends Card {
-    constructor(title) {}
-    title = 'Action'
+    title = "Action"
     description = 'Use this card to attack or move'
     attack() {
         // p.playerArray[0].attacks += 1

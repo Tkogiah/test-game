@@ -47,10 +47,11 @@
   background-color: rgb(29, 14, 0);
 }
 #hexboard .hex:hover {
-  background-color: rgb(255, 0, 0);
+  background-color: gold;
+  color: black;
 }
 #hexboard .hex:hover::before, #hexboard .hex:hover::after {
-  background-color: rgb(255, 0, 0);
+  background-color: gold;
 }
 #hexboard .red {
   background-color: red;
@@ -87,6 +88,18 @@
 
 .player-button:hover {
   background-color: #006e18;
+}
+
+.image-container-main {
+  height: 150px;
+  width: 150px;
+  background-position: 50% 35%;
+  background-size: 250px;
+  position: absolute;
+  border: 3px solid gold;
+  border-radius: 15px;
+  top: 74px;
+  right: 15px;
 }
 
 .enemies-button {

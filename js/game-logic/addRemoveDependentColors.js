@@ -15,13 +15,20 @@ export function addDependentColorToBoard(array, colorString) {
 
 // ********* FORMERLY clearHighlightedHexes ***********
 export function removeDependentColorsFromBoard() {
-    for (let i = 0; i <= 90; i++) {
-        let hex = document.getElementById(i);
-        hex.classList.remove('red');
-        hex.classList.remove('yellow');
-        hex.classList.remove('green');
-        hex.classList.remove('blue');
-    }
+    // for (let i = 0; i <= 90; i++) {
+    //     let hex = document.getElementById(i);
+    //     hex.classList.remove('red');
+    //     hex.classList.remove('yellow');
+    //     hex.classList.remove('green');
+    //     hex.classList.remove('blue');
+    // }
+    let hexes = document.querySelectorAll('.hex')
+    hexes.forEach(e => {
+        e.classList.remove('red')
+        e.classList.remove('yellow')
+        e.classList.remove('green')
+        e.classList.remove('blue')
+    })
 }
 
 export function addPlayerLocation(player) {

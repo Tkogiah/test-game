@@ -55,10 +55,11 @@
       background-color: rgb(29, 14, 0);
   }  
   .hex:hover {
-      background-color: rgb(255, 0, 0);
+      background-color: gold;
+      color: black;
   }
   .hex:hover::before, .hex:hover::after {
-      background-color: rgb(255, 0, 0);
+      background-color: gold;
   }
 
   // **** STYLES ADDED IN addRemoveDependentColors.js ***** //
@@ -101,6 +102,18 @@
   background-color: #006e18;
 }
 
+.image-container-main {
+  height: 150px;
+  width: 150px;
+  //add background URL inline
+  background-position: 50% 35%;
+  background-size: 250px;
+  position: absolute;
+  border: 3px solid gold;
+  border-radius: 15px;
+  top: 74px;
+  right: 15px;  
+}
 .enemies-button {
   top: 14px;
   left: 15px;

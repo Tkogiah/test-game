@@ -1,7 +1,7 @@
 
 export function playerStatsHtml(player) {
     return (`
-    <div id='player-image' class="image-container container" style="background-image: url(${player.picture});"> 
+    <div id='player-image-modal' class="image-container container" style="background-image: url(${player.pictures.idle});"> 
     </div>              
     <div id='player-stats' class="container column player-stats">
         <h4>Name: ${player.name}</h4>
