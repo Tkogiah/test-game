@@ -1,3 +1,4 @@
+//// **** STYLES ADDED FROM board.scss ***** //
 
 // *********** FORMERLY highlightHexes ***********
 export function addDependentColorToBoard(array, colorString) {

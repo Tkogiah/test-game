@@ -10,9 +10,10 @@ class Card {
     }
 }
 
-class Action extends Card {
-    constructor(name) {}
-    super(title) {}
+export class Action extends Card {
+    constructor(title) {}
+    title = 'Action'
+    description = 'Use this card to attack or move'
     attack() {
         // p.playerArray[0].attacks += 1
         // p.displayActivePlayer(0)

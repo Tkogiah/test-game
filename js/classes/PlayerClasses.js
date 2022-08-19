@@ -1,3 +1,5 @@
+import { Action } from "./Cards";
+
 class Player {
     constructor(playerName) {
         this.name = playerName,
@@ -9,7 +11,7 @@ class Player {
         this.movement = 0,
         this.decks = {
             draw:[],
-            hand:['Action', 'Action', 'Action', 'Action', 'Action'],
+            hand:[new Action, 'Action', 'Action', 'Action', 'Action'],
             discard: []
         },
         this.remainingAttacks = 0,

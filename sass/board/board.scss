@@ -61,7 +61,19 @@
       background-color: rgb(255, 0, 0);
   }
 
-  
+  // **** STYLES ADDED IN addRemoveDependentColors.js ***** //
+  .red {
+    background-color: red;
+  }
+  .yellow {
+    background-color: rgb(213, 213, 0);
+  }
+  .green {
+    background-color: green;
+  }
+  .blue {
+    background-color: blue;
+  }
 }
 
 
@@ -94,10 +106,33 @@
   left: 15px;
   background-color: #b90000;
 }
+
 .enemies-button:hover {
   background-color: #820000;
 }
 
+
+// **************TESTING PURPOSES ONLY*****************
+.attack-button {
+  top: 70px;
+  left: 15px;
+  background-color: #e200b9;
+}.movement-button {
+  top: 125px;
+  left: 15px;
+  background-color: #e200b9;
+}
+// **************END TESTING PURPOSES ONLY****************
+
+
+
+
+
+.end-button {
+  bottom: 0px;
+  left: 15px;
+  background-color: #e200b9;
+}
 .town-button {
   bottom: 0px;
   right: 15px;

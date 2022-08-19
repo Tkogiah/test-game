@@ -1,4 +1,4 @@
-import { addDependentColorToBoard } from "./addRemoveDependentColors";
+import { addDependentColorToBoard } from "./addRemoveDependentColors.js";
 
 export function fillHighlightMovementArray(player) {
     let highlightMovementArray = []

@@ -1,13 +1,12 @@
 import {$} from './quickFunctions.js'
 import { playerModalHtml } from './playerModalHtml.js'
-import { boardAudio } from '../main.js'
+import { boardAudio, playerAudio } from '../components/music.js'
 import { modalDisplay } from './modalDisplay.js'
+import { globalState } from '../main.js'
+
 
 export function displayPlayerModal(currentPlayer) {
-    let playerAudio = new Audio(currentPlayer.music)
-    playerAudio.loop = true
     playerAudio.play()
-
     const playerHtml = playerModalHtml(currentPlayer)
 
     modalDisplay(playerHtml)

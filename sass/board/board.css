@@ -52,6 +52,18 @@
 #hexboard .hex:hover::before, #hexboard .hex:hover::after {
   background-color: rgb(255, 0, 0);
 }
+#hexboard .red {
+  background-color: red;
+}
+#hexboard .yellow {
+  background-color: rgb(213, 213, 0);
+}
+#hexboard .green {
+  background-color: green;
+}
+#hexboard .blue {
+  background-color: blue;
+}
 
 .main-button {
   position: absolute;
@@ -85,6 +97,24 @@
 
 .enemies-button:hover {
   background-color: #820000;
+}
+
+.attack-button {
+  top: 70px;
+  left: 15px;
+  background-color: #e200b9;
+}
+
+.movement-button {
+  top: 125px;
+  left: 15px;
+  background-color: #e200b9;
+}
+
+.end-button {
+  bottom: 0px;
+  left: 15px;
+  background-color: #e200b9;
 }
 
 .town-button {
