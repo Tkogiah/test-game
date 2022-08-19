@@ -1,5 +1,5 @@
 
-export function playerStatsHtml(player) {
+export function PlayerModalStatsHtml(player) {
     return (`
     <div id='player-image-modal' class="image-container container" style="background-image: url(${player.pictures.idle});"> 
     </div>              

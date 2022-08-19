@@ -1,6 +1,6 @@
 import { addDependentColorToBoard } from "./addRemoveDependentColors.js";
 
-export function fillHighlightMovementArray(player) {
+export function showPlayerMovementRange(player) {
     let highlightMovementArray = []
     let beginningPoint = parseInt(player.location)-parseInt(player.movement)
     let endPoint = parseInt(player.location)+parseInt(player.movement);

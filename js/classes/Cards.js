@@ -13,14 +13,15 @@ class Card {
 export class Action extends Card {
     title = "Action"
     description = 'Use this card to attack or move'
-    attack() {
-        // p.playerArray[0].attacks += 1
-        // p.displayActivePlayer(0)
-           
+    addAttack(player) {
+        player.attacks += 1
+        showPlayerAttackRange(player)
+
     }
-    move() {
-        // p.playerArray[0].movement += p.playerArray[0].speed * 1
-        // p.displayActivePlayer(0)    
+    addMovement(player) {
+        player.movement += player.speed * 1
+        showPlayerMovementRange(player)
+        playerMovement(player)
     }
 }
 class SpeedBoots extends Card {

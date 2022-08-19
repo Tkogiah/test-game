@@ -66,7 +66,7 @@ function fillDown(range, row, column) {
 
 //FUNCTION TO HIGHLIGHT AN ARRAY OF LOCATOINS WITH SPECIFIED COLOR
 
-export function fillHighlightRangeArray(player) {
+export function showPlayerAttackRange(player) {
     if(player.attacks < 1) {return}
     if(player.range >= 10) {
        return addDependentColorToBoard(boardHexes(), 'red')   

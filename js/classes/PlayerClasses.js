@@ -11,13 +11,13 @@ class Player {
         this.movement = 0,
         this.decks = {
             draw:[],
-            hand:[new Action, 'Action', 'Action', 'Action', 'Action'],
+            hand:[new Action],
             discard: []
         },
         this.remainingAttacks = 0,
         this.remainingMovements = 0,
         this.remainingDraws = 0,
-        this.currentCard = '' //need to write function to put current card here
+        this.currentCard = '' //TODO need to write function to put current card here
     }  
 }
 export class Archer extends Player {
@@ -26,7 +26,7 @@ export class Archer extends Player {
         this.playerClass = Archer;
         this.speed = 2,
         this.range = 5,
-        this.picture = 'assets/archer-idle.gif', 
+        this.picture = 'assets/archer-idle.gif', //TODO match this to fighter
         this.damage = 3
     }
 }
@@ -45,13 +45,13 @@ export class Fighter extends Player {
         this.music = 'assets/fighter-music.mp3'
     }  
 }
-export class Thief extends Player {
+export class Rogue extends Player {
     constructor(name) {
         super(name)
-        this.playerClass = Thief;
+        this.playerClass = Rogue;
         this.speed = 5,
         this.range = 3,
-        this.picture = 'assets/thief-idle.gif', 
+        this.picture = 'assets/rogue-idle.gif', //TODO match this to fighter
         this.damage = 2
     }  
 }

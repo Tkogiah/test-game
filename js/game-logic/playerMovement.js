@@ -1,6 +1,6 @@
-import {fillHighlightMovementArray} from './movementAlgorithm.js'
+import {showPlayerMovementRange} from './movementAlgorithm.js'
 import { animateRun } from '../components/gifAnimations.js';
-import { fillHighlightRangeArray } from './rangeAlgorithm.js';
+import { showPlayerAttackRange } from './rangeAlgorithm.js';
 import { removeDependentColorsFromBoard } from './addRemoveDependentColors.js';
 
 export function playerMovement(player) {
@@ -14,8 +14,8 @@ export function playerMovement(player) {
                 player.location = e.id
                 animateRun(player)
                 removeDependentColorsFromBoard()
-                fillHighlightMovementArray(player)
-                fillHighlightRangeArray(player)
+                showPlayerMovementRange(player)
+                showPlayerAttackRange(player)
             }
             
         })

@@ -1,9 +1,9 @@
 import * as playerButton from '../js/components/mainButtons.js'
-import { Thief, Fighter, Archer } from './classes/PlayerClasses.js'
+import { Rogue, Fighter, Archer } from './classes/PlayerClasses.js'
 import {board} from './game-logic/boardCssClassesRows.js'
 import { $ } from './components/quickFunctions.js'
-import { fillHighlightMovementArray } from './game-logic/movementAlgorithm.js'
-import { fillHighlightRangeArray } from './game-logic/rangeAlgorithm.js'
+import { showPlayerMovementRange } from './game-logic/movementAlgorithm.js'
+import { showPlayerAttackRange } from './game-logic/rangeAlgorithm.js'
 import { playerMovement } from './game-logic/playerMovement.js'
 import { animateAttack} from './components/gifAnimations.js'
 
@@ -13,7 +13,7 @@ export let globalState = {
     players: {
         player1: new Fighter('Fighter'),
         player2: new Archer('Archer'),
-        player3: new Thief('Thief')
+        player3: new Rogue('Rogue')
     },
     active: {
         players: [],
@@ -25,30 +25,31 @@ export let globalState = {
 }
 
 
+//*********************  TESTING  *********************
 
 
-
-
-
-
-
-
-
-//*********************JUST A TEST*********************
+//TODO add this to whatever logic loads in the current player
 let image = document.getElementById('player-image')
 image.style.backgroundImage = `url(${globalState.players.player1.pictures.idle})`
+//END
 
+//TODO once this is working via the deck remove this
 let attack = $('add-attack')
 let move = $('add-movement')
 attack.addEventListener('click', function() {
-    globalState.players.player1.attacks += 1
-    fillHighlightRangeArray(globalState.players.player1)
-    animateAttack(globalState.players.player1)
+    addAttack(globalState.players.player1)
 })
-
 move.addEventListener('click', function() {
-    globalState.players.player1.movement += globalState.players.player1.speed * 1
-    fillHighlightMovementArray(globalState.players.player1)
-    playerMovement(globalState.players.player1)
-    
+    addMovement(globalState.players.player1)
 })
+function addAttack(player) {
+    player.attacks += 1
+    showPlayerAttackRange(player)
+    animateAttack(player)
+}
+function addMovement(player) {
+    player.movement += player.speed * 1
+    showPlayerMovementRange(player)
+    playerMovement(player)
+}
+//END
