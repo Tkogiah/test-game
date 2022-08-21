@@ -2,7 +2,7 @@ import {$} from './quickFunctions.js'
 import {globalState} from '../main.js'
 
 export function displayTownModal() {
-    let drawTotal, discardTotal, handTotal, cardDescription
+    let drawTotal, discardTotal, handTotal, cardDetails
     const container = document.createElement('div')
     container.classList.add('modal-main')
     container.classList.add('town-main')
@@ -30,9 +30,9 @@ export function displayTownModal() {
                 <h3>${discardTotal}</h3>
             </div>
 
-            <div id='card-description' class="card-description">
-                <h4>${cardDescription}<h4>
-                <p>${cardDescription}</p>
+            <div id='card-details' class="card-details">
+                <h4>${cardDetails}<h4>
+                <p>${cardDetails}</p>
             </div>
 
             <div id='hand-deck' 

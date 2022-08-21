@@ -25,10 +25,10 @@ export class Action {
         
         return (`
             <div id="card-attack"
-            class="card-description-action column center card-description-action">  
+            class="card-details-action column center card-details-action">  
             </div>
             <div id="card-movement"
-            class="card-description-action column center card-description-action">
+            class="card-details-action column center card-details-action">
             </div>
         `)
     }

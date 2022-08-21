@@ -1,11 +1,11 @@
-import { cardDescription } from "./cardDescriptionHtml.js"
+import { cardDetails } from "./cardDetailsHtml.js"
 import { playerDecks } from "./playerModalDecksHtml.js"
 import { PlayerModalStatsHtml } from "./PlayerModalStatsHtml.js"
 
 export function playerModalHtml(player) {
     let playerStats = PlayerModalStatsHtml(player)
     let deck = playerDecks(player.decks)
-    let description = cardDescription()
+    let description = cardDetails()
     return (`
         <div id='player-container' class="row container">
             ${playerStats}

@@ -40,21 +40,25 @@ function displayCards(player) {
             const description = document.getElementById('description')
             title.innerText = element.title
             description.innerText = element.description
-            //element.html()
-            displayAction()
+            let charlie = document.createElement('div')
+            charlie.classList.add('row')
+            charlie.classList.add('center')
+            charlie.innerHTML = element.displayAction
+            let parent = document.getElementById('card-details')
+            parent.appendChild(charlie)
         })
         handContainer.appendChild(card)
     });
 }
 
-function displayAction() {    
-        
-    return (`
-        <div id="card-attack"
-        class="card-description-action column center card-description-action">  
-        </div>
-        <div id="card-movement"
-        class="card-description-action column center card-description-action">
-        </div>
-    `)
-}
+// function displayAction() {    
+    
+//     return (`
+//         <div id="card-attack"
+//         class="card-details-action column center card-details-action">  
+//         </div>
+//         <div id="card-movement"
+//         class="card-details-action column center card-details-action">
+//         </div>
+//     `)
+// }
