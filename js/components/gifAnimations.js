@@ -9,7 +9,6 @@ export function animateIdle(player) {
         else {
             imageModal.style.backgroundImage = `url(${player.pictures.idle})` 
         }
-
     }, 2000)
 }
 export function animateRun(player){

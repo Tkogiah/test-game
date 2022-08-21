@@ -5,7 +5,7 @@ import { PlayerModalStatsHtml } from "./PlayerModalStatsHtml.js"
 export function playerModalHtml(player) {
     let playerStats = PlayerModalStatsHtml(player)
     let deck = playerDecks(player.decks)
-    let description = cardDescription(player.currentCard)
+    let description = cardDescription()
     return (`
         <div id='player-container' class="row container">
             ${playerStats}

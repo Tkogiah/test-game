@@ -1,4 +1,4 @@
-import { Action } from "./Cards.js";
+import { Action } from './Cards.js'
 
 class Player {
     constructor(playerName) {
@@ -11,13 +11,12 @@ class Player {
         this.movement = 0,
         this.decks = {
             draw:[],
-            hand:[new Action],
+            hand:[new Action, new Action, new Action, new Action, new Action, new Action],
             discard: []
         },
         this.remainingAttacks = 0,
         this.remainingMovements = 0,
-        this.remainingDraws = 0,
-        this.currentCard = '' //TODO need to write function to put current card here
+        this.remainingDraws = 0
     }  
 }
 export class Archer extends Player {

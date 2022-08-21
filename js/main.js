@@ -4,8 +4,9 @@ import {board} from './game-logic/boardCssClassesRows.js'
 import { $ } from './components/quickFunctions.js'
 import { showPlayerMovementRange } from './game-logic/movementAlgorithm.js'
 import { showPlayerAttackRange } from './game-logic/rangeAlgorithm.js'
-import { playerMovement } from './game-logic/playerMovement.js'
+
 import { animateAttack} from './components/gifAnimations.js'
+import { addMovement } from './game-logic/playerMovement.js'
 
 
 export let globalState = {
@@ -47,9 +48,5 @@ function addAttack(player) {
     showPlayerAttackRange(player)
     animateAttack(player)
 }
-function addMovement(player) {
-    player.movement += player.speed * 1
-    showPlayerMovementRange(player)
-    playerMovement(player)
-}
+
 //END

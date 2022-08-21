@@ -3,7 +3,7 @@ import { playerModalHtml } from './playerModalHtml.js'
 import { boardAudio, playerAudio } from '../components/music.js'
 import { modalDisplay } from './modalDisplay.js'
 import { globalState } from '../main.js'
-import { handModal, handModalActive } from './playerHandModal.js'
+import { handModalActive } from './playerHandModal.js'
 
 
 export function displayPlayerModal(currentPlayer) {

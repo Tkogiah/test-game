@@ -3,7 +3,14 @@ import { animateRun } from '../components/gifAnimations.js';
 import { showPlayerAttackRange } from './rangeAlgorithm.js';
 import { removeDependentColorsFromBoard } from './addRemoveDependentColors.js';
 
-export function playerMovement(player) {
+
+export function addMovement(player) {
+    player.movement += player.speed * 1
+    showPlayerMovementRange(player)
+    playerMovement(player)
+    addPlayerLocation(player)
+}
+function playerMovement(player) {
     let boardlocations = document.querySelectorAll('.hex');
     boardlocations.forEach(e => {
         e.addEventListener('click', function() {

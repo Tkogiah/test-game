@@ -34,7 +34,8 @@
 }
 .card {
     height: 210px;
-    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
     position: absolute;
     color: black;
     background-color: white;
@@ -61,6 +62,18 @@
     font-size: 16px;
     text-align: left;
 }
+
+.card-description-action {
+    width: 200px;
+    height: 50px;
+    border: 3px solid gold;
+    margin: 25px;
+    background-color: blue;
+    color: white;
+    font-size: 30px;
+
+}
+
 .exit {
     position: absolute;
     padding: 15px;
@@ -112,27 +125,35 @@
 }
 .hand-card-modal {
     height: 215px;
-    width: auto;
+    width: 760px;
     background-color: white;
-    bottom: 220px;
+    bottom: 225px;
     left: 150px;
+    border-radius: 16px;
     position: absolute;
+    display: flex;
+}
+.hand-card-container {
+    height: 220px;
+    max-width: 760px;
+    border-radius: 16px;
+    background-color: white;
+    overflow-x: auto;
 }
 .hand-card {
-    height: 210px;
-    width: 140px;
-    color: black;
-    background-color: blue;
+    min-width: 140px;
+    min-height: 210px;
+    margin: 5px;
+    color: white;
     border: 3px solid rgb(0, 0, 0);
-    border-radius: 15px;    
+    border-radius: 15px;
+    font-size: 20px;    
     box-sizing: border-box;
     display: flex;
     justify-content: space-evenly;
     align-items: center; 
 }
-.active-card {
-    border: 3px solid blue
-}
+
 
 
 // **** TOWN MODAL CSS ***** //

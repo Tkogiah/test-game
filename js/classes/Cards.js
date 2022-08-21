@@ -1,30 +1,53 @@
+import {addAttack} from '../game-logic/playerAttack.js'
+import {addMovement} from '../game-logic/playerMovement.js'
+
 class Deck {
     constructor(cards) {
         this.cards = cards
     }
 }
 
-class Card {
-    constructor(title) {
-        this.title = title
+
+
+export class Action {
+    constructor(player) {
+        this.title = "Action"
+        this.description = 'Use this card to attack or Move'
+        this.html = function() {
+            this.displayAction()
+            
+        }
+        this.functionality = function(){
+            this.addClickFunction(player)
+        }
     }
+    displayAction() {    
+        
+        return (`
+            <div id="card-attack"
+            class="card-description-action column center card-description-action">  
+            </div>
+            <div id="card-movement"
+            class="card-description-action column center card-description-action">
+            </div>
+        `)
+    }
+    addClickFunction(player) {
+        const attack = document.getElementById('card-attack')
+        const movement = document.getElementById('card-movement')
+        attack.innerText = 'Attack'
+        movement.innerText = 'Movement'
+        attack.addEventListener('click', function(){
+            addAttack(player)
+        })
+        movement.addEventListener('click', function(){
+            addMovement(player)
+        })
+    }   
 }
 
-export class Action extends Card {
-    title = "Action"
-    description = 'Use this card to attack or move'
-    addAttack(player) {
-        player.attacks += 1
-        showPlayerAttackRange(player)
 
-    }
-    addMovement(player) {
-        player.movement += player.speed * 1
-        showPlayerMovementRange(player)
-        playerMovement(player)
-    }
-}
-class SpeedBoots extends Card {
-    constructor(name) {}
-    super(title) {}
-}
+// class SpeedBoots extends Card {
+//     constructor(name) {}
+//     super(title) {}
+// }
