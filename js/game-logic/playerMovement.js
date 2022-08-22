@@ -24,6 +24,7 @@ function playerMovement(player) {
                 removeDependentColorsFromBoard()
                 showPlayerMovementRange(player)
                 showPlayerAttackRange(player)
+                addPlayerLocation(player)
             }
             
         })

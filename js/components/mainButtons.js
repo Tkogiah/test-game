@@ -4,6 +4,10 @@ import * as enemies from './enemiesModal.js'
 import {$} from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
 import { boardAudio } from '../components/music.js'
+import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
+import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
+import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
+import { startRound } from '../game-logic/startGame.js'
 
 const playerButton = $("player-button")
 const enemiesButton = $("enemies-button")
@@ -38,4 +42,15 @@ endTurnButton.addEventListener('click', function() {
     // displayActivePlayer(0)
     // displayActiveEnemies(enemyArray)
     // determineEndGame(enemyArray)
+
+    // need to write dynamic function based on turn and not set BELOW to player1 *********
+    let currentPlayer = globalState.players.player1 
+    // need to write dynamic function based on turn and not set ABOVE to player1 *********
+    currentPlayer.discardHand()
+    currentPlayer.draw()
+    currentPlayer.resetStats()
+    removeDependentColorsFromBoard()
+    showPlayerMovementRange(currentPlayer)
+    showPlayerAttackRange(currentPlayer)
+    startRound(currentPlayer)
 })

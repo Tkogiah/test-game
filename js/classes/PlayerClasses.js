@@ -10,15 +10,55 @@ class Player {
         this.attacks = 0,
         this.movement = 0,
         this.decks = {
-            draw:[],
-            hand:[new Action, new Action, new Action, new Action, new Action, new Action],
+            draw:[new Action, new Action, new Action, new Action, new Action, new Action],
+            hand:[],
             discard: []
-        },
-        this.remainingAttacks = 0,
-        this.remainingMovements = 0,
-        this.remainingDraws = 0
+        }
+    }
+    draw() {
+        while(this.decks.hand.length < 5) {
+            if(this.decks.draw.length > 0) {
+                let card = this.decks.draw.pop()
+                this.decks.hand.push(card)
+            }
+            else {
+                this.shuffle(this.decks.discard)
+                while(this.decks.discard.length > 0) {
+                    let card = this.decks.discard.pop()
+                    this.decks.draw.push(card)
+                }
+            }
+        }
+    }
+    shuffle(array) {
+        //taken from <https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array?page=1&tab=scoredesc#tab-top>
+        let currentIndex = array.length,  randomIndex;
+        while (currentIndex != 0) {
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+    discardHand() {
+        while(this.decks.hand.length > 0) {
+            let card = this.decks.hand.pop()
+            this.decks.discard.push(card)
+        }
+    }
+    discard(i, player) {
+        let currentCard = player.decks.hand[i]
+            player.decks.discard.push(currentCard)
+            player.decks.hand.splice(i, 1)
+    }
+    resetStats() {
+        this.attacks = 0
+        this.movement = 0
+        this.money = 0
     }  
 }
+
 export class Archer extends Player {
     constructor(name) {
         super(name)

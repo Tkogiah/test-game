@@ -28,6 +28,7 @@ class Card {
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
     }
+    
 }
 
 export class Action extends Card {
@@ -49,9 +50,7 @@ export class Action extends Card {
         const attack = $('card-attack')
         const movement = $('card-movement')
         attack.addEventListener('click', function(){
-            let currentCard = player.decks.hand[i]
-            player.decks.discard.push(currentCard)
-            player.decks.hand.splice(i, 1)
+            player.discard(i, player)
             addAttack(player)
             $('hand-card-modal').remove()
             handModal(player)
@@ -59,9 +58,7 @@ export class Action extends Card {
             refreshCardDetails()
         })
         movement.addEventListener('click', function(){
-            let currentCard = player.decks.hand[i]
-            player.decks.discard.push(currentCard)
-            player.decks.hand.splice(i, 1)
+            player.discard(i, player)
             addMovement(player)
             $('hand-card-modal').remove()
             handModal(player)
@@ -86,12 +83,11 @@ export class TestCard extends Card {
     addClickFunction(i, player) {
         const cardButton = $('card-button')
         cardButton.addEventListener('click', function(){
-            let currentCard = player.decks.hand[i]
-            player.decks.discard.push(currentCard)
-            player.decks.hand.splice(i, 1)
+            player.discard(i, player)
             $('hand-card-modal').remove()
             handModal(player)
             refreshDecks(player)
+            refreshCardDetails()
         })
 
     }   
