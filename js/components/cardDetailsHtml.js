@@ -1,3 +1,5 @@
+import { $ } from "./quickFunctions.js";
+
 export function cardDetails() {
     return (`
         <div id='card-details' class="card-details">
@@ -9,4 +11,13 @@ export function cardDetails() {
             </div>
         </div>
     `);
+}
+
+export function refreshCardDetails() {
+    let title = $('title')
+    let description = $('description')
+    let action = $('action')
+    title.innerText = ''
+    description.innerText = ''
+    action. innerText = ''
 }

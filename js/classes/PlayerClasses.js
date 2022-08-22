@@ -1,4 +1,4 @@
-import { Action } from './Cards.js'
+import { Action, TestCard } from './Cards.js'
 
 class Player {
     constructor(playerName) {

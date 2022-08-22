@@ -1,53 +1,98 @@
+import { $ } from '../components/quickFunctions.js'
 import {addAttack} from '../game-logic/playerAttack.js'
 import {addMovement} from '../game-logic/playerMovement.js'
+import { refreshDecks } from '../components/playerModalDecksHtml.js'
+import {handModal} from '../components/playerHandModal.js'
+import {refreshCardDetails} from '../components/cardDetailsHtml.js'
+
 
 class Deck {
     constructor(cards) {
         this.cards = cards
     }
 }
+class Card {
+    constructor(player){}
+    displayCardFunction(i, player) {
+        const cardDetails = $('card-details')
+        const title = $('title')
+        const description = $('description')
+        title.innerText = this.title
+        description.innerText = this.description
+        const action = document.createElement('div')
+        action.id = 'action'
+        action.classList.add('row')
+        action.classList.add('center')
+        action.innerHTML = ''
+        action.innerHTML = this.html
+        cardDetails.appendChild(action)
+        this.addClickFunction(i, player)
+    }
+}
 
-
-
-export class Action {
+export class Action extends Card {
     constructor(player) {
+        super(player)
         this.title = "Action"
         this.description = 'Use this card to attack or Move'
-        this.html = function() {
-            this.displayAction()
-            
-        }
-        this.functionality = function(){
-            this.addClickFunction(player)
-        }
-    }
-    displayAction() {    
-        
-        return (`
+        this.html = `
             <div id="card-attack"
-            class="card-details-action column center card-details-action">  
+            class="card-details-action column center card-details-action">
+                <p>ADD ATTACK</p>  
             </div>
             <div id="card-movement"
             class="card-details-action column center card-details-action">
-            </div>
-        `)
+                <p>ADD MOVEMENT</p>
+            </div>`
     }
-    addClickFunction(player) {
-        const attack = document.getElementById('card-attack')
-        const movement = document.getElementById('card-movement')
-        attack.innerText = 'Attack'
-        movement.innerText = 'Movement'
+    addClickFunction(i, player) {
+        const attack = $('card-attack')
+        const movement = $('card-movement')
         attack.addEventListener('click', function(){
+            let currentCard = player.decks.hand[i]
+            player.decks.discard.push(currentCard)
+            player.decks.hand.splice(i, 1)
             addAttack(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
         })
         movement.addEventListener('click', function(){
+            let currentCard = player.decks.hand[i]
+            player.decks.discard.push(currentCard)
+            player.decks.hand.splice(i, 1)
             addMovement(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
         })
     }   
 }
 
 
-// class SpeedBoots extends Card {
-//     constructor(name) {}
-//     super(title) {}
-// }
+export class TestCard extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Test"
+        this.description = 'I am using this to test the viability of my card classes'
+        this.html = `
+            <div id="card-button"
+            class="card-details-action column center card-details-action">
+                <p>USE CARD</p>  
+            </div>`
+    }
+    addClickFunction(i, player) {
+        const cardButton = $('card-button')
+        cardButton.addEventListener('click', function(){
+            let currentCard = player.decks.hand[i]
+            player.decks.discard.push(currentCard)
+            player.decks.hand.splice(i, 1)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+        })
+
+    }   
+}

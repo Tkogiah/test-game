@@ -2,6 +2,7 @@ import {showPlayerMovementRange} from './movementAlgorithm.js'
 import { animateRun } from '../components/gifAnimations.js';
 import { showPlayerAttackRange } from './rangeAlgorithm.js';
 import { removeDependentColorsFromBoard } from './addRemoveDependentColors.js';
+import { addPlayerLocation } from './addRemoveDependentColors.js';
 
 
 export function addMovement(player) {

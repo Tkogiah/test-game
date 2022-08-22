@@ -1,3 +1,5 @@
+import {addAttack} from '../game-logic/playerAttack.js'
+import {addMovement} from '../game-logic/playerMovement.js'
 
 export function handModalActive(player) {
     const hand = document.getElementById('hand-deck')
@@ -9,9 +11,10 @@ export function handModalActive(player) {
     })
 }
 
-function handModal(player) {
+export function handModal(player) {
     const modal = document.createElement('div')
     modal.classList.add('hand-card-modal')
+    modal.id = 'hand-card-modal'
     document.getElementById('player-container').appendChild(modal)
 
     const handContainer = document.createElement('div')
@@ -23,7 +26,7 @@ function handModal(player) {
     displayCards(player)
 }
 
-function displayCards(player) {
+export function displayCards(player) {
     const displayDeck = player.decks.hand
     const handContainer = document.getElementById('hand-card-container')
     displayDeck.forEach((element, i) => {
@@ -36,29 +39,12 @@ function displayCards(player) {
         card.classList.add('hand-pile-active')
         card.innerText = element.title
         card.addEventListener('click', function(){
-            const title = document.getElementById('title')
-            const description = document.getElementById('description')
-            title.innerText = element.title
-            description.innerText = element.description
-            let charlie = document.createElement('div')
-            charlie.classList.add('row')
-            charlie.classList.add('center')
-            charlie.innerHTML = element.displayAction
-            let parent = document.getElementById('card-details')
-            parent.appendChild(charlie)
+            document.getElementById('action').remove()
+            element.displayCardFunction(i, player)
         })
         handContainer.appendChild(card)
     });
 }
 
-// function displayAction() {    
-    
-//     return (`
-//         <div id="card-attack"
-//         class="card-details-action column center card-details-action">  
-//         </div>
-//         <div id="card-movement"
-//         class="card-details-action column center card-details-action">
-//         </div>
-//     `)
-// }
+
+ 
