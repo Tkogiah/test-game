@@ -8,7 +8,8 @@ import { handModalActive } from './playerHandModal.js'
 
 export function displayPlayerModal(currentPlayer) {
     
-    playerAudio.play()
+    let audio = playerAudio(currentPlayer)
+    audio.play()
     const playerHtml = playerModalHtml(currentPlayer)
 
     modalDisplay(playerHtml)
@@ -19,7 +20,7 @@ export function displayPlayerModal(currentPlayer) {
 
     const exit = $('exit')
     exit.addEventListener('click', function() {
-        playerAudio.pause()
+        audio.pause()
         $('hexboard').removeChild(modal)
         boardAudio.play()
     })
