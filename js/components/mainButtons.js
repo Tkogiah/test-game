@@ -2,12 +2,12 @@ import * as player from './playerModal.js'
 import * as town from './townModal.js'
 import * as enemies from './enemiesModal.js'
 import {$} from '../components/quickFunctions.js'
-import { globalState } from '../main.js'
+import { globalOrder } from '../main.js'
 import { boardAudio } from '../components/music.js'
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
 import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
-import { startRound } from '../game-logic/startGame.js'
+import { changeGlobalOrder, startRound } from '../game-logic/startGame.js'
 
 const playerButton = $("player-button")
 const enemiesButton = $("enemies-button")
@@ -17,7 +17,7 @@ const endTurnButton = $('end')
 playerButton.addEventListener('click', function() {
     boardAudio.pause()
     // need to write dynamic function based on turn and not set BELOW to player1 *********
-    let currentPlayer = globalState.players.player1 
+    let currentPlayer = globalOrder[0]
     // need to write dynamic function based on turn and not set ABOVE to player1 *********
     player.displayPlayerModal(currentPlayer)
 })
@@ -44,7 +44,7 @@ endTurnButton.addEventListener('click', function() {
     // determineEndGame(enemyArray)
 
     // need to write dynamic function based on turn and not set BELOW to player1 *********
-    let currentPlayer = globalState.players.player1 
+    let currentPlayer = changeGlobalOrder(globalOrder) 
     // need to write dynamic function based on turn and not set ABOVE to player1 *********
     currentPlayer.discardHand()
     currentPlayer.draw()

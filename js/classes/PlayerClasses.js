@@ -1,4 +1,4 @@
-import { Action, TestCard } from './Cards.js'
+import { Action } from './Cards.js'
 
 class Player {
     constructor(playerName) {
@@ -10,7 +10,7 @@ class Player {
         this.attacks = 0,
         this.movement = 0,
         this.decks = {
-            draw:[new Action, new Action, new Action, new Action, new Action, new Action],
+            draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
             discard: []
         }
@@ -65,8 +65,13 @@ export class Archer extends Player {
         this.playerClass = Archer;
         this.speed = 2,
         this.range = 5,
-        this.picture = 'assets/archer-idle.gif', //TODO match this to fighter
+        this.pictures = {
+            idle: 'assets/archer-idle.gif',
+            move: 'assets/archer-run.gif',
+            attack: 'assets/archer-attack.gif'
+        } 
         this.damage = 3
+        this.music = 'assets/fighter-music.mp3'
     }
 }
 export class Fighter extends Player {
@@ -90,7 +95,12 @@ export class Rogue extends Player {
         this.playerClass = Rogue;
         this.speed = 5,
         this.range = 3,
-        this.picture = 'assets/rogue-idle.gif', //TODO match this to fighter
+        this.pictures = {
+            idle: 'assets/rogue-idle.gif',
+            move: 'assets/rogue-run.gif',
+            attack: 'assets/rogue-attack.gif'
+        } 
         this.damage = 2
+        this.music = 'assets/fighter-music.mp3'
     }  
 }

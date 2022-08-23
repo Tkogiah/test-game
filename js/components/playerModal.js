@@ -7,6 +7,7 @@ import { handModalActive } from './playerHandModal.js'
 
 
 export function displayPlayerModal(currentPlayer) {
+    
     playerAudio.play()
     const playerHtml = playerModalHtml(currentPlayer)
 

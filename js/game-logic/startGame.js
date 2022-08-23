@@ -8,3 +8,8 @@ export function startRound(player) {
     let image = document.getElementById('player-image')
     image.style.backgroundImage = `url(${player.pictures.idle})`
 }
+export function changeGlobalOrder(array) {
+    array.push(array[0])
+    array.shift()
+    return array[0]
+}

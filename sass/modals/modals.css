@@ -91,6 +91,44 @@
   cursor: pointer;
 }
 
+.start {
+  background-image: url("/assets/background.jpg");
+  background-position: 46.5% 50%;
+  background-size: 1440px;
+  border: none;
+  color: black;
+}
+
+.image-container-start {
+  height: 200px;
+  width: 200px;
+  color: black;
+  background-position: 50% 35%;
+  background-size: 250px;
+  position: absolute;
+  border: 3px solid gold;
+  border-radius: 15px;
+  top: 150px;
+}
+
+.fighter {
+  margin: 50px;
+  background-image: url("/assets/warrior-attack.gif");
+  left: 500px;
+}
+
+.archer {
+  margin: 50px;
+  background-image: url("/assets/archer-attack.gif");
+  left: 100px;
+}
+
+.rogue {
+  margin: 50px;
+  background-image: url("/assets/rogue-attack.gif");
+  right: 100px;
+}
+
 .player-main {
   background-color: green;
 }

@@ -6,6 +6,14 @@ import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/cardDetailsHtml.js'
 
 
+class Merchant {
+    constructor(deck) {
+        this.name = 'Merchant'
+    }
+}
+
+
+
 class Deck {
     constructor(cards) {
         this.cards = cards
@@ -28,6 +36,9 @@ class Card {
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
     }
+    // giveToPlayer(player) {
+    //     player.decks.discard.push(this)
+    // }
     
 }
 
