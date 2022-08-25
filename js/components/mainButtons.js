@@ -43,9 +43,7 @@ endTurnButton.addEventListener('click', function() {
     // displayActiveEnemies(enemyArray)
     // determineEndGame(enemyArray)
 
-    // need to write dynamic function based on turn and not set BELOW to player1 *********
     let currentPlayer = changeGlobalOrder(globalOrder) 
-    // need to write dynamic function based on turn and not set ABOVE to player1 *********
     currentPlayer.discardHand()
     currentPlayer.draw()
     currentPlayer.resetStats()

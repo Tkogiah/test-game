@@ -71,7 +71,8 @@ export class Archer extends Player {
             attack: 'assets/archer-attack.gif'
         } 
         this.damage = 3
-        this.music = 'assets/archer-music.mp3'
+        this.music = new Audio('assets/archer-music.mp3')
+        this.music.loop = true
     }
 }
 export class Fighter extends Player {
@@ -86,7 +87,8 @@ export class Fighter extends Player {
             attack: 'assets/warrior-attack.gif'
         } 
         this.damage = 5
-        this.music = 'assets/fighter-music.mp3'
+        this.music = new Audio('assets/fighter-music.mp3')
+        this.music.loop = true
     }  
 }
 export class Rogue extends Player {
@@ -101,6 +103,7 @@ export class Rogue extends Player {
             attack: 'assets/rogue-attack.gif'
         } 
         this.damage = 2
-        this.music = 'assets/rogue-music.mp3'
+        this.music = new Audio('assets/rogue-music.mp3')
+        this.music.loop = true
     }  
 }
