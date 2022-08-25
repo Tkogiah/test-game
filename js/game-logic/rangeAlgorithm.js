@@ -69,7 +69,7 @@ function fillDown(range, row, column) {
 export function showPlayerAttackRange(player) {
     if(player.attacks < 1) {return}
     if(player.range >= 10) {
-       return addDependentColorToBoard(boardHexes(), 'red')   
+       return addDependentColorToBoard(boardHexes(), 'green')   
     }
     highlightRangeArray = []
     let row = indexesOfboardMatrix[player.location].row
@@ -79,6 +79,6 @@ export function showPlayerAttackRange(player) {
     fillLeft(player.range, row, column)
     fillUp(player.range, row, column)
     fillDown(player.range, row, column)
-    addDependentColorToBoard(highlightRangeArray, 'red')
+    addDependentColorToBoard(highlightRangeArray, 'green')
     
 }

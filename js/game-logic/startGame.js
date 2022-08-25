@@ -9,7 +9,21 @@ export function startRound(player) {
     image.style.backgroundImage = `url(${player.pictures.idle})`
 }
 export function changeGlobalOrder(array) {
-    array.push(array[0])
-    array.shift()
-    return array[0]
+    if(array[1].type === 'enemy') {
+        return array[0]
+    }
+    else if(array[1].type === 'player') {
+        array.push(array[0])
+        array.shift()
+        return array[0]
+    }
+}
+export function enemyInitiator(globalState) {
+    let round = globalState.round
+    let enemy = globalState.enemies[round]
+    let enemyArray = []
+    for(let i = 0; i < 10; i++) {
+        enemyArray.push(enemy)
+    }
+    return enemyArray
 }

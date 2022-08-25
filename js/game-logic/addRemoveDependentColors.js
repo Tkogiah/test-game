@@ -6,8 +6,8 @@ export function addDependentColorToBoard(array, colorString) {
         if(e <=90 ){
             let hexColor = document.getElementById(e)
             hexColor.classList.add(colorString)
-            if(hexColor.classList.contains('red') && hexColor.classList.contains('yellow')) {
-                hexColor.classList.add('green')
+            if(hexColor.classList.contains('green') && hexColor.classList.contains('yellow')) {
+                hexColor.classList.add('blue')
             }  
         }
     })
@@ -17,15 +17,15 @@ export function addDependentColorToBoard(array, colorString) {
 export function removeDependentColorsFromBoard() {
     let hexes = document.querySelectorAll('.hex')
     hexes.forEach(e => {
-        e.classList.remove('red')
-        e.classList.remove('yellow')
         e.classList.remove('green')
+        e.classList.remove('yellow')
         e.classList.remove('blue')
+        e.classList.remove('purple')
     })
 }
 
 export function addPlayerLocation(player) {
     let location = document.getElementById(player.location)
-    location.classList.add('blue')
+    location.classList.add('purple')
 
 }

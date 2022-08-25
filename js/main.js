@@ -9,18 +9,30 @@ import { animateAttack} from './components/gifAnimations.js'
 import { addMovement } from './game-logic/playerMovement.js'
 import { startRound } from './game-logic/startGame.js'
 import { selectPlayer } from './components/openingModal.js'
+import { Behemoth, Demigog, Demon, Dragon, Giant, Goblin, Leviathan, Ogre, Orc, Pleroma } from './classes/EnemyClasses.js'
 
 
 export const globalState = {
     round: 0,
     players: {
-        player1: new Fighter('Fighter'),
-        player2: new Archer('Archer'),
-        player3: new Rogue('Rogue')
+        player0: new Fighter('Fighter'),
+        player1: new Archer('Archer'),
+        player2: new Rogue('Rogue')
     },
+    enemies: [
+        new Goblin(),
+        new Orc(),
+        new Ogre(),
+        new Giant(),
+        new Demon(),
+        new Behemoth(),
+        new Leviathan(),
+        new Demigog(),
+        new Dragon(),
+        new Pleroma()
+    ],
     active: {
-        players: [],
-        enemies: []
+        globalOrder: []
     },
     merchant: {
         deck: []
@@ -47,7 +59,7 @@ export const globalState = {
     
 // }
 
-export const globalOrder = []
+// export const globalOrder = []
 //*********************  TESTING  *********************
 selectPlayer()
 // startRound(globalOrder[0])

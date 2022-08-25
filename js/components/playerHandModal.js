@@ -1,5 +1,6 @@
 import {addAttack} from '../game-logic/playerAttack.js'
 import {addMovement} from '../game-logic/playerMovement.js'
+import { $ } from './quickFunctions.js'
 
 export function handModalActive(player) {
     const hand = document.getElementById('hand-deck')
@@ -12,6 +13,11 @@ export function handModalActive(player) {
 }
 
 export function handModal(player) {
+    if($('hand-card-modal') && $('hand-card-container')) {  
+        $('hand-card-modal').remove()
+        $('hand-card-container').remove()
+        return
+    }
     const modal = document.createElement('div')
     modal.classList.add('hand-card-modal')
     modal.id = 'hand-card-modal'

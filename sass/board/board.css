@@ -65,6 +65,9 @@
 #hexboard .blue {
   background-color: blue;
 }
+#hexboard .purple {
+  background-color: purple;
+}
 
 .main-button {
   position: absolute;
