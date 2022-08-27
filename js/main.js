@@ -7,7 +7,7 @@ import { showPlayerAttackRange } from './game-logic/rangeAlgorithm.js'
 
 import { animateAttack} from './components/gifAnimations.js'
 import { addMovement } from './game-logic/playerMovement.js'
-import { startRound } from './game-logic/startGame.js'
+import { startRound } from './game-logic/RoundAndTurnControl.js'
 import { selectPlayer } from './components/openingModal.js'
 import { Behemoth, Demigog, Demon, Dragon, Giant, Goblin, Leviathan, Ogre, Orc, Pleroma } from './classes/EnemyClasses.js'
 
@@ -19,18 +19,18 @@ export const globalState = {
         player1: new Archer('Archer'),
         player2: new Rogue('Rogue')
     },
-    enemies: [
-        new Goblin(),
-        new Orc(),
-        new Ogre(),
-        new Giant(),
-        new Demon(),
-        new Behemoth(),
-        new Leviathan(),
-        new Demigog(),
-        new Dragon(),
-        new Pleroma()
-    ],
+    enemies: {
+        enemyOne: new Goblin(),
+        enemyTwo: new Goblin(),
+        enemyThree: new Goblin(),
+        enemyFour: new Goblin(),
+        enemyFive: new Goblin(),
+        enemySix: new Goblin(),
+        enemySeven: new Goblin(),
+        enemyEight: new Goblin(),
+        enemyNine: new Goblin(),
+        enemyTen: new Goblin()
+    },
     active: {
         globalOrder: []
     },

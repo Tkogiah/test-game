@@ -1,6 +1,6 @@
 import { $ } from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
-import { startRound, enemyInitiator } from '../game-logic/startGame.js'
+import { startRound, enemyInitiator } from '../game-logic/RoundAndTurnControl.js'
 import { boardAudio, characterSelect } from './music.js'
 
 export function selectPlayer() {
@@ -27,15 +27,12 @@ export function selectPlayer() {
         $('start-modal').removeChild($('rogue'))
     })
     start.addEventListener('click', function() {
-        let enemies = enemyInitiator(globalState)
-        enemies.forEach(element => {
-            globalState.active.globalOrder.push(element)
-        });
+        enemyInitiator(globalState)
+        globalState.active.globalOrder.push(globalState.enemies)
         startRound(globalState.active.globalOrder[0])
         board.removeChild(gameStart)
         characterSelect.pause()
         boardAudio.play()
-        console.log(globalState.active.globalOrder)
     })
 
 }

@@ -5,13 +5,23 @@ export class Enemy {
         this.speed = 1
     }
     advanceForward() {
+        this.removeLocation()
         let movement = Math.floor(Math.random() * 10) + 1
         this.location -= movement
+        this.showLocation()
     }
     showLocation() {
         let enemyLocation = document.getElementById(`${this.location}`)
-        enemyLocation.classList.add('')
-    }   
+        enemyLocation.classList.add('red')
+    }
+    removeLocation() {
+        let enemyLocation = document.getElementById(`${this.location}`)
+        enemyLocation.classList.remove('red')
+    }
+    takeDamage(damage) {
+        this.health -= damage
+    }
+       
 }
 export class Goblin extends Enemy {
     constructor() {
