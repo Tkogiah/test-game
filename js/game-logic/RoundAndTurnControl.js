@@ -3,6 +3,7 @@ import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependent
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
 import { Orc } from "../classes/EnemyClasses.js"
+import { makeEnemiesVulnerable } from "./playerAttack.js"
 
 export function startRound(player) {
     let playerImage = document.getElementById('player-image')
@@ -23,14 +24,12 @@ export function startRound(player) {
         enemyImage.classList.remove('hidden')
         enemyImage.style.backgroundImage = `url(${player.picture})`
     }
-    
 }
 export function changeGlobalOrder(array) {
         array.push(array[0])
         array.shift()
         return array[0]
 }
-
 
 
 //*******************FIGURE OUT HOW TO REFACTOR THESE LATER ********
@@ -73,7 +72,7 @@ export function playerTurn(player) {
     removeDependentColorsFromBoard()
     showPlayerMovementRange(player)
     showPlayerAttackRange(player)
-    //makeEnemiesVulnerable(player) WRITE THIS
+    makeEnemiesVulnerable(player)
     startRound(player)
 }
 export function enemyTurn(player) {
@@ -82,15 +81,16 @@ export function enemyTurn(player) {
 }
 export function automateEnemyTurn(globalState) {
     let currentPlayer = changeGlobalOrder(globalState.active.globalOrder)
-
+    
     if(currentPlayer.type === 'player') {
         playerTurn(currentPlayer)
     }
     else if(currentPlayer.type === 'enemy') {
+        enemyTurn(currentPlayer)
+        console.log(globalState.active.globalOrder[0], currentPlayer.location)
         setTimeout(function() {
-            enemyTurn(currentPlayer)  
+              
             automateEnemyTurn(globalState)
-        }, 250)
-        
+        }, 250)       
     } 
 }

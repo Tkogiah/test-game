@@ -1,4 +1,4 @@
-import { addDependentColorToBoard, addPlayerLocation } from "./addRemoveDependentColors.js"
+import { addDependentColorToBoard, addPlayerLocation, removePlayerRange } from "./addRemoveDependentColors.js"
 import { indexesOfboardMatrix, boardHexes, boardMatrix } from "./boardIndexes.js"
 
 
@@ -67,9 +67,13 @@ function fillDown(range, row, column) {
 //FUNCTION TO HIGHLIGHT AN ARRAY OF LOCATOINS WITH SPECIFIED COLOR
 
 export function showPlayerAttackRange(player) {
-    if(player.attacks < 1) {return}
+    if(player.attacks < 1) {
+        removePlayerRange()
+        return
+    }
     if(player.range >= 10) {
-       return addDependentColorToBoard(boardHexes(), 'green')   
+       addDependentColorToBoard(boardHexes(), 'green') 
+       return  
     }
     highlightRangeArray = []
     let row = indexesOfboardMatrix[player.location].row

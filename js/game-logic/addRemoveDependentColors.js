@@ -24,6 +24,18 @@ export function removeDependentColorsFromBoard() {
     })
 }
 
+export function removePlayerRange() {
+    let hexes = document.querySelectorAll('.hex')
+    hexes.forEach(e => {
+        e.classList.remove('green')
+    })
+}
+export function removeEnemy(player) {
+    let location = player.location
+    let hexagon = document.getElementById(location)
+    hexagon.classList.remove('red')
+}
+
 export function addPlayerLocation(player) {
     let location = document.getElementById(player.location)
     location.classList.add('purple')
