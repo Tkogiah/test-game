@@ -81,4 +81,4 @@ export function showPlayerAttackRange(player) {
     fillDown(player.range, row, column)
     addDependentColorToBoard(highlightRangeArray, 'green')
     
-}
+} 
