@@ -11,9 +11,11 @@ export function addAttack(player) {
     showPlayerAttackRange(player)
 }
 
-export function makeEnemiesVulnerable(player) {
+export function makeEnemiesVulnerable() {
+    resetBoard(board)
     board.forEach( e => {
         e.addEventListener('click', function() {
+            let player = globalState.globalOrder[0]
             if(e.classList.contains('green') && e.classList.contains('red') && player.attacks > 0) {
                 if(player.location >= 1 && player.location <= 6) {
                     player.decks.discard.push(new Money(1))
@@ -38,7 +40,7 @@ export function makeEnemiesVulnerable(player) {
                 animateAttack(player)
                 player.attacks -= 1
                 showPlayerAttackRange(player)
-                console.log(globalState.active.globalOrder)
+                console.log(globalState.globalOrder)
                 // mr.clearHighlightedHexes()
                 // p.displayActivePlayer(0)
                 
@@ -47,12 +49,31 @@ export function makeEnemiesVulnerable(player) {
     })
 }
 
-function enemyTakeDamage(id,player){
-    let globalOrder = globalState.active.globalOrder
+function enemyTakeDamage(id, player){
+    let globalOrder = globalState.globalOrder
+    let count = 0
+    
     for(let i = 0; i < globalOrder.length; i++) {
         if(globalOrder[i].location === id && globalOrder[i].type === 'enemy') {
-            globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
+            count += 1
         }
     }
+    if(count === 1) {
+        for(let i = 0; i < globalOrder.length; i++) {
+            if(globalOrder[i].location === id && globalOrder[i].type === 'enemy') {
+                globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
+            }
+        }
+    }
+    else if(count > 1) {
+        console.log(count)
+        console.log('more than one enemy is here')
+    }
     
+}
+
+function resetBoard(board){
+    board.forEach( e => {
+        e.removeEventListener('click', function(){})
+    })
 }

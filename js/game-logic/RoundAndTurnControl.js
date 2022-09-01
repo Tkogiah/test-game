@@ -2,7 +2,6 @@ import { addPlayerLocation, addTeammateLocation } from "./addRemoveDependentColo
 import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
-import { Orc } from "../classes/EnemyClasses.js"
 import { makeEnemiesVulnerable } from "./playerAttack.js"
 import { globalState } from "../main.js"
 
@@ -10,7 +9,7 @@ export function startRound(player) {
     let playerImage = document.getElementById('player-image')
     let enemyImage = document.getElementById('enemy-image')
     let endTurnButton = document.getElementById('end')
-    addTeammateLocation(globalState.active.globalOrder)
+    addTeammateLocation(globalState.globalOrder)
     if(player.type === 'player') {
         endTurnButton.classList.remove('hidden')
         enemyImage.classList.add('hidden')
@@ -33,66 +32,35 @@ export function changeGlobalOrder(array) {
         return array[0]
 }
 
-
-//*******************FIGURE OUT HOW TO REFACTOR THESE LATER ********
-export function enemyInitiator(globalState) {
-    let array = globalState.active.globalOrder
-    let e = globalState.enemies
-    array.push(e.enemyOne)
-    array.push(e.enemyTwo)
-    array.push(e.enemyThree)
-    array.push(e.enemyFour)
-    array.push(e.enemyFive)
-    array.push(e.enemySix)
-    array.push(e.enemySeven)
-    array.push(e.enemyEight)
-    array.push(e.enemyNine)
-    array.push(e.enemyTen)
-}
-export function enemyRoundChange(enemyClass) {
-    let newEnemy = new enemyClass
-
-    let enemyOne = newEnemy
-    let enemyTwo = newEnemy
-    let enemyThree = newEnemy
-    let enemyFour = newEnemy
-    let enemyFive = newEnemy
-    let enemySix = newEnemy
-    let enemySeven = newEnemy
-    let enemyEight = newEnemy
-    let enemyNine = newEnemy
-    let enemyTen = newEnemy
-}
-//****************************************** */
-
-
-
-export function playerTurn(player) {
-    player.discardHand()
-    player.draw()
-    player.resetStats()
-    removeDependentColorsFromBoard()
-    showPlayerMovementRange(player)
-    showPlayerAttackRange(player)
-    makeEnemiesVulnerable(player)
-    addTeammateLocation(globalState.active.globalOrder)
-    startRound(player)
-}
-export function enemyTurn(player) {
-        player.advanceForward()
-        startRound(player)
-}
-export function automateEnemyTurn(globalState) {
-    let currentPlayer = changeGlobalOrder(globalState.active.globalOrder)
-    
+export function nextTurn(globalState) {
+    let player = globalState.globalOrder[0]
+    if(player.type ==='player') {
+        player.discardHand()
+        player.draw()
+        player.resetStats()
+    }
+    let currentPlayer = changeGlobalOrder(globalState.globalOrder)
     if(currentPlayer.type === 'player') {
+        currentPlayer.advanceRound(globalState.globalOrder)
         playerTurn(currentPlayer)
     }
     else if(currentPlayer.type === 'enemy') {
         enemyTurn(currentPlayer)
-        setTimeout(function() {
-              
-            automateEnemyTurn(globalState)
+        setTimeout(function() {  
+            nextTurn(globalState)
         }, 250)       
     } 
+}
+
+function playerTurn(player) {
+    removeDependentColorsFromBoard()
+    showPlayerMovementRange(player)
+    showPlayerAttackRange(player)
+    addTeammateLocation(globalState.globalOrder)
+    startRound(player)
+}
+function enemyTurn(player) {
+    removeDependentColorsFromBoard()
+    player.advanceForward()
+    startRound(player)
 }

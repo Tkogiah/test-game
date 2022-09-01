@@ -1,4 +1,7 @@
+import { globalState } from '../main.js'
 import { Action } from './Cards.js'
+import {enemyInitiator} from '../game-logic/enemyInitiator.js'
+import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 
 class Player {
     constructor(playerName) {
@@ -60,6 +63,19 @@ class Player {
         this.movement = 0
         this.money = 0
         this.modifier = 1
+    }
+    advanceRound(globalOrder) {
+        let count = 0
+        globalOrder.forEach(element => {
+            if(element.type === 'enemy') {
+                count += 1
+            }
+        })
+        if(count === 0) {
+            globalState.round += 1
+            enemyInitiator(globalState)
+            nextTurn(globalState)
+        }
     }  
 }
 
@@ -67,9 +83,9 @@ export class Archer extends Player {
     constructor(name) {
         super(name)
         this.playerClass = Archer
-        this.speed = 2
-        this.range = 5
-        this.damage = 3
+        this.speed = 4
+        this.range = 4
+        this.damage = 2
         this.pictures = {
             idle: 'assets/archer-idle.gif',
             move: 'assets/archer-run.gif',
@@ -84,8 +100,8 @@ export class Fighter extends Player {
         super(name)
         this.playerClass = Fighter
         this.speed = 3
-        this.range = 2
-        this.damage = 5
+        this.range = 1
+        this.damage = 10
         this.pictures = {
             idle: 'assets/warrior-idle.gif',
             move: 'assets/warrior-run.gif',
@@ -100,8 +116,8 @@ export class Rogue extends Player {
         super(name)
         this.playerClass = Rogue
         this.speed = 5
-        this.range = 3
-        this.damage = 2
+        this.range = 2
+        this.damage = 4
         this.pictures = {
             idle: 'assets/rogue-idle.gif',
             move: 'assets/rogue-run.gif',

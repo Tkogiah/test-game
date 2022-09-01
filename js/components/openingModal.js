@@ -1,7 +1,9 @@
 import { $ } from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
-import { startRound, enemyInitiator } from '../game-logic/RoundAndTurnControl.js'
+import { startRound } from '../game-logic/RoundAndTurnControl.js'
+import { enemyInitiator } from '../game-logic/enemyInitiator.js'
 import { boardAudio, characterSelect } from './music.js'
+import { makeEnemiesVulnerable } from '../game-logic/playerAttack.js'
 
 export function selectPlayer() {
     characterSelect.play()
@@ -15,21 +17,22 @@ export function selectPlayer() {
     const rogue = $('rogue')
     const start = $('start')
     fighter.addEventListener('click', function() {
-        globalState.active.globalOrder.push(globalState.players.player0)
+        globalState.globalOrder.push(globalState.players.player0)
         $('start-modal').removeChild($('fighter'))
     })
     archer.addEventListener('click', function() {
-        globalState.active.globalOrder.push(globalState.players.player1)
+        globalState.globalOrder.push(globalState.players.player1)
         $('start-modal').removeChild($('archer'))
     })
     rogue.addEventListener('click', function() {
-        globalState.active.globalOrder.push(globalState.players.player2)
+        globalState.globalOrder.push(globalState.players.player2)
         $('start-modal').removeChild($('rogue'))
     })
     start.addEventListener('click', function() {
         enemyInitiator(globalState)
-        startRound(globalState.active.globalOrder[0])
+        startRound(globalState.globalOrder[0])
         board.removeChild(gameStart)
+        makeEnemiesVulnerable()
         characterSelect.pause()
         boardAudio.play()
     })

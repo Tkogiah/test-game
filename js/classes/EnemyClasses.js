@@ -10,6 +10,7 @@ export class Enemy {
         this.removeLocation()
         let movement = Math.floor(Math.random() * 10) + 1
         this.location -= movement
+        this.checkIfEnemyWins()
         this.showLocation()
     }
     showLocation() {
@@ -21,7 +22,7 @@ export class Enemy {
         enemyLocation.classList.remove('red')
     }
     takeDamage(i, damage) {
-        let globalOrder = globalState.active.globalOrder
+        let globalOrder = globalState.globalOrder
         this.health -= damage
         if(this.health <= 0) {
             this.removeLocation()
@@ -31,6 +32,12 @@ export class Enemy {
     removeFromGlobalOrder(i, globalOrder) {
         globalOrder.splice(i, 1)
         
+    }
+    checkIfEnemyWins() {
+        if(this.location <= 0) {
+            this.location = 0
+            alert('you lose')
+        }
     }
        
 }
