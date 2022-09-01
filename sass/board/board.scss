@@ -106,7 +106,7 @@
   background-color: #006e18;
 }
 
-.image-container-main {
+.image-container-player {
   height: 150px;
   width: 150px;
   //add background URL inline
@@ -117,6 +117,20 @@
   border-radius: 15px;
   top: 74px;
   right: 15px;  
+}
+.image-container-enemy {
+  height: 150px;
+  width: 150px;
+  background-position: 50% 35%;
+  background-size: 250px;
+  position: absolute;
+  border: 3px solid gold;
+  border-radius: 15px;
+  top: 74px;
+  left: 15px;
+}
+.hidden {
+  display: none;
 }
 .enemies-button {
   top: 14px;

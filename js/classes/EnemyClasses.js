@@ -29,6 +29,7 @@ export class Goblin extends Enemy {
         this.name = 'Goblin'
         this.health = 10
         this.round = 0
+        this.picture = 'assets/goblin.gif'
     }  
 }
 export class Orc extends Enemy {

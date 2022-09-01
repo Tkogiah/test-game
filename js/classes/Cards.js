@@ -103,3 +103,14 @@ export class TestCard extends Card {
 
     }   
 }
+
+export class Money extends Card {
+    constructor(worth) {
+        super(player)
+        this.title = `${worth} + 'Gold'`
+        this.value = worth
+        //function to...
+            //add money when player is at location 0
+            //discard card when player is ! at location 0
+    }
+}

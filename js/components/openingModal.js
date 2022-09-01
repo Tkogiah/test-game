@@ -8,7 +8,7 @@ export function selectPlayer() {
     const board = $('hexboard')
     const gameStart = document.createElement('div')
     gameStart.innerHTML = openingModal()
-    console.log(gameStart)
+    
     board.appendChild(gameStart)
     const fighter = $('fighter')
     const archer = $('archer')
@@ -28,7 +28,6 @@ export function selectPlayer() {
     })
     start.addEventListener('click', function() {
         enemyInitiator(globalState)
-        globalState.active.globalOrder.push(globalState.enemies)
         startRound(globalState.active.globalOrder[0])
         board.removeChild(gameStart)
         characterSelect.pause()

@@ -7,7 +7,7 @@ import { boardAudio } from '../components/music.js'
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
 import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
-import { changeGlobalOrder, startRound, playerTurn, enemyTurn } from '../game-logic/RoundAndTurnControl.js'
+import { changeGlobalOrder, automateEnemyTurn } from '../game-logic/RoundAndTurnControl.js'
 
 const playerButton = $("player-button")
 const enemiesButton = $("enemies-button")
@@ -30,14 +30,7 @@ townButton.addEventListener('click', function() {
 
 endTurnButton.addEventListener('click', function() {
 
-    let currentPlayer = changeGlobalOrder(globalState.active.globalOrder)
-    if(currentPlayer.type === 'player') {
-        playerTurn(currentPlayer)
-    }
-    else if(currentPlayer.type === 'enemy') {
-        // enemyTurn(globalState.active.globalOrder)
-        currentPlayer.advanceForward()
-        
-    } 
-    console.log(globalState.active.globalOrder)
+    //let currentPlayer = changeGlobalOrder(globalState.active.globalOrder)
+    automateEnemyTurn(globalState)
 })
+
