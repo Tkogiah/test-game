@@ -53,9 +53,6 @@
 #hexboard .hex:hover::before, #hexboard .hex:hover::after {
   background-color: gold;
 }
-#hexboard .red {
-  background-color: red;
-}
 #hexboard .yellow {
   background-color: rgb(213, 213, 0);
 }
@@ -67,6 +64,9 @@
 }
 #hexboard .purple {
   background-color: purple;
+}
+#hexboard .red {
+  background-color: red;
 }
 
 .main-button {
