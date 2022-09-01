@@ -1,3 +1,5 @@
+import { globalState } from "../main.js"
+
 export class Enemy {
     constructor() {
         this.type = 'enemy',
@@ -18,8 +20,17 @@ export class Enemy {
         let enemyLocation = document.getElementById(`${this.location}`)
         enemyLocation.classList.remove('red')
     }
-    takeDamage(damage) {
+    takeDamage(i, damage) {
+        let globalOrder = globalState.active.globalOrder
         this.health -= damage
+        if(this.health <= 0) {
+            this.removeLocation()
+            this.removeFromGlobalOrder(i, globalOrder)
+        }
+    }
+    removeFromGlobalOrder(i, globalOrder) {
+        globalOrder.splice(i, 1)
+        
     }
        
 }

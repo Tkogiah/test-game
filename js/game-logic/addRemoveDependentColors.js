@@ -5,10 +5,7 @@ export function addDependentColorToBoard(array, colorString) {
     array.forEach((e) => {
         if(e <=90 ){
             let hexColor = document.getElementById(e)
-            hexColor.classList.add(colorString)
-            if(hexColor.classList.contains('green') && hexColor.classList.contains('yellow')) {
-                hexColor.classList.add('blue')
-            }  
+            hexColor.classList.add(colorString) 
         }
     })
 }
@@ -19,7 +16,7 @@ export function removeDependentColorsFromBoard() {
     hexes.forEach(e => {
         e.classList.remove('green')
         e.classList.remove('yellow')
-        e.classList.remove('blue')
+        
         e.classList.remove('purple')
     })
 }
@@ -39,5 +36,13 @@ export function removeEnemy(player) {
 export function addPlayerLocation(player) {
     let location = document.getElementById(player.location)
     location.classList.add('purple')
-
+}
+export function addTeammateLocation(globalOrder) {
+    let location
+    globalOrder.forEach(element => {
+        if(element.type === 'player') {
+            location = document.getElementById(element.location)
+            location.classList.add('blue')
+        }
+    });
 }

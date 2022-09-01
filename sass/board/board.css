@@ -53,11 +53,11 @@
 #hexboard .hex:hover::before, #hexboard .hex:hover::after {
   background-color: gold;
 }
-#hexboard .yellow {
-  background-color: rgb(213, 213, 0);
-}
 #hexboard .green {
   background-color: green;
+}
+#hexboard .yellow {
+  background-color: rgb(213, 213, 0);
 }
 #hexboard .blue {
   background-color: blue;
@@ -135,6 +135,10 @@
   bottom: 0px;
   left: 15px;
   background-color: #e200b9;
+}
+
+.end-button:hover {
+  background-color: #b00090;
 }
 
 .town-button {

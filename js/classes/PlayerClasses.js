@@ -14,6 +14,9 @@ class Player {
             hand:[],
             discard: []
         }
+        this.speedModifier = 1
+        this.damageModifier = 1
+        this.rangeModifier = 1
     }
     draw() {
         while(this.decks.hand.length < 5) {
@@ -56,21 +59,22 @@ class Player {
         this.attacks = 0
         this.movement = 0
         this.money = 0
+        this.modifier = 1
     }  
 }
 
 export class Archer extends Player {
     constructor(name) {
         super(name)
-        this.playerClass = Archer;
-        this.speed = 2,
-        this.range = 5,
+        this.playerClass = Archer
+        this.speed = 2
+        this.range = 5
+        this.damage = 3
         this.pictures = {
             idle: 'assets/archer-idle.gif',
             move: 'assets/archer-run.gif',
             attack: 'assets/archer-attack.gif'
         } 
-        this.damage = 3
         this.music = new Audio('assets/archer-music.mp3')
         this.music.loop = true
     }
@@ -78,15 +82,15 @@ export class Archer extends Player {
 export class Fighter extends Player {
     constructor(name) {
         super(name)
-        this.playerClass = Fighter;
-        this.speed = 3,
-        this.range = 2,
+        this.playerClass = Fighter
+        this.speed = 3
+        this.range = 2
+        this.damage = 5
         this.pictures = {
             idle: 'assets/warrior-idle.gif',
             move: 'assets/warrior-run.gif',
             attack: 'assets/warrior-attack.gif'
         } 
-        this.damage = 5
         this.music = new Audio('assets/fighter-music.mp3')
         this.music.loop = true
     }  
@@ -94,15 +98,15 @@ export class Fighter extends Player {
 export class Rogue extends Player {
     constructor(name) {
         super(name)
-        this.playerClass = Rogue;
-        this.speed = 5,
-        this.range = 3,
+        this.playerClass = Rogue
+        this.speed = 5
+        this.range = 3
+        this.damage = 2
         this.pictures = {
             idle: 'assets/rogue-idle.gif',
             move: 'assets/rogue-run.gif',
             attack: 'assets/rogue-attack.gif'
-        } 
-        this.damage = 2
+        }
         this.music = new Audio('assets/rogue-music.mp3')
         this.music.loop = true
     }  

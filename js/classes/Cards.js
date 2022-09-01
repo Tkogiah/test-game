@@ -20,7 +20,7 @@ class Deck {
     }
 }
 class Card {
-    constructor(player){}
+    constructor(){}
     displayCardFunction(i, player) {
         const cardDetails = $('card-details')
         const title = $('title')
@@ -105,10 +105,11 @@ export class TestCard extends Card {
 }
 
 export class Money extends Card {
-    constructor(worth) {
-        super(player)
-        this.title = `${worth} + 'Gold'`
-        this.value = worth
+    constructor(value) {
+        super()
+        this.title = `${value} Gold`
+        this.description = 'Use this card at the merchat to purchase new cards'
+        this.value = value
         //function to...
             //add money when player is at location 0
             //discard card when player is ! at location 0

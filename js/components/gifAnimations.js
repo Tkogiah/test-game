@@ -3,6 +3,7 @@ const imageModal = document.getElementById('player-image-modal')
 
 export function animateIdle(player) {
     setTimeout(function() {
+        document.getElementById('end').classList.remove('hidden')
         if(imageModal){
             imageModal.style.backgroundImage = `url(${player.pictures.idle})`
         }
@@ -12,6 +13,7 @@ export function animateIdle(player) {
     }, 2000)
 }
 export function animateRun(player){
+    document.getElementById('end').classList.add('hidden')
     if(imageModal === true){
         imageModal.style.backgroundImage = `url(${player.pictures.move})`
     }
@@ -21,6 +23,7 @@ export function animateRun(player){
     animateIdle(player)
 }
 export function animateAttack(player) {
+    document.getElementById('end').classList.add('hidden')
     if(imageModal){
         imageModal.style.backgroundImage = `url(${player.pictures.attack})`
     }

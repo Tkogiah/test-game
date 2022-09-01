@@ -1,14 +1,16 @@
-import { addPlayerLocation } from "./addRemoveDependentColors.js"
+import { addPlayerLocation, addTeammateLocation } from "./addRemoveDependentColors.js"
 import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
 import { Orc } from "../classes/EnemyClasses.js"
 import { makeEnemiesVulnerable } from "./playerAttack.js"
+import { globalState } from "../main.js"
 
 export function startRound(player) {
     let playerImage = document.getElementById('player-image')
     let enemyImage = document.getElementById('enemy-image')
     let endTurnButton = document.getElementById('end')
+    addTeammateLocation(globalState.active.globalOrder)
     if(player.type === 'player') {
         endTurnButton.classList.remove('hidden')
         enemyImage.classList.add('hidden')
@@ -73,6 +75,7 @@ export function playerTurn(player) {
     showPlayerMovementRange(player)
     showPlayerAttackRange(player)
     makeEnemiesVulnerable(player)
+    addTeammateLocation(globalState.active.globalOrder)
     startRound(player)
 }
 export function enemyTurn(player) {
@@ -87,7 +90,6 @@ export function automateEnemyTurn(globalState) {
     }
     else if(currentPlayer.type === 'enemy') {
         enemyTurn(currentPlayer)
-        console.log(globalState.active.globalOrder[0], currentPlayer.location)
         setTimeout(function() {
               
             automateEnemyTurn(globalState)
