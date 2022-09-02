@@ -4,21 +4,24 @@ import {addMovement} from '../game-logic/playerMovement.js'
 import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/cardDetailsHtml.js'
-
+import { PlayerModalStatsHtml } from '../components/PlayerModalStatsHtml.js'
 
 class Merchant {
     constructor(deck) {
         this.name = 'Merchant'
+        this.deck = []
+    }
+    getRandomizer() {
+        //get an array 
     }
 }
-
-
 
 class Deck {
     constructor(cards) {
         this.cards = cards
     }
 }
+
 class Card {
     constructor(){}
     displayCardFunction(i, player) {
@@ -100,18 +103,41 @@ export class TestCard extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
-
     }   
 }
 
-export class Money extends Card {
+export class Crystal extends Card {
     constructor(value) {
         super()
-        this.title = `${value} Gold`
-        this.description = 'Use this card at the merchat to purchase new cards'
+        this.title = "Crystal"
+        this.description = "Trade Crystals at the town for coins. The larger the crystal the higher the bounty. Don't wait too long or your pack will become encumbered."
         this.value = value
+        this.html = `
+            <div id="card-button"
+            class="card-details-action column center card-details-action">
+                <p>USE CRYSTAL</p>  
+            </div>`
         //function to...
             //add money when player is at location 0
             //discard card when player is ! at location 0
     }
+    addClickFunction(i, player) {
+        const cardButton = $('card-button')
+        const location = Number(player.location)
+        const value = Number(this.value)
+        cardButton.addEventListener('click', function(){
+            if(location != 0) {
+                player.discard(i, player)
+            }
+            else if(location === 0) {
+                player.coins += value
+                player.trash(i, player)
+                $('coin').innerText = `Coin: ${player.coins}`
+            }
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+    }   
 }

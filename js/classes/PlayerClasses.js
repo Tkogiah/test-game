@@ -6,12 +6,12 @@ import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 class Player {
     constructor(playerName) {
         this.name = playerName,
-        this.type = 'player',
-        this.level = 1,
-        this.money = 0,
-        this.location = 0,
-        this.attacks = 0,
-        this.movement = 0,
+        this.type = 'player'
+        this.level = 1
+        this.coins = 0
+        this.location = 0
+        this.attacks = 0
+        this.movement = 0
         this.decks = {
             draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
@@ -58,11 +58,15 @@ class Player {
             player.decks.discard.push(currentCard)
             player.decks.hand.splice(i, 1)
     }
+    trash(i, player){
+        player.decks.hand.splice(i, 1)
+    }
     resetStats() {
         this.attacks = 0
         this.movement = 0
-        this.money = 0
-        this.modifier = 1
+        this.speedModifier = 1
+        this.damageModifier = 1
+        this.rangeModifier = 1
     }
     advanceRound(globalOrder) {
         let count = 0
@@ -72,9 +76,11 @@ class Player {
             }
         })
         if(count === 0) {
+            console.log(globalOrder)
             globalState.round += 1
             enemyInitiator(globalState)
             nextTurn(globalState)
+            console.log(globalOrder)
         }
     }  
 }

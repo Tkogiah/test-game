@@ -149,4 +149,20 @@
 
 .town-button:hover {
   background-color: #000860;
+}
+
+.multiple-enemies-container {
+  position: absolute;
+  max-width: 200px;
+  height: auto;
+  background-color: none;
+  font-size: 16px;
+  top: 74px;
+  left: 15px;
+}
+
+.multiple-enemies {
+  position: static;
+  margin-top: 10px;
+  background-color: #b90000;
 }/*# sourceMappingURL=board.css.map */

@@ -4,12 +4,12 @@ export function PlayerModalStatsHtml(player) {
     <div id='player-image-modal' class="image-container container" style="background-image: url(${player.pictures.idle});"> 
     </div>              
     <div id='player-stats' class="container column player-stats">
-        <h4>Name: ${player.name}</h4>
-        <h5>Level: ${player.level}</h5>
-        <h5>Speed: ${player.speed}</h5>
-        <h5>Range: ${player.range}</h5>
-        <h5>Damage: ${player.damage}</h5>
-        <h5>Money: ${player.money}</h5>
+        <h4 id="name">Name: ${player.name}</h4>
+        <h5 id="level">Level: ${player.level}</h5>
+        <h5 id="speed">Speed: ${player.speed}</h5>
+        <h5 id="range">Range: ${player.range}</h5>
+        <h5 id="damage">Damage: ${player.damage}</h5>
+        <h5 id="coin">Coin: ${player.coins}</h5>
     </div>
     <div id="exit" class="exit">
         &times
