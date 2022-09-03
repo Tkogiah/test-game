@@ -9,6 +9,7 @@ export function selectPlayer() {
     characterSelect.play()
     const board = $('hexboard')
     const gameStart = document.createElement('div')
+    gameStart.id = 'gameStart'
     gameStart.innerHTML = openingModal()
     
     board.appendChild(gameStart)
@@ -19,22 +20,23 @@ export function selectPlayer() {
     fighter.addEventListener('click', function() {
         globalState.globalOrder.push(globalState.players.player0)
         $('start-modal').removeChild($('fighter'))
+        removeHidden()
     })
     archer.addEventListener('click', function() {
         globalState.globalOrder.push(globalState.players.player1)
         $('start-modal').removeChild($('archer'))
+        removeHidden()
     })
     rogue.addEventListener('click', function() {
         globalState.globalOrder.push(globalState.players.player2)
         $('start-modal').removeChild($('rogue'))
+        removeHidden()
     })
-    start.addEventListener('click', function() {
-        enemyInitiator(globalState)
-        startRound(globalState.globalOrder[0])
-        board.removeChild(gameStart)
-        makeEnemiesVulnerable()
-        characterSelect.pause()
-        boardAudio.play()
+    start.addEventListener('click', startGame)
+    document.addEventListener('keydown', e => {
+        if($('gameStart') && e.code == "Enter") {
+            startGame()
+        }
     })
 
 }
@@ -48,7 +50,19 @@ function openingModal() {
         <div id="fighter" class="container image-container-start fighter"><p>FIGHTER</p></div>
         <div id="archer" class="container image-container-start archer"><p>ARCHER</p></div>
         <div id="rogue" class="container image-container-start rogue"><p>ROGUE</p></div>
-        <div id="start" class="main-button" style="bottom: 15px; right: 15px; background-color: black;">START</div>
+        <div id="start" class="main-button hidden" style="bottom: 15px; right: 15px; background-color: black;">START</div>
     </div>
     `)
+}
+
+function removeHidden() {
+    $('start').classList.remove('hidden')
+}
+function startGame() {
+    enemyInitiator(globalState)
+    startRound(globalState.globalOrder[0])
+    $('hexboard').removeChild($('gameStart'))
+    makeEnemiesVulnerable()
+    characterSelect.pause()
+    boardAudio.play()
 }

@@ -4,23 +4,23 @@ import {addMovement} from '../game-logic/playerMovement.js'
 import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/cardDetailsHtml.js'
-import { PlayerModalStatsHtml } from '../components/PlayerModalStatsHtml.js'
 
-class Merchant {
-    constructor(deck) {
+
+export class Merchant {
+    constructor() {
         this.name = 'Merchant'
         this.deck = []
     }
     getRandomizer() {
-        //get an array 
+        //get an array of all cards and randomly pull 9
+    }
+    addActionCards() {
+        for(let i = 0; i < 10; i++) {
+            this.deck.push(new Action(none))
+        }
     }
 }
 
-class Deck {
-    constructor(cards) {
-        this.cards = cards
-    }
-}
 
 class Card {
     constructor(){}
@@ -39,17 +39,18 @@ class Card {
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
     }
-    // giveToPlayer(player) {
-    //     player.decks.discard.push(this)
-    // }
-    
+    addThisCard(player) {
+        player.decks.discard.push(new this(player))
+    }
 }
+
 
 export class Action extends Card {
     constructor(player) {
         super(player)
         this.title = "Action"
         this.description = 'Use this card to attack or Move'
+        this.cost = 10
         this.html = `
             <div id="card-attack"
             class="card-details-action column center card-details-action">
@@ -110,16 +111,13 @@ export class Crystal extends Card {
     constructor(value) {
         super()
         this.title = "Crystal"
-        this.description = "Trade Crystals at the town for coins. The larger the crystal the higher the bounty. Don't wait too long or your pack will become encumbered."
+        this.description = "Trade Crystals at the town for coins. The larger the crystal the higher the bounty. Don't wait too long or your pack will become encumbered and you will need to toss them."
         this.value = value
         this.html = `
             <div id="card-button"
             class="card-details-action column center card-details-action">
-                <p>USE CRYSTAL</p>  
+                <p>USE/TOSS</p>  
             </div>`
-        //function to...
-            //add money when player is at location 0
-            //discard card when player is ! at location 0
     }
     addClickFunction(i, player) {
         const cardButton = $('card-button')
@@ -127,7 +125,7 @@ export class Crystal extends Card {
         const value = Number(this.value)
         cardButton.addEventListener('click', function(){
             if(location != 0) {
-                player.discard(i, player)
+                player.trash(i, player)
             }
             else if(location === 0) {
                 player.coins += value

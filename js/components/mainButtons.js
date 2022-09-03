@@ -11,11 +11,15 @@ const enemiesButton = $("enemies-button")
 const townButton = $("town-button")
 const endTurnButton = $('end')
 
-playerButton.addEventListener('click', function() {
-    boardAudio.pause()
-    let currentPlayer = globalState.globalOrder[0]
-    displayPlayerModal(currentPlayer)
+
+playerButton.addEventListener('click', openPlayerModal)
+document.addEventListener('keydown', e => {
+    if( $('modal') && e.code === "KeyP") {
+        $('hexboard').removeChild($('modal'))
+    }
+    else if(e.code === "KeyP") {openPlayerModal()}
 })
+
 
 enemiesButton.addEventListener('click', function() {
     enemies.displayEnemiesModal() 
@@ -25,7 +29,20 @@ townButton.addEventListener('click', function() {
     town.displayTownModal() 
 })
 
-endTurnButton.addEventListener('click', function() {    
-    nextTurn(globalState)
+endTurnButton.addEventListener('click', endTurn)
+document.addEventListener("keydown", e => {
+    if(e.code === "Space" && !$('modal') && !$('gameStart')) {
+        endTurn()
+    }
 })
 
+
+function openPlayerModal() {
+    boardAudio.pause()
+    let currentPlayer = globalState.globalOrder[0]
+    displayPlayerModal(currentPlayer)
+}
+
+function endTurn() {
+    nextTurn(globalState)
+}
