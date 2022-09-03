@@ -85,7 +85,7 @@ function multipleEnemiesOnHex(id, player) {
             let enemy = document.createElement('div')
             enemy.classList.add('main-button')
             enemy.classList.add('multiple-enemies')
-            enemy.innerText = `${globalOrder[i].name} ${globalOrder[i].health}`
+            enemy.innerText = `${globalOrder[i].name}: hp ${globalOrder[i].health}`
             container.appendChild(enemy)
             enemy.addEventListener('click', function() {
                 animateAttack(player)
