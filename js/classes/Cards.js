@@ -23,7 +23,9 @@ export class Merchant {
 
 
 class Card {
-    constructor(){}
+    constructor(){
+        //TO DO: figure out how to add "once" in the event handler of the keydown hotkey
+    }
     displayCardFunction(i, player) {
         const cardDetails = $('card-details')
         const title = $('title')
@@ -35,7 +37,7 @@ class Card {
         action.classList.add('row')
         action.classList.add('center')
         action.innerHTML = ''
-        action.innerHTML = this.html
+        action.innerHTML = this.html()
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
     }
@@ -44,6 +46,126 @@ class Card {
     }
 }
 
+export class Attack extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Attack"
+        this.description = 'Use this card to gain an extra attack'
+        this.cost = 10
+    }
+    addClickFunction(i, player) {
+        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
+        const attack = $('card-attack')
+        attack.addEventListener('click', function(){
+            player.discard(i, player)
+            addAttack(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+        
+        document.addEventListener('keydown', e => {
+            if(e.code === "Space") {
+                player.discard(i, player)
+                addAttack(player)
+                $('hand-card-modal').remove()
+                handModal(player)
+                refreshDecks(player)
+                refreshCardDetails()
+            }
+        }, once)
+    }
+    html() {
+        return `
+        <div id="card-attack"
+        class="card-details-action column center card-details-action">
+            <p>USE</p>  
+        </div>`
+    }   
+}
+export class Movement extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Move"
+        this.description = 'Use this card to gain movement'
+        this.cost = 10
+    }
+    addClickFunction(i, player) {
+        const movement = $('card-movement')
+        movement.addEventListener('click', function(){
+            player.discard(i, player)
+            addMovement(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+        document.addEventListener('keydown', e => {
+            if($('modal') && e.code === "Space") {
+                player.discard(i, player)
+                addMovement(player)
+                $('hand-card-modal').remove()
+                handModal(player)
+                refreshDecks(player)
+                refreshCardDetails()
+            }
+        })
+    }
+    
+    html() {
+        return `
+        <div id="card-movement"
+        class="card-details-action column center card-details-action">
+            <p>USE</p>
+        </div>`
+    }
+}
+
+export class Crystal extends Card {
+    constructor(value) {
+        super()
+        this.title = "Crystal"
+        this.description = "Trade this Crystal at the town for coins. The rarer the crystal the higher the bounty. If your pack gets too encumbered you can toss this."
+        this.value = value
+        this.html = this.tradeOrToss
+    }
+    addClickFunction(i, player) {
+        const cardButton = $('card-button')
+        const location = Number(player.location)
+        const value = Number(this.value)
+        cardButton.addEventListener('click', function(){
+            if(location != 0) {
+                player.trash(i, player)
+            }
+            else if(location === 0) {
+                player.coins += value
+                player.trash(i, player)
+                $('coin').innerText = `Coin: ${player.coins}`
+            }
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+    }
+    tradeOrToss(player) {
+        if(player.location === 0) {
+            this.html = `
+            <div id="card-button"
+            class="card-details-action column center card-details-action">
+                <p>TRADE</p>  
+            </div>`
+        }
+        else if(player.location !=0) {
+            this.html = `
+            <div id="card-button"
+            class="card-details-action column center card-details-action">
+                <p>TOSS</p>  
+            </div>`
+        }
+    }   
+}
 
 export class Action extends Card {
     constructor(player) {
@@ -83,55 +205,6 @@ export class Action extends Card {
     }   
 }
 
-export class Attack extends Card {
-    constructor(player) {
-        super(player)
-        this.title = "Attack"
-        this.description = 'Use this card to attack'
-        this.cost = 10
-        this.html = `
-            <div id="card-attack"
-            class="card-details-action column center card-details-action">
-                <p>ADD ATTACK</p>  
-            </div>`
-    }
-    addClickFunction(i, player) {
-        const attack = $('card-attack')
-        attack.addEventListener('click', function(){
-            player.discard(i, player)
-            addAttack(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
-        })
-    }   
-}
-export class Movement extends Card {
-    constructor(player) {
-        super(player)
-        this.title = "Move"
-        this.description = 'Use this card to Move'
-        this.cost = 10
-        this.html = `
-            <div id="card-movement"
-            class="card-details-action column center card-details-action">
-                <p>ADD MOVEMENT</p>
-            </div>`
-    }
-    addClickFunction(i, player) {
-        const movement = $('card-movement')
-        movement.addEventListener('click', function(){
-            player.discard(i, player)
-            addMovement(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
-        })
-    }   
-}
-
 export class TestCard extends Card {
     constructor(player) {
         super(player)
@@ -155,35 +228,4 @@ export class TestCard extends Card {
     }   
 }
 
-export class Crystal extends Card {
-    constructor(value) {
-        super()
-        this.title = "Crystal"
-        this.description = "Trade Crystals at the town for coins. The rarer the crystal the higher the bounty. Don't wait too long or your pack will become encumbered and you will need to toss them."
-        this.value = value
-        this.html = `
-            <div id="card-button"
-            class="card-details-action column center card-details-action">
-                <p>USE/TOSS</p>  
-            </div>`
-    }
-    addClickFunction(i, player) {
-        const cardButton = $('card-button')
-        const location = Number(player.location)
-        const value = Number(this.value)
-        cardButton.addEventListener('click', function(){
-            if(location != 0) {
-                player.trash(i, player)
-            }
-            else if(location === 0) {
-                player.coins += value
-                player.trash(i, player)
-                $('coin').innerText = `Coin: ${player.coins}`
-            }
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
-        })
-    }   
-}
+

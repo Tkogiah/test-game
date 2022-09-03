@@ -1,5 +1,5 @@
-import {addAttack} from '../game-logic/playerAttack.js'
-import {addMovement} from '../game-logic/playerMovement.js'
+// import {addAttack} from '../game-logic/playerAttack.js'
+// import {addMovement} from '../game-logic/playerMovement.js'
 import { $ } from './quickFunctions.js'
 
 export function handModalActive(player) {
@@ -37,7 +37,7 @@ export function displayCards(player) {
     const handContainer = document.getElementById('hand-card-container')
     displayDeck.forEach((element, i) => {
         const card = document.createElement('div')
-        card.id = i
+        card.id = `card-${i}`
         card.classList.add('contaner')
         card.classList.add('center')
         card.classList.add('column')

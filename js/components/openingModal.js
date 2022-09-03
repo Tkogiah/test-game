@@ -34,7 +34,7 @@ export function selectPlayer() {
     })
     start.addEventListener('click', startGame)
     document.addEventListener('keydown', e => {
-        if($('gameStart') && e.code == "Enter") {
+        if($('gameStart') && e.code == "Enter" && globalState.globalOrder.length > 0) {
             startGame()
         }
     })
