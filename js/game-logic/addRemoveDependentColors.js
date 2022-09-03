@@ -36,6 +36,7 @@ export function removeEnemy(player) {
 export function addPlayerLocation(player) {
     let location = document.getElementById(player.location)
     location.classList.add('purple')
+    player.toggleTown()
 }
 export function addTeammateLocation(globalOrder) {
     let location

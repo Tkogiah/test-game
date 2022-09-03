@@ -17,6 +17,7 @@ export function startRound(player) {
         player.shuffle(player.decks.draw)
         player.draw()
         addPlayerLocation(player)
+        
         playerImage.style.backgroundImage = `url(${player.pictures.idle})`
     }
     else if(player.type === 'enemy') {

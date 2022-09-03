@@ -2,6 +2,7 @@ import { globalState } from '../main.js'
 import { Action } from './Cards.js'
 import {enemyInitiator} from '../game-logic/enemyInitiator.js'
 import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
+import { $ } from '../components/quickFunctions.js'
 
 class Player {
     constructor(playerName) {
@@ -20,6 +21,14 @@ class Player {
         this.speedModifier = 1
         this.damageModifier = 1
         this.rangeModifier = 1
+    }
+    toggleTown() {
+        if(this.location != 0){
+            $('town-button').classList.add('hidden')
+        }
+        else {
+            $('town-button').classList.remove('hidden')
+        }
     }
     draw() {
         while(this.decks.hand.length < 5) {
@@ -89,9 +98,9 @@ export class Archer extends Player {
     constructor(name) {
         super(name)
         this.playerClass = Archer
-        this.speed = 4
-        this.range = 4
-        this.damage = 2
+        this.speed = 10 // 4
+        this.range = 5 // 4
+        this.damage = 10 // 2
         this.pictures = {
             idle: 'assets/archer-idle.gif',
             move: 'assets/archer-run.gif',

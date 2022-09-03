@@ -37,7 +37,7 @@ export function makeEnemiesVulnerable() {
                 }
                 let id = Number(e.id)
                 enemyTakeDamage(id, player)
-                animateAttack(player)
+                
                 player.attacks -= 1
                 showPlayerAttackRange(player)
                 console.log(globalState.globalOrder)
@@ -59,16 +59,19 @@ function enemyTakeDamage(id, player){
     }
     if(count > 1) {
         multipleEnemiesOnHex(id, player)
+        
     }
     else if(count === 1) {
         for(let i = 0; i < globalOrder.length; i++) {
             if(globalOrder[i].location === id && globalOrder[i].type === 'enemy') {
+                animateAttack(player)
                 globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
             }
         }
     }
     
 }
+//FIX THE REMOVAL OF "RED" IN CSS WHEN ONE ENEMY DIES -----finished 9/2/22
 
 function multipleEnemiesOnHex(id, player) {
     let globalOrder = globalState.globalOrder
@@ -85,9 +88,19 @@ function multipleEnemiesOnHex(id, player) {
             enemy.innerText = `${globalOrder[i].name} ${globalOrder[i].health}`
             container.appendChild(enemy)
             enemy.addEventListener('click', function() {
+                animateAttack(player)
                 globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
+                showRemainingEnemies(id)
                 $('hexboard').removeChild(container)
             })
+        }
+    }
+}
+function showRemainingEnemies(id) {
+    let globalOrder = globalState.globalOrder
+    for(let order of globalOrder) {
+        if(order.location === id && order.type ==='enemy') {
+            order.showLocation()
         }
     }
 }
