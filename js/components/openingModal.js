@@ -5,6 +5,8 @@ import { enemyInitiator } from '../game-logic/enemyInitiator.js'
 import { boardAudio, characterSelect } from './music.js'
 import { makeEnemiesVulnerable } from '../game-logic/playerAttack.js'
 
+import { merchantInitiator } from '../game-logic/merchantInitiator.js'
+
 export function selectPlayer() {
     characterSelect.play()
     const board = $('hexboard')
@@ -36,6 +38,8 @@ export function selectPlayer() {
     document.addEventListener('keydown', e => {
         if($('gameStart') && e.code == "Enter" && globalState.globalOrder.length > 0) {
             startGame()
+            merchantInitiator()
+            console.log(globalState.merchant.deck)
         }
     })
 

@@ -4,6 +4,7 @@ import {addMovement} from '../game-logic/playerMovement.js'
 import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/cardDetailsHtml.js'
+import { globalState } from '../main.js'
 
 
 export class Merchant {
@@ -16,7 +17,7 @@ export class Merchant {
     }
     addActionCards() {
         for(let i = 0; i < 10; i++) {
-            this.deck.push(new Action(none))
+            this.deck.push(new Action())
         }
     }
 }
@@ -37,9 +38,12 @@ class Card {
         action.classList.add('row')
         action.classList.add('center')
         action.innerHTML = ''
-        action.innerHTML = this.html()
+        action.innerHTML = this.use()
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
+    }
+    displayCardPurchase(i, merchant) {
+
     }
     addThisCard(player) {
         player.decks.discard.push(new this(player))
@@ -54,7 +58,6 @@ export class Attack extends Card {
         this.cost = 10
     }
     addClickFunction(i, player) {
-        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
         const attack = $('card-attack')
         attack.addEventListener('click', function(){
             player.discard(i, player)
@@ -64,9 +67,9 @@ export class Attack extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
-        
+        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
         document.addEventListener('keydown', e => {
-            if(e.code === "Space") {
+            if($('modal') && e.code === "Space") {
                 player.discard(i, player)
                 addAttack(player)
                 $('hand-card-modal').remove()
@@ -76,7 +79,7 @@ export class Attack extends Card {
             }
         }, once)
     }
-    html() {
+    use() {
         return `
         <div id="card-attack"
         class="card-details-action column center card-details-action">
@@ -101,6 +104,7 @@ export class Movement extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
+        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
         document.addEventListener('keydown', e => {
             if($('modal') && e.code === "Space") {
                 player.discard(i, player)
@@ -109,11 +113,12 @@ export class Movement extends Card {
                 handModal(player)
                 refreshDecks(player)
                 refreshCardDetails()
+                console.log('hello')
             }
-        })
+        }, once)
     }
     
-    html() {
+    use() {
         return `
         <div id="card-movement"
         class="card-details-action column center card-details-action">
@@ -149,16 +154,16 @@ export class Crystal extends Card {
             refreshCardDetails()
         })
     }
-    tradeOrToss(player) {
-        if(player.location === 0) {
-            this.html = `
+    use() {
+        if(Number(globalState.globalOrder[0].location) === 0) {
+            return `
             <div id="card-button"
             class="card-details-action column center card-details-action">
                 <p>TRADE</p>  
             </div>`
         }
-        else if(player.location !=0) {
-            this.html = `
+        else if(globalState.globalOrder[0].location !=0) {
+            return `
             <div id="card-button"
             class="card-details-action column center card-details-action">
                 <p>TOSS</p>  
@@ -171,40 +176,38 @@ export class Action extends Card {
     constructor(player) {
         super(player)
         this.title = "Action"
-        this.description = 'Use this card to attack or Move'
-        this.cost = 10
-        this.html = `
-            <div id="card-attack"
-            class="card-details-action column center card-details-action">
-                <p>ADD ATTACK</p>  
-            </div>
-            <div id="card-movement"
-            class="card-details-action column center card-details-action">
-                <p>ADD MOVEMENT</p>
-            </div>`
+        this.description = 'Use this card to gain an attack and movement'
+        this.cost = 20
     }
     addClickFunction(i, player) {
-        const attack = $('card-attack')
-        const movement = $('card-movement')
-        attack.addEventListener('click', function(){
+        const action = $('card-action')
+        action.addEventListener('click', function(){
             player.discard(i, player)
             addAttack(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
-        })
-        movement.addEventListener('click', function(){
-            player.discard(i, player)
             addMovement(player)
             $('hand-card-modal').remove()
             handModal(player)
             refreshDecks(player)
             refreshCardDetails()
         })
+    }
+    use() {
+        return `
+        <div id="card-action"
+        class="card-details-action column center card-details-action">
+            <p>USE</p>  
+        </div>`
+    }
+    purchase() {
+        return `<p>PURCHASE</p>`
     }   
 }
-
+// title
+// description
+// cost
+// clickfunction
+// html
+// purchase
 export class TestCard extends Card {
     constructor(player) {
         super(player)

@@ -19,6 +19,13 @@ document.addEventListener('keydown', e => {
     }
     else if(e.code === "KeyP") {openPlayerModal()}
 })
+// onkeydown = (e) => { 
+//     if( $('modal') && e.code === "KeyP") {
+//         $('hexboard').removeChild($('modal'))
+//     }
+//     else if(e.code === "KeyP") {openPlayerModal()}
+    
+// }
 
 
 enemiesButton.addEventListener('click', function() {

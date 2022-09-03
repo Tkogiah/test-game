@@ -10,12 +10,20 @@ export function handModalActive(player) {
     hand.addEventListener('click', function() {
         handModal(player)
     })
+
+    document.addEventListener('keydown', e => {    //Breaks if "h" pressed outside modal
+    //breaks if card is clicked and then another card is clicked
+        if(e.code === "KeyH" && $('hand-deck')) {
+            handModal(player)
+        }
+
+    })
 }
 
 export function handModal(player) {
     if($('hand-card-modal') && $('hand-card-container')) {  
-        $('hand-card-modal').remove()
         $('hand-card-container').remove()
+        $('hand-card-modal').remove()
         return
     }
     const modal = document.createElement('div')
@@ -30,6 +38,7 @@ export function handModal(player) {
     handContainer.id = 'hand-card-container'
     modal.appendChild(handContainer)
     displayCards(player)
+    
 }
 
 export function displayCards(player) {
