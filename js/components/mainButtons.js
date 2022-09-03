@@ -1,4 +1,4 @@
-import * as player from './playerModal.js'
+import { displayPlayerModal } from './playerModal.js'
 import * as town from './townModal.js'
 import * as enemies from './enemiesModal.js'
 import {$} from '../components/quickFunctions.js'
@@ -14,7 +14,7 @@ const endTurnButton = $('end')
 playerButton.addEventListener('click', function() {
     boardAudio.pause()
     let currentPlayer = globalState.globalOrder[0]
-    player.displayPlayerModal(currentPlayer)
+    displayPlayerModal(currentPlayer)
 })
 
 enemiesButton.addEventListener('click', function() {
