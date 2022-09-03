@@ -71,7 +71,7 @@ function enemyTakeDamage(id, player){
     }
     
 }
-//FIX THE REMOVAL OF "RED" IN CSS WHEN ONE ENEMY DIES -----finished 9/2/22
+//FIX THE REMOVAL OF "RED" IN CSS WHEN ONE ENEMY DIES ----- finished 9/2/22
 
 function multipleEnemiesOnHex(id, player) {
     let globalOrder = globalState.globalOrder
