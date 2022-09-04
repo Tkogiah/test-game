@@ -5,7 +5,7 @@ import { enemyInitiator } from '../game-logic/enemyInitiator.js'
 import { boardAudio, characterSelect } from './music.js'
 import { makeEnemiesVulnerable } from '../game-logic/playerAttack.js'
 
-import { merchantInitiator } from '../game-logic/merchantInitiator.js'
+import { merchantInitiator } from '../game-logic/merchantFunctions.js'
 
 export function selectPlayer() {
     characterSelect.play()

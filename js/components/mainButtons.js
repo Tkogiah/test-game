@@ -1,5 +1,5 @@
 import { displayPlayerModal } from './playerModal.js'
-import * as town from './townModal.js'
+import { displayTownModal } from './townModal.js'
 import * as enemies from './enemiesModal.js'
 import {$} from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
@@ -19,22 +19,20 @@ document.addEventListener('keydown', e => {
     }
     else if(e.code === "KeyP") {openPlayerModal()}
 })
-// onkeydown = (e) => { 
-//     if( $('modal') && e.code === "KeyP") {
-//         $('hexboard').removeChild($('modal'))
-//     }
-//     else if(e.code === "KeyP") {openPlayerModal()}
-    
-// }
-
 
 enemiesButton.addEventListener('click', function() {
     enemies.displayEnemiesModal() 
 })
 
-townButton.addEventListener('click', function() {
-    town.displayTownModal() 
+townButton.addEventListener('click', openTownModal)
+document.addEventListener('keydown', e => {
+    if( $('modal') && e.code === "KeyM") {
+        $('hexboard').removeChild($('modal'))
+    }
+    else if(e.code === "KeyM" && 
+            globalState.globalOrder[0].type === 'player') {openTownModal()}
 })
+
 
 endTurnButton.addEventListener('click', endTurn)
 document.addEventListener("keydown", e => {
@@ -48,6 +46,12 @@ function openPlayerModal() {
     boardAudio.pause()
     let currentPlayer = globalState.globalOrder[0]
     displayPlayerModal(currentPlayer)
+}
+
+function openTownModal() {
+    boardAudio.pause()
+    let merchant = globalState.merchant
+    displayTownModal(merchant) 
 }
 
 function endTurn() {

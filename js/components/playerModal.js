@@ -1,8 +1,7 @@
 import {$} from './quickFunctions.js'
 import { playerModalHtml } from './playerModalHtml.js'
-import { boardAudio, playerAudio } from '../components/music.js'
+import { boardAudio} from '../components/music.js'
 import { modalDisplay } from './modalDisplay.js'
-import { globalState } from '../main.js'
 import { handModalActive } from './playerHandModal.js'
 
 

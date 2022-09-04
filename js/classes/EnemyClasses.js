@@ -1,3 +1,4 @@
+import { $ } from "../components/quickFunctions.js"
 import { globalState } from "../main.js"
 
 export class Enemy {
@@ -37,6 +38,7 @@ export class Enemy {
         if(this.location <= 0) {
             this.location = 0
             alert('you lose')
+            $('player-button').classList.add('hidden')
         }
     }
        
