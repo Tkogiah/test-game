@@ -128,7 +128,7 @@
 
 
 
-// **** PLAYER MODAL CSS ***** //
+// **************** PLAYER MODAL CSS **************** //
 .player-main {
     background-color: green;
 }
@@ -136,8 +136,7 @@
     background-color: rgb(1, 17, 253);
     bottom: 5px;
     left: 5px;
-    color: white;
-    
+    color: white;    
 }
 .discard-pile {
     background-color: rgb(255, 0, 0);
@@ -199,9 +198,18 @@
 .town-main {
     background-color: #0012d7;
 }
+.merchant-deck {
+    background-color: rgb(160, 80, 14);
+    color: white;
+}
+.merchant-deck-one {
+    top: 15px;
+    left: 15px;
+}
 
 
 // **** ENEMIES MODAL CSS ***** //
 .enemies-main {
     background-color: #b90000;
+    
 }

@@ -39,7 +39,7 @@ export function selectPlayer() {
         if($('gameStart') && e.code == "Enter" && globalState.globalOrder.length > 0) {
             startGame()
             merchantInitiator()
-            console.log(globalState.merchant.deck)
+            console.log(globalState.merchant.decks[0][0].title)
         }
     })
 

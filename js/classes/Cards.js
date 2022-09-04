@@ -10,14 +10,16 @@ import { globalState } from '../main.js'
 export class Merchant {
     constructor() {
         this.name = 'Merchant'
-        this.deck = []
+        this.decks = [
+            [],[],[],[],[],[],[],[],[],[]
+        ]
     }
     getRandomizer() {
         //get an array of all cards and randomly pull 9
     }
     addActionCards() {
         for(let i = 0; i < 10; i++) {
-            this.deck.push(new Action())
+            this.decks[0].push(new Action())
         }
     }
 }
@@ -48,6 +50,7 @@ class Card {
     addThisCard(player) {
         player.decks.discard.push(new this(player))
     }
+    
 }
 
 export class Attack extends Card {

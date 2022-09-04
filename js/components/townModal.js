@@ -5,7 +5,7 @@ import { modalDisplay } from './modalDisplay.js'
 export function displayTownModal(player) {
     
     //globalobject.town music .play()
-    //const townHtml = townModalHtml(player)
+    const townHtml = townModalHtml(player)
 
     //modalDisplay(townHtml)
     // const modal = $('modal')

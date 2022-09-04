@@ -7,7 +7,7 @@ export function playerDecks(decks) {
             </div>
             <h3 id="draw">${decks.draw.length}</h3>
         </div>
-
+    
         <div id='discard-deck' class="card discard-pile column">
             <div>
                 <h3>DISCARD</h3>

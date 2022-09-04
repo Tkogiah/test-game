@@ -12,7 +12,7 @@ export function handModalActive(player) {
     })
 
     document.addEventListener('keydown', e => {    //Breaks if "h" pressed outside modal
-    //breaks if card is clicked and then another card is clicked
+    //breaks if card is clicked and then another card is clicked (double placed/executed)
         if(e.code === "KeyH" && $('hand-deck')) {
             handModal(player)
         }
