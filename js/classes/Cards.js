@@ -3,7 +3,7 @@ import {addAttack} from '../game-logic/playerAttack.js'
 import {addMovement} from '../game-logic/playerMovement.js'
 import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
-import {refreshCardDetails} from '../components/cardDetailsHtml.js'
+import {refreshCardDetails} from '../components/playerCardDetailsHtml.js'
 import { globalState } from '../main.js'
 
 
@@ -19,7 +19,11 @@ export class Merchant {
     }
     addActionCards() {
         for(let i = 0; i < 10; i++) {
-            this.decks[0].push(new Action())
+            for(let j=0;j<10;j++) {
+                this.decks[i].push(new Action())
+                //maybe this.decks[i].push(new randomizerArray[j])
+            }
+            
         }
     }
 }

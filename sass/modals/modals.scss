@@ -202,10 +202,59 @@
     background-color: rgb(160, 80, 14);
     color: white;
 }
-.merchant-deck-one {
-    top: 15px;
-    left: 15px;
+// card width === 140px 
+//card height === 210px
+//total width === 1294px
+// cards width + margins (not include beg & end) === 1150
+.merchant-deck-1 {
+    top: 100px;
+    left: 72px;
 }
+.merchant-deck-2 {
+    top: 100px;
+    left: 217px;
+}
+.merchant-deck-3 {
+    top: 100px;
+    left: 362px;
+}
+.merchant-deck-4 {
+    top: 100px;
+    left: 505px;
+}
+.merchant-deck-5 {
+    top: 100px;
+    right: 505px;
+}
+.merchant-deck-6 {
+    top: 100px;
+    right: 362px;
+}
+.merchant-deck-7 {
+    top: 100px;
+    right: 217px;
+}
+.merchant-deck-8 {
+    top: 100px;
+    right: 72px;
+}
+.card-details-town {
+    height: 210px;
+    width: 1283px;
+    border: 3px solid black;
+    border-radius: 16px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background-color: white;
+    padding: 15px;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+}
+
 
 
 // **** ENEMIES MODAL CSS ***** //

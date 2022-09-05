@@ -1,4 +1,4 @@
-import { cardDetails } from "./cardDetailsHtml.js"
+import { cardDetails } from "./playerCardDetailsHtml.js"
 import { playerDecks } from "./playerModalDecksHtml.js"
 import { PlayerModalStatsHtml } from "./PlayerModalStatsHtml.js"
 
