@@ -299,6 +299,30 @@
           animation-duration: 0.5s;
 }
 
+@-webkit-keyframes decline {
+  from {
+    color: red;
+  }
+  to {
+    color: black;
+  }
+}
+
+@keyframes decline {
+  from {
+    color: red;
+  }
+  to {
+    color: black;
+  }
+}
+.declined {
+  -webkit-animation-name: decline;
+          animation-name: decline;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+
 .enemies-main {
   background-color: #b90000;
 }/*# sourceMappingURL=modals.css.map */

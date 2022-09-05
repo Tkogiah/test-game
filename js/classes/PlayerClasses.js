@@ -98,9 +98,9 @@ export class Archer extends Player {
     constructor(name) {
         super(name)
         this.playerClass = Archer
-        this.speed = 10 // 4
-        this.range = 5 // 4
-        this.damage = 10 // 2
+        this.speed = 4 // 4
+        this.range = 4 // 4
+        this.damage = 2 // 2
         this.pictures = {
             idle: 'assets/archer-idle.gif',
             move: 'assets/archer-run.gif',

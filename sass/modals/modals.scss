@@ -273,6 +273,14 @@
     animation-name: purchase;
     animation-duration: .5s;
 }
+@keyframes decline {
+    from {color: red;}
+    to {color: black;}
+}
+.declined {
+    animation-name: decline;
+    animation-duration: 1s;
+}
 
 
 // **** ENEMIES MODAL CSS ***** //

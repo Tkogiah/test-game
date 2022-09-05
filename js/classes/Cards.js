@@ -6,7 +6,7 @@ import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/playerCardDetailsHtml.js'
 import { globalState } from '../main.js'
 import { refreshMerchantDecks } from '../components/townModalDecksHtml.js'
-import { animatePurchase } from '../game-logic/merchantFunctions.js'
+import { animatePurchase, animatePurchaseDecline } from '../game-logic/merchantFunctions.js'
 import { displayTownModal } from '../components/townModal.js'
 
 
@@ -220,29 +220,29 @@ export class Action extends Card {
         })
     }
     addPurchaseFunction(i) {
-        let merchant = globalState.merchant
+        let affordable = false
         let player = globalState.globalOrder[0]
+        if(player.coins >= this.cost) {
+            affordable = true
+        }
+        
+        let merchant = globalState.merchant
         let playerDiscard = globalState.globalOrder[0].decks.discard
         const action = $('card-action')
         const decks = globalState.merchant.decks
         action.addEventListener('click', function(){
-            if(player.coins < this.cost) {
-                console.log('not enough money')
-            }
-            else {
-                console.log(player.coins)
-                console.log(this.cost)
-                player.coins -= this.cost
-                decks[i].pop()
+            if(affordable === true){
                 playerDiscard.push(decks[i][0])
-                if(decks[i].length <= 0) {
-                    decks.splice(i, 1)
-                    $('hexboard').removeChild($('modal'))
-                    displayTownModal(merchant)
-                }
+                decks[i].pop()
                 animatePurchase()
                 refreshMerchantDecks(Number(i), merchant)
+            }    
+            if(decks[i].length <= 0) {
+                decks.splice(i, 1)
+                $('hexboard').removeChild($('modal'))
+                displayTownModal(merchant)
             }
+            animatePurchaseDecline()
         })
     }
     use() {

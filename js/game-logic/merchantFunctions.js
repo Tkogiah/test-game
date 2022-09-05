@@ -24,5 +24,11 @@ export function animatePurchase() {
         $('card-details').classList.remove('purchased')
     }, 500);
 }
+export function animatePurchaseDecline() {
+    $('card-details').classList.add('declined')
+    setTimeout(() => {
+        $('card-details').classList.remove('declined')
+    }, 1000);
+}
 
 
