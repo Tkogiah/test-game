@@ -42,6 +42,7 @@ export function handModal(player) {
 }
 
 export function displayCards(player) {
+    console.log(player.decks)
     const displayDeck = player.decks.hand
     const handContainer = document.getElementById('hand-card-container')
     displayDeck.forEach((element, i) => {

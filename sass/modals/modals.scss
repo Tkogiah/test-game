@@ -255,6 +255,24 @@
     text-align: left;
 }
 
+.card-details-purchase {
+    width: 200px;
+    height: 50px;
+    border: 3px solid gold;
+    margin: 25px;
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+
+}
+@keyframes purchase {
+    from {color: white;}
+    to {color: black;}
+}
+.purchased {
+    animation-name: purchase;
+    animation-duration: .5s;
+}
 
 
 // **** ENEMIES MODAL CSS ***** //

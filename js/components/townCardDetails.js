@@ -7,7 +7,7 @@ export function merchantCardDetails() {
             <h4>
             <p id='description' style='font-size: 20px'>
             </p>
-            <div id='action' class="row center container">
+            <div id='action' class="row center container purchase">
             </div>
         </div>
     `);

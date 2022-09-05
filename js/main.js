@@ -20,7 +20,14 @@ export const globalState = {
     cards: [
         new Action(),
         new Attack(),
-        new Movement()
+        new Movement(),
+        new Action(),
+        new Attack(),
+        new Movement(),
+        new Action(),
+        new Attack(),
+        new Movement(),
+        new Action()
     ]
 }
 

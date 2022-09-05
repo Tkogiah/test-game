@@ -5,13 +5,16 @@ import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/playerCardDetailsHtml.js'
 import { globalState } from '../main.js'
+import { refreshMerchantDecks } from '../components/townModalDecksHtml.js'
+import { animatePurchase } from '../game-logic/merchantFunctions.js'
+import { displayTownModal } from '../components/townModal.js'
 
 
 export class Merchant {
     constructor() {
         this.name = 'Merchant'
         this.decks = [
-            [],[],[],[],[],[],[],[],[],[]
+            [],[],[],[],[],[],[],[]
         ]
     }
     getRandomizer() {
@@ -23,9 +26,9 @@ export class Merchant {
     }
     addActionCards() {
         let deck = this.getRandomizer
-        for(let i = 0; i < 10; i++) {
-            for(let j=0;j<10;j++) {
-                this.decks[i].push(globalState.cards[j])
+        for(let i = 0; i < this.decks.length; i++) {
+            for(let j = 0; j < 10; j++) {
+                this.decks[i].push(globalState.cards[i])
                 //maybe this.decks[i].push(new randomizerArray[j])
             }
             
@@ -51,27 +54,22 @@ class Card {
         action.innerHTML = ''
         action.innerHTML = this.use()
         cardDetails.appendChild(action)
-        this.addClickFunction(i, player)
+        this.addUseFunction(i, player)
     }
-    displayPurchaseDetails() {
+    displayPurchaseDetails(i) {
         const cardDetails = $('card-details')
         const title = $('title')
         const description = $('description')
+        const action = $('action')
         title.innerText = this.title
         description.innerText = this.description
-        const action = document.createElement('div')
-        action.id = 'action'
-        action.classList.add('row')
-        action.classList.add('center')
-        action.innerHTML = ''
-        action.innerHTML = this.use()
+        action.innerHTML = this.purchase()
         cardDetails.appendChild(action)
-        this.addClickFunction(i, player)
+        this.addPurchaseFunction(i)
     }
     addThisCard(player) {
         player.decks.discard.push(new this(player))
-    }
-    
+    }   
 }
 
 export class Attack extends Card {
@@ -81,7 +79,7 @@ export class Attack extends Card {
         this.description = 'Use this card to gain an extra attack'
         this.cost = 10
     }
-    addClickFunction(i, player) {
+    addUseFunction(i, player) {
         const attack = $('card-attack')
         attack.addEventListener('click', function(){
             player.discard(i, player)
@@ -109,6 +107,9 @@ export class Attack extends Card {
         class="card-details-action column center card-details-action">
             <p>USE</p>  
         </div>`
+    }
+    purchase() {
+        
     }   
 }
 export class Movement extends Card {
@@ -118,7 +119,7 @@ export class Movement extends Card {
         this.description = 'Use this card to gain movement'
         this.cost = 10
     }
-    addClickFunction(i, player) {
+    addUseFunction(i, player) {
         const movement = $('card-movement')
         movement.addEventListener('click', function(){
             player.discard(i, player)
@@ -149,6 +150,9 @@ export class Movement extends Card {
             <p>USE</p>
         </div>`
     }
+    purchase() {
+        
+    }
 }
 
 export class Crystal extends Card {
@@ -157,9 +161,9 @@ export class Crystal extends Card {
         this.title = "Crystal"
         this.description = "Trade this Crystal at the town for coins. The rarer the crystal the higher the bounty. If your pack gets too encumbered you can toss this."
         this.value = value
-        this.html = this.tradeOrToss
+        //this.html = this.tradeOrToss
     }
-    addClickFunction(i, player) {
+    addUseFunction(i, player) {
         const cardButton = $('card-button')
         const location = Number(player.location)
         const value = Number(this.value)
@@ -203,7 +207,7 @@ export class Action extends Card {
         this.description = 'Use this card to gain an attack and movement'
         this.cost = 20
     }
-    addClickFunction(i, player) {
+    addUseFunction(i, player) {
         const action = $('card-action')
         action.addEventListener('click', function(){
             player.discard(i, player)
@@ -215,6 +219,32 @@ export class Action extends Card {
             refreshCardDetails()
         })
     }
+    addPurchaseFunction(i) {
+        let merchant = globalState.merchant
+        let player = globalState.globalOrder[0]
+        let playerDiscard = globalState.globalOrder[0].decks.discard
+        const action = $('card-action')
+        const decks = globalState.merchant.decks
+        action.addEventListener('click', function(){
+            if(player.coins < this.cost) {
+                console.log('not enough money')
+            }
+            else {
+                console.log(player.coins)
+                console.log(this.cost)
+                player.coins -= this.cost
+                decks[i].pop()
+                playerDiscard.push(decks[i][0])
+                if(decks[i].length <= 0) {
+                    decks.splice(i, 1)
+                    $('hexboard').removeChild($('modal'))
+                    displayTownModal(merchant)
+                }
+                animatePurchase()
+                refreshMerchantDecks(Number(i), merchant)
+            }
+        })
+    }
     use() {
         return `
         <div id="card-action"
@@ -223,7 +253,10 @@ export class Action extends Card {
         </div>`
     }
     purchase() {
-        return `<p>PURCHASE</p>`
+        return `<div id="card-action"
+        class="card-details-action column center card-details-purchase">
+            <p>PURCHASE</p>  
+        </div>`
     }   
 }
 // title
@@ -243,7 +276,7 @@ export class TestCard extends Card {
                 <p>USE CARD</p>  
             </div>`
     }
-    addClickFunction(i, player) {
+    addUseFunction(i, player) {
         const cardButton = $('card-button')
         cardButton.addEventListener('click', function(){
             player.discard(i, player)

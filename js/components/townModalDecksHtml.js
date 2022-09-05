@@ -1,4 +1,5 @@
 import { $ } from "./quickFunctions.js";
+import { displayTownModal } from "./townModal.js";
 
 export function merchantDecks(merchant) {
     let decks = merchant.decks
@@ -7,32 +8,26 @@ export function merchantDecks(merchant) {
         &times
         </div>
         `
-    for(let i = 1; i <= decks.length-2; i++) {
+    for(let i = 0; i < merchant.decks.length; i++) {
         returnValues += `
-        <div id='merchant-deck-${i}' class="card merchant-deck merchant-deck-${i} column">
+        <div id='merchant-deck-${i+1}' class="card merchant-deck merchant-deck-${i+1} column">
             <div>
-                <h3>${decks[i-1][0].title}</h3>
+                <h3>${decks[i][0].title}</h3>
             </div>
             <div>
-                <h4 id="cost-${i}">$ ${decks[i-1][0].cost}</h3>
-                <h5 id="quantity-${i}">Stock ${decks[i-1].length}</h3>
+                <h4 id="cost-${i+1}">$ ${decks[i][0].cost}</h3>
+                <h5 id="quantity-${i+1}">Stock ${decks[i].length}</h3>
             </div>
         </div>
         `
     }
+    
     return returnValues
-
 }
-export function refreshMerchantDecks(merchant) {
+
+export function refreshMerchantDecks(i, merchant) {
+    
     let decks = merchant.decks
-    for(let i = 1; i <= decks; i++) {
-        let card = $(`merchant-deck-${i}`)
-
-    }
-    
-
-    let first = $('first-merchant-deck')
-    
-    first.innerText = `${decks[0].length}`
-
+    let stock = $(`quantity-${i+1}`)
+    stock.innerText = `Stock ${decks[i].length}`
 }

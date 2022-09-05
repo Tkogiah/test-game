@@ -265,6 +265,40 @@
   text-align: left;
 }
 
+.card-details-purchase {
+  width: 200px;
+  height: 50px;
+  border: 3px solid gold;
+  margin: 25px;
+  background-color: blue;
+  color: white;
+  font-size: 16px;
+}
+
+@-webkit-keyframes purchase {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+
+@keyframes purchase {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+.purchased {
+  -webkit-animation-name: purchase;
+          animation-name: purchase;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
 .enemies-main {
   background-color: #b90000;
 }/*# sourceMappingURL=modals.css.map */
