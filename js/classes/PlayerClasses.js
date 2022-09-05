@@ -106,7 +106,7 @@ export class Archer extends Player {
             move: 'assets/archer-run.gif',
             attack: 'assets/archer-attack.gif'
         } 
-        this.music = new Audio('assets/archer-music.mp3')
+        this.music = new Audio('assets/archer theme remastered.mp3')
         this.music.loop = true
     }
 }

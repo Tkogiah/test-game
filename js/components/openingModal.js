@@ -38,7 +38,7 @@ export function selectPlayer() {
     document.addEventListener('keydown', e => {
         if($('gameStart') && e.code == "Enter" && globalState.globalOrder.length > 0) {
             startGame()
-            merchantInitiator()
+            
         }
     })
 
@@ -63,6 +63,7 @@ function removeHidden() {
 }
 function startGame() {
     enemyInitiator(globalState)
+    merchantInitiator()
     startRound(globalState.globalOrder[0])
     $('hexboard').removeChild($('gameStart'))
     makeEnemiesVulnerable()

@@ -1,7 +1,8 @@
 import { globalState } from "../main.js"
 
-export const boardAudio = new Audio('assets/hexscreen.mp3')
+export const boardAudio = new Audio('assets/board-theme-remastered.mp3')
 boardAudio.loop = true
+export const TownAudio = new Audio('assets/townMusic.mp3')
 
 // export const playerAudio = new Audio('assets/fighter-music.mp3')
 // playerAudio.loop = true
