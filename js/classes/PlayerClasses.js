@@ -9,7 +9,7 @@ class Player {
         this.name = playerName,
         this.type = 'player'
         this.level = 1
-        this.coins = 0
+        this.coins = 100
         this.location = 0
         this.attacks = 0
         this.movement = 0
@@ -84,12 +84,21 @@ class Player {
                 count += 1
             }
         })
-        if(count === 0) {
-            console.log(globalOrder)
+        if(count === 0) {  
             globalState.round += 1
             enemyInitiator(globalState)
             nextTurn(globalState)
-            console.log(globalOrder)
+        }
+    }
+    drawThree(player) {
+        for(let i = 0; i < 3; i++) {
+            if(player.decks.draw.length === 0) {
+                player.shuffle(player.decks.discard)
+                player.decks.draw = player.decks.discard
+                player.decks.discard = []
+            }
+            player.decks.hand.push(player.decks.draw[i])
+            player.decks.draw.shift()
         }
     }  
 }

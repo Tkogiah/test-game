@@ -40,10 +40,6 @@ export function makeEnemiesVulnerable() {
                 
                 player.attacks -= 1
                 showPlayerAttackRange(player)
-                console.log(globalState.globalOrder)
-                // mr.clearHighlightedHexes()
-                // p.displayActivePlayer(0)
-                
             }
         })
     })

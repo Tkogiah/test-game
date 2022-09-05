@@ -43,7 +43,6 @@ document.addEventListener("keydown", e => {
 
 
 function openPlayerModal() {
-    console.log(globalState.globalOrder[0].decks)
     boardAudio.pause()
     let currentPlayer = globalState.globalOrder[0]
     displayPlayerModal(currentPlayer)

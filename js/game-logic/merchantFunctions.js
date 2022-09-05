@@ -5,9 +5,7 @@ import { displayTownModal } from '../components/townModal.js'
 
 
 export function merchantInitiator() {
-    globalState.merchant.addActionCards()
-    console.log(globalState.merchant)
-    
+    globalState.merchant.addActionCards()    
 }
 
 export function activatePurchase(merchant) {

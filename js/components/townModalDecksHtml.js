@@ -9,9 +9,6 @@ export function merchantDecks(merchant) {
         </div>
         `
     for(let i = 0; i < merchant.decks.length; i++) {
-        console.log(merchant.decks)
-        console.log(merchant.decks[i])
-        console.log(merchant.decks[i][0])
         returnValues += `
         <div id='merchant-deck-${i+1}' class="card merchant-deck merchant-deck-${i+1} column">
             <div>

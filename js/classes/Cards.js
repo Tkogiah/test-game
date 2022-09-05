@@ -42,6 +42,7 @@ class Card {
         //TO DO: figure out how to add "once" in the event handler of the keydown hotkey
     }
     displayCardFunction(i, player) {
+        const useHTML = this.use()
         const cardDetails = $('card-details')
         const title = $('title')
         const description = $('description')
@@ -52,24 +53,65 @@ class Card {
         action.classList.add('row')
         action.classList.add('center')
         action.innerHTML = ''
-        action.innerHTML = this.use()
+        action.innerHTML = useHTML
         cardDetails.appendChild(action)
         this.addUseFunction(i, player)
     }
+    use() {
+        return `
+        <div id="card-action"
+        class="card-details-action column center card-details-action">
+            <p>USE</p>  
+        </div>`
+    }
     displayPurchaseDetails(i) {
+        const purchaseHTML = this.purchase()
         const cardDetails = $('card-details')
-        const title = $('title')
-        const description = $('description')
+        const title = this.title
+        const description = this.description
         const action = $('action')
-        title.innerText = this.title
-        description.innerText = this.description
-        action.innerHTML = this.purchase()
+        $('title').innerText = title
+        $('description').innerText = description
+        action.innerHTML = purchaseHTML
         cardDetails.appendChild(action)
         this.addPurchaseFunction(i)
-    }
-    addThisCard(player) {
-        player.decks.discard.push(new this(player))
+    }  
+    addPurchaseFunction(i) {
+        let affordable = false
+        let player = globalState.globalOrder[0]
+        let price = this.cost
+        if(player.coins >= this.cost) {
+            affordable = true
+        }
+        let merchant = globalState.merchant
+        let playerDiscard = globalState.globalOrder[0].decks.discard
+        const action = $('card-action')
+        const decks = globalState.merchant.decks
+        action.addEventListener('click', function(){
+            if(affordable === true){
+                player.coins -= price
+                playerDiscard.push(decks[i][0])
+                decks[i].pop()
+                animatePurchase()
+                $('hexboard').removeChild($('modal'))
+                displayTownModal(merchant)
+            }    
+            if(decks[i].length <= 0) {
+                decks.splice(i, 1)
+                $('hexboard').removeChild($('modal'))
+                displayTownModal(merchant)
+            }
+            if(affordable === false) {
+                animatePurchaseDecline()
+            }
+        })
     }   
+    purchase() {
+        return `<div id="card-action"
+        class="card-details-action column center card-details-purchase">
+            <p>PURCHASE</p>  
+        </div>`
+    } 
 }
 
 export class Attack extends Card {
@@ -80,8 +122,8 @@ export class Attack extends Card {
         this.cost = 10
     }
     addUseFunction(i, player) {
-        const attack = $('card-attack')
-        attack.addEventListener('click', function(){
+        const action = $('card-action')
+        action.addEventListener('click', function(){
             player.discard(i, player)
             addAttack(player)
             $('hand-card-modal').remove()
@@ -101,16 +143,16 @@ export class Attack extends Card {
             }
         }, once)
     }
-    use() {
-        return `
-        <div id="card-attack"
-        class="card-details-action column center card-details-action">
-            <p>USE</p>  
-        </div>`
-    }
-    purchase() {
+    // use() {
+    //     return `
+    //     <div id="card-attack"
+    //     class="card-details-action column center card-details-action">
+    //         <p>USE</p>  
+    //     </div>`
+    // }
+    // purchase() {
         
-    }   
+    // }   
 }
 export class Movement extends Card {
     constructor(player) {
@@ -120,8 +162,8 @@ export class Movement extends Card {
         this.cost = 10
     }
     addUseFunction(i, player) {
-        const movement = $('card-movement')
-        movement.addEventListener('click', function(){
+        const action = $('card-action')
+        action.addEventListener('click', function(){
             player.discard(i, player)
             addMovement(player)
             $('hand-card-modal').remove()
@@ -138,21 +180,13 @@ export class Movement extends Card {
                 handModal(player)
                 refreshDecks(player)
                 refreshCardDetails()
-                console.log('hello')
+                
             }
         }, once)
     }
-    
-    use() {
-        return `
-        <div id="card-movement"
-        class="card-details-action column center card-details-action">
-            <p>USE</p>
-        </div>`
-    }
-    purchase() {
+    // purchase() {
         
-    }
+    // }
 }
 
 export class Crystal extends Card {
@@ -164,6 +198,14 @@ export class Crystal extends Card {
         //this.html = this.tradeOrToss
     }
     addUseFunction(i, player) {
+        //because crystals can't be bought and are used differently
+        const action = document.createElement('div')
+        action.id = 'action'
+        action.classList.add('row')
+        action.classList.add('center')
+        action.innerHTML = ''
+        action.innerHTML = this.use()
+        ///////////////////////////////////////////////////////////
         const cardButton = $('card-button')
         const location = Number(player.location)
         const value = Number(this.value)
@@ -219,45 +261,6 @@ export class Action extends Card {
             refreshCardDetails()
         })
     }
-    addPurchaseFunction(i) {
-        let affordable = false
-        let player = globalState.globalOrder[0]
-        if(player.coins >= this.cost) {
-            affordable = true
-        }
-        
-        let merchant = globalState.merchant
-        let playerDiscard = globalState.globalOrder[0].decks.discard
-        const action = $('card-action')
-        const decks = globalState.merchant.decks
-        action.addEventListener('click', function(){
-            if(affordable === true){
-                playerDiscard.push(decks[i][0])
-                decks[i].pop()
-                animatePurchase()
-                refreshMerchantDecks(Number(i), merchant)
-            }    
-            if(decks[i].length <= 0) {
-                decks.splice(i, 1)
-                $('hexboard').removeChild($('modal'))
-                displayTownModal(merchant)
-            }
-            animatePurchaseDecline()
-        })
-    }
-    use() {
-        return `
-        <div id="card-action"
-        class="card-details-action column center card-details-action">
-            <p>USE</p>  
-        </div>`
-    }
-    purchase() {
-        return `<div id="card-action"
-        class="card-details-action column center card-details-purchase">
-            <p>PURCHASE</p>  
-        </div>`
-    }   
 }
 // title
 // description
@@ -286,6 +289,25 @@ export class TestCard extends Card {
             refreshCardDetails()
         })
     }   
+}
+export class SecondWind extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "2nd Wind"
+        this.description = 'Use this card to draw 3 cards from the top of your deck.'
+        this.cost = 10
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            player.discard(i, player)
+            player.drawThree(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+    }
 }
 
 
