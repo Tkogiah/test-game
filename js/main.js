@@ -1,6 +1,6 @@
 import * as playerButton from '../js/components/mainButtons.js'
 import { Rogue, Fighter, Archer } from './classes/PlayerClasses.js'
-import { Merchant } from './classes/Cards.js'
+import { Action, Attack, Merchant, Movement } from './classes/Cards.js'
 import { selectPlayer } from './components/openingModal.js'
 
 
@@ -16,7 +16,12 @@ export const globalState = {
         
     },
     globalOrder: [],
-    merchant: new Merchant()
+    merchant: new Merchant(),
+    cards: [
+        new Action(),
+        new Attack(),
+        new Movement()
+    ]
 }
 
 //*********************  TESTING  *********************

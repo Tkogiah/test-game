@@ -13,7 +13,10 @@ export function merchantDecks(merchant) {
             <div>
                 <h3>${decks[i-1][0].title}</h3>
             </div>
-            <h3 id="merchant-${i}">${decks[i-1].length}</h3>
+            <div>
+                <h4 id="cost-${i}">$ ${decks[i-1][0].cost}</h3>
+                <h5 id="quantity-${i}">Stock ${decks[i-1].length}</h3>
+            </div>
         </div>
         `
     }
@@ -22,6 +25,11 @@ export function merchantDecks(merchant) {
 }
 export function refreshMerchantDecks(merchant) {
     let decks = merchant.decks
+    for(let i = 1; i <= decks; i++) {
+        let card = $(`merchant-deck-${i}`)
+
+    }
+    
 
     let first = $('first-merchant-deck')
     

@@ -15,12 +15,17 @@ export class Merchant {
         ]
     }
     getRandomizer() {
-        //get an array of all cards and randomly pull 9
+        let merchantDeck = []
+        for(let i =0;i<10;i++) {
+            merchantDeck.push(globalState.cards[i])
+        }
+        return merchantDeck
     }
     addActionCards() {
+        let deck = this.getRandomizer
         for(let i = 0; i < 10; i++) {
             for(let j=0;j<10;j++) {
-                this.decks[i].push(new Action())
+                this.decks[i].push(globalState.cards[j])
                 //maybe this.decks[i].push(new randomizerArray[j])
             }
             
@@ -48,8 +53,20 @@ class Card {
         cardDetails.appendChild(action)
         this.addClickFunction(i, player)
     }
-    displayCardPurchase(i, merchant) {
-
+    displayPurchaseDetails() {
+        const cardDetails = $('card-details')
+        const title = $('title')
+        const description = $('description')
+        title.innerText = this.title
+        description.innerText = this.description
+        const action = document.createElement('div')
+        action.id = 'action'
+        action.classList.add('row')
+        action.classList.add('center')
+        action.innerHTML = ''
+        action.innerHTML = this.use()
+        cardDetails.appendChild(action)
+        this.addClickFunction(i, player)
     }
     addThisCard(player) {
         player.decks.discard.push(new this(player))
