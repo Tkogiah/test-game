@@ -3,7 +3,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    border: 3px solid black;
+    border: 10px solid rgb(255, 255, 255);
     border-radius: 15px;
     position: absolute;
     margin-top: 3%;
@@ -20,15 +20,15 @@
     position: absolute;
     border: 3px solid gold;
     border-radius: 15px;
-    top: 5px;
-    left: 5px;  
+    top: 20px;
+    left: 20px;  
 }
 .player-stats {
     height: 150px;
     width: 150px;
     position: absolute;
-    top: 5px;
-    left: 160px;
+    top: 20px;
+    left: 180px;
     text-align: left;
     color: white;
 }
@@ -39,22 +39,23 @@
     position: absolute;
     color: black;
     background-color: white;
-    border: 3px solid rgb(0, 0, 0);
+    border: 4px solid rgb(0, 0, 0);
     border-radius: 15px;    
     box-sizing: border-box;
     display: flex;
     justify-content: space-evenly;
     align-items: center; 
 }
+
 .card-details {
     height: 210px;
-    width: 716px;
+    width: 805px;
     border: 3px solid black;
     border-radius: 16px;
     box-sizing: border-box;
     position: absolute;
-    bottom: 5px;
-    left: 360px;
+    bottom: 20px;
+    left: 310px;
     background-color: white;
     padding: 15px;
     color: black;
@@ -62,7 +63,6 @@
     font-size: 16px;
     text-align: left;
 }
-
 .card-details-action {
     width: 200px;
     height: 50px;
@@ -76,7 +76,7 @@
 
 .exit {
     position: absolute;
-    padding: 15px;
+    padding: 20px;
     color:white;
     font-size: 40px;
     top: 0;
@@ -134,27 +134,27 @@
 }
 .draw-pile {
     background-color: rgb(1, 17, 253);
-    bottom: 5px;
-    left: 5px;
+    bottom: 20px;
+    left: 20px;
     color: white;    
 }
 .discard-pile {
     background-color: rgb(255, 0, 0);
-    bottom: 5px;
-    left: 150px;
+    bottom: 20px;
+    left: 165px;
     color: white;
     
 }
 .hand-pile {
     background-color: rgb(140, 0, 255);
-    bottom: 5px;
-    right: 5px;
+    bottom: 20px;
+    right: 20px;
     color: white;
 }
 .hand-pile-active {
     background-color: rgb(140, 0, 255);
-    bottom: 5px;
-    right: 5px;
+    bottom: 20px;
+    right: 20px;
     color: white;
 }
 .hand-pile-active:hover {
@@ -164,8 +164,8 @@
     height: 215px;
     width: 760px;
     background-color: white;
-    bottom: 225px;
-    left: 150px;
+    bottom: 240px;
+    left: 310px;
     border-radius: 16px;
     position: absolute;
     display: flex;
@@ -175,7 +175,7 @@
     min-width: 920px;
     max-width: 920px;
     border-radius: 16px;
-    background-color: white;
+    background-color: green;
     overflow-x: auto;
 }
 .hand-card {
@@ -190,6 +190,13 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center; 
+}
+.crystal {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 3px solid #2CE8F5FF;
+    background-color: black;
 }
 
 
@@ -208,35 +215,35 @@
 // cards width + margins (not include beg & end) === 1150
 .merchant-deck-1 {
     top: 100px;
-    left: 72px;
+    left: 73px;
 }
 .merchant-deck-2 {
     top: 100px;
-    left: 217px;
+    left: 216px;
 }
 .merchant-deck-3 {
     top: 100px;
-    left: 362px;
+    left: 359px;
 }
 .merchant-deck-4 {
     top: 100px;
-    left: 505px;
+    left: 502px;
 }
 .merchant-deck-5 {
     top: 100px;
-    right: 505px;
+    right: 495px;
 }
 .merchant-deck-6 {
     top: 100px;
-    right: 362px;
+    right: 351px;
 }
 .merchant-deck-7 {
     top: 100px;
-    right: 217px;
+    right: 208px;
 }
 .merchant-deck-8 {
     top: 100px;
-    right: 72px;
+    right: 65px;
 }
 .card-details-town {
     height: 210px;

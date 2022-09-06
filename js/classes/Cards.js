@@ -47,6 +47,12 @@ class Card {
         const title = $('title')
         const description = $('description')
         title.innerText = this.title
+        if(this.title === 'Crystal') {
+            $(`card-${i}`).classList.add('crystal')
+            $(`card-${i}`).style.backgroundImage = `url(${this.picture})`
+            $(`card-${i}`).innerText = ''
+            
+        }
         description.innerText = this.description
         const action = document.createElement('div')
         action.id = 'action'
@@ -198,6 +204,7 @@ export class Crystal extends Card {
         this.title = "Crystal"
         this.description = `Trade this Crystal at the town for ${value} coins. The rarer the crystal the higher the bounty. If your pack gets too encumbered you can toss this.`
         this.value = value
+        this.picture = `assets/crystal${value}.png`
         //this.html = this.tradeOrToss
     }
     addUseFunction(i, player) {
