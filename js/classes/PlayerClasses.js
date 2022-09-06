@@ -9,7 +9,7 @@ class Player {
         this.name = playerName,
         this.type = 'player'
         this.level = 1
-        this.coins = 100
+        this.coins = 0
         this.location = 0
         this.attacks = 0
         this.movement = 0

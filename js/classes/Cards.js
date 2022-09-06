@@ -193,7 +193,7 @@ export class Crystal extends Card {
     constructor(value) {
         super()
         this.title = "Crystal"
-        this.description = "Trade this Crystal at the town for coins. The rarer the crystal the higher the bounty. If your pack gets too encumbered you can toss this."
+        this.description = `Trade this Crystal at the town for ${value} coins. The rarer the crystal the higher the bounty. If your pack gets too encumbered you can toss this.`
         this.value = value
         //this.html = this.tradeOrToss
     }

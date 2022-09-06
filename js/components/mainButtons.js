@@ -15,7 +15,9 @@ const endTurnButton = $('end')
 playerButton.addEventListener('click', openPlayerModal)
 document.addEventListener('keydown', e => {
     if( $('modal') && e.code === "KeyP") {
-        $('hexboard').removeChild($('modal'))
+        globalState.globalOrder[0].music.pause()
+        $('hexboard').removeChild(modal)
+        boardAudio.play()
     }
     else if(e.code === "KeyP") {openPlayerModal()}
 })

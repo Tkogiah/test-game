@@ -6,7 +6,7 @@ import { handModalActive } from './playerHandModal.js'
 
 
 export function displayPlayerModal(currentPlayer) {
-    
+    console.log(currentPlayer.decks)
     currentPlayer.music.play()
     const playerHtml = playerModalHtml(currentPlayer)
 
