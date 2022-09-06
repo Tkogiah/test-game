@@ -117,17 +117,8 @@ export class Action extends Card {
     constructor(player) {
         super(player)
         this.title = "Action"
-        this.description = 'Use this card to attack or Move'
+        this.description = 'Use this to gain an extra attack or extra movement'
         this.cost = 10
-        // this.html = `
-        //     <div id="card-attack"
-        //     class="card-details-action column center card-details-action">
-        //         <p>ADD ATTACK</p>  
-        //     </div>
-        //     <div id="card-movement"
-        //     class="card-details-action column center card-details-action">
-        //         <p>ADD MOVEMENT</p>
-        //     </div>`
     }
     addUseFunction(i, player) {
         const attack = $('card-attack')
@@ -153,11 +144,11 @@ export class Action extends Card {
         return `
         <div id="card-attack"
         class="card-details-action column center card-details-action">
-            <p>ADD ATTACK</p>  
+            <p>ATTACK</p>  
         </div>
         <div id="card-movement"
         class="card-details-action column center card-details-action">
-            <p>ADD MOVEMENT</p>
+            <p>MOVE</p>
         </div>`
     }     
 }
@@ -167,7 +158,7 @@ export class Attack extends Card {
         super(player)
         this.title = "Attack"
         this.description = 'Use this card to gain an extra attack'
-        this.cost = 10
+        this.cost = 5
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -179,24 +170,14 @@ export class Attack extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
-    }
-    // use() {
-    //     return `
-    //     <div id="card-attack"
-    //     class="card-details-action column center card-details-action">
-    //         <p>USE</p>  
-    //     </div>`
-    // }
-    // purchase() {
-        
-    // }   
+    }  
 }
 export class Movement extends Card {
     constructor(player) {
         super(player)
         this.title = "Move"
         this.description = 'Use this card to gain movement'
-        this.cost = 10
+        this.cost = 5
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -209,9 +190,6 @@ export class Movement extends Card {
             refreshCardDetails()
         })
     }
-    // purchase() {
-        
-    // }
 }
 
 export class Crystal extends Card {
@@ -267,10 +245,10 @@ export class Crystal extends Card {
     }   
 }
 
-export class doubleAction extends Card {
+export class MultiTask extends Card {
     constructor(player) {
         super(player)
-        this.title = "Action"
+        this.title = "MultiTask"
         this.description = 'Use this card to gain an attack and movement'
         this.cost = 20
     }
@@ -287,12 +265,7 @@ export class doubleAction extends Card {
         })
     }
 }
-// title
-// description
-// cost
-// clickfunction
-// html
-// purchase
+
 export class TestCard extends Card {
     constructor(player) {
         super(player)
@@ -320,7 +293,7 @@ export class SecondWind extends Card {
         super(player)
         this.title = "2nd Wind"
         this.description = 'Use this card to draw 3 cards from the top of your deck.'
-        this.cost = 10
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')

@@ -323,6 +323,12 @@
           animation-duration: 1s;
 }
 
+.merchant-coins {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
 .enemies-main {
   background-color: #b90000;
 }/*# sourceMappingURL=modals.css.map */
