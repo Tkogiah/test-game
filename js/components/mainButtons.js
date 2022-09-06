@@ -39,11 +39,13 @@ document.addEventListener('keydown', e => {
 
 
 endTurnButton.addEventListener('click', endTurn)
-document.addEventListener("keydown", e => {
-    if(e.code === "Space" && !$('modal') && !$('gameStart')) {
-        endTurn()
-    }
-})
+
+//NEED TO WRITE FUNCTION THAT PREVENTS THIS FROM FIRING MULTIPLE TIMES
+// document.addEventListener("keydown", e => {
+//     if(e.code === "Space" && !$('modal') && !$('gameStart')) {
+//         endTurn()
+//     }
+// })
 
 
 function openPlayerModal() {

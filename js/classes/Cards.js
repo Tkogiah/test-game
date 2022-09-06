@@ -113,6 +113,54 @@ class Card {
         </div>`
     } 
 }
+export class Action extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Action"
+        this.description = 'Use this card to attack or Move'
+        this.cost = 10
+        // this.html = `
+        //     <div id="card-attack"
+        //     class="card-details-action column center card-details-action">
+        //         <p>ADD ATTACK</p>  
+        //     </div>
+        //     <div id="card-movement"
+        //     class="card-details-action column center card-details-action">
+        //         <p>ADD MOVEMENT</p>
+        //     </div>`
+    }
+    addUseFunction(i, player) {
+        const attack = $('card-attack')
+        const movement = $('card-movement')
+        attack.addEventListener('click', function(){
+            player.discard(i, player)
+            addAttack(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+        movement.addEventListener('click', function(){
+            player.discard(i, player)
+            addMovement(player)
+            $('hand-card-modal').remove()
+            handModal(player)
+            refreshDecks(player)
+            refreshCardDetails()
+        })
+    }
+    use() {
+        return `
+        <div id="card-attack"
+        class="card-details-action column center card-details-action">
+            <p>ADD ATTACK</p>  
+        </div>
+        <div id="card-movement"
+        class="card-details-action column center card-details-action">
+            <p>ADD MOVEMENT</p>
+        </div>`
+    }     
+}
 
 export class Attack extends Card {
     constructor(player) {
@@ -219,7 +267,7 @@ export class Crystal extends Card {
     }   
 }
 
-export class Action extends Card {
+export class doubleAction extends Card {
     constructor(player) {
         super(player)
         this.title = "Action"

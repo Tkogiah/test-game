@@ -1,5 +1,5 @@
 import { globalState } from '../main.js'
-import { Attack, Movement } from './Cards.js'
+import { Attack, Movement, Action } from './Cards.js'
 import {enemyInitiator} from '../game-logic/enemyInitiator.js'
 import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 import { $ } from '../components/quickFunctions.js'
@@ -14,7 +14,7 @@ class Player {
         this.attacks = 0
         this.movement = 0
         this.decks = {
-            draw:[new Attack, new Movement, new Attack, new Movement, new Attack, new Movement, new Attack, new Movement, new Attack, new Movement,],
+            draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
             discard: []
         }
