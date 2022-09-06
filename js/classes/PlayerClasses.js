@@ -107,7 +107,7 @@ export class Archer extends Player {
     constructor(name) {
         super(name)
         this.playerClass = Archer
-        this.speed = 4 // 4
+        this.speed = 40 // 4
         this.range = 4 // 4
         this.damage = 2 // 2
         this.pictures = {

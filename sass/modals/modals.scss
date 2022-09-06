@@ -191,11 +191,39 @@
     justify-content: space-evenly;
     align-items: center; 
 }
-.crystal {
+.crystal1 {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 3px solid #2CE8F5FF;
+    border: 4px solid #2CE8F5FF;
+    background-color: black;
+}
+.crystal2 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 4px solid #FF0044FF;
+    background-color: black;
+}
+.crystal3 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 3px solid #124E89FF;
+    background-color: black;
+}
+.crystal4 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 3px solid #63C74DFF;
+    background-color: black;
+}
+.crystal5 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 3px solid #68386CFF;
     background-color: black;
 }
 

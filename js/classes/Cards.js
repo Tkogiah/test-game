@@ -48,7 +48,7 @@ class Card {
         const description = $('description')
         title.innerText = this.title
         if(this.title === 'Crystal') {
-            $(`card-${i}`).classList.add('crystal')
+            $(`card-${i}`).classList.add(`crystal${this.value}`)
             $(`card-${i}`).style.backgroundImage = `url(${this.picture})`
             $(`card-${i}`).innerText = ''
             
@@ -165,6 +165,7 @@ export class Attack extends Card {
         this.title = "Attack"
         this.description = 'Use this card to gain an extra attack'
         this.cost = 5
+        this.picture = 'assets/sword-icon.png'
     }
     addUseFunction(i, player) {
         const action = $('card-action')
