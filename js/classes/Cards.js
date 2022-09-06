@@ -131,17 +131,6 @@ export class Attack extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
-        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
-        document.addEventListener('keydown', e => {
-            if($('modal') && e.code === "Space") {
-                player.discard(i, player)
-                addAttack(player)
-                $('hand-card-modal').remove()
-                handModal(player)
-                refreshDecks(player)
-                refreshCardDetails()
-            }
-        }, once)
     }
     // use() {
     //     return `
@@ -171,18 +160,6 @@ export class Movement extends Card {
             refreshDecks(player)
             refreshCardDetails()
         })
-        const once = {once:true} //THIS IS TO ENSURE THE EL FIRES ONLY ONCE
-        document.addEventListener('keydown', e => {
-            if($('modal') && e.code === "Space") {
-                player.discard(i, player)
-                addMovement(player)
-                $('hand-card-modal').remove()
-                handModal(player)
-                refreshDecks(player)
-                refreshCardDetails()
-                
-            }
-        }, once)
     }
     // purchase() {
         

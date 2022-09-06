@@ -4,6 +4,7 @@ import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
 import { makeEnemiesVulnerable } from "./playerAttack.js"
 import { globalState } from "../main.js"
+import { $ } from "../components/quickFunctions.js"
 
 export function startRound(player) {
     let playerImage = document.getElementById('player-image')
@@ -54,6 +55,8 @@ export function nextTurn(globalState) {
 }
 
 function playerTurn(player) {
+    $('enemies-button').classList.add('hidden')
+    $('player-button').classList.remove('hidden')
     removeDependentColorsFromBoard()
     showPlayerMovementRange(player)
     showPlayerAttackRange(player)
@@ -61,6 +64,9 @@ function playerTurn(player) {
     startRound(player)
 }
 function enemyTurn(player) {
+    $('enemies-button').classList.remove('hidden')
+    $('player-button').classList.add('hidden')
+    $('town-button').classList.add('hidden')
     removeDependentColorsFromBoard()
     player.advanceForward()
     startRound(player)

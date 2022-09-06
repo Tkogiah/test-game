@@ -3,7 +3,7 @@ import { displayTownModal } from './townModal.js'
 import * as enemies from './enemiesModal.js'
 import {$} from '../components/quickFunctions.js'
 import { globalState } from '../main.js'
-import { boardAudio } from '../components/music.js'
+import { boardAudio, TownAudio } from '../components/music.js'
 import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 
 const playerButton = $("player-button")
@@ -29,7 +29,9 @@ enemiesButton.addEventListener('click', function() {
 townButton.addEventListener('click', openTownModal)
 document.addEventListener('keydown', e => {
     if( $('modal') && e.code === "KeyM") {
+        TownAudio.pause()
         $('hexboard').removeChild($('modal'))
+        boardAudio.play()
     }
     else if(e.code === "KeyM" && 
             globalState.globalOrder[0].type === 'player') {openTownModal()}
