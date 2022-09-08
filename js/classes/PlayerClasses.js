@@ -1,5 +1,5 @@
 import { globalState } from '../main.js'
-import { Attack, Movement, Action } from './Cards.js'
+import { Attack, Movement, Action, SecondWind } from './Cards.js'
 import {enemyInitiator} from '../game-logic/enemyInitiator.js'
 import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 import { $ } from '../components/quickFunctions.js'
@@ -16,7 +16,7 @@ class Player {
         this.decks = {
             draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
-            discard: []
+            discard: [new SecondWind]
         }
         this.speedModifier = 1
         this.damageModifier = 1
@@ -34,12 +34,14 @@ class Player {
         while(this.decks.hand.length < 5) {
             if(this.decks.draw.length > 0) {
                 let card = this.decks.draw.pop()
+                if(card === undefined) {alert('a bad card has been pushed into the deck by draw() < 5')}
                 this.decks.hand.push(card)
             }
             else {
                 this.shuffle(this.decks.discard)
                 while(this.decks.discard.length > 0) {
                     let card = this.decks.discard.pop()
+                    if(card === undefined) {alert('a bad card has been pushed into the deck by draw() else')}
                     this.decks.draw.push(card)
                 }
             }
@@ -59,6 +61,7 @@ class Player {
     discardHand() {
         while(this.decks.hand.length > 0) {
             let card = this.decks.hand.pop()
+            if(card === undefined) {alert('a bad card has been pushed into the deck by discardHand()')}
             this.decks.discard.push(card)
         }
     }
@@ -90,16 +93,23 @@ class Player {
             nextTurn(globalState)
         }
     }
-    drawThree(player) {
-        for(let i = 0; i < 3; i++) {
-            if(player.decks.draw.length === 0) {
-                player.shuffle(player.decks.discard)
-                player.decks.draw = player.decks.discard
-                player.decks.discard = []
-            }
-            player.decks.hand.push(player.decks.draw[i])
-            player.decks.draw.shift()
-        }
+    // drawThree(player) {
+    //     for(let i = 0; i < 3; i++) {
+    //         if(player.decks.draw.length === 0) {
+    //             if(player.decks.discard.length != 0) {
+    //                 player.shuffle(player.decks.discard)
+    //                 player.decks.draw = player.decks.discard
+    //                 player.decks.discard = []
+    //             }
+    //         }
+    //         if(player.decks.draw[i] != undefined && ) {
+    //             player.decks.hand.push(player.decks.draw[i])
+    //             player.decks.draw.shift()
+    //         }
+    //     }
+    // }
+    drawOne(player) {
+        
     }  
 }
 
