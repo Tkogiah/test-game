@@ -306,8 +306,8 @@ export class SecondWind extends Card {
     addUseFunction(i, player) {
         const action = $('card-action')
         action.addEventListener('click', function(){
-            player.discard(i, player)
             player.drawThree(player)
+            player.discard(i, player)
             $('hand-card-modal').remove()
             handModal(player)
             refreshDecks(player)
