@@ -93,24 +93,21 @@ class Player {
             nextTurn(globalState)
         }
     }
-    // drawThree(player) {
-    //     for(let i = 0; i < 3; i++) {
-    //         if(player.decks.draw.length === 0) {
-    //             if(player.decks.discard.length != 0) {
-    //                 player.shuffle(player.decks.discard)
-    //                 player.decks.draw = player.decks.discard
-    //                 player.decks.discard = []
-    //             }
-    //         }
-    //         if(player.decks.draw[i] != undefined && ) {
-    //             player.decks.hand.push(player.decks.draw[i])
-    //             player.decks.draw.shift()
-    //         }
-    //     }
-    // }
-    drawOne(player) {
-        
-    }  
+    drawThree(player) {
+        for(let i = 0; i < 3; i++) {
+            if(player.decks.draw.length === 0) {
+                if(player.decks.discard.length != 0) {
+                    player.shuffle(player.decks.discard)
+                    let card = player.decks.discard.pop()
+                    player.decks.hand.push(card)
+                }
+            }
+            else {
+                let card = player.decks.draw.pop()
+                player.decks.hand.push(card)
+            }
+        }
+    }
 }
 
 export class Archer extends Player {
