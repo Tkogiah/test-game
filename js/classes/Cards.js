@@ -310,7 +310,7 @@ export class BootsOfSpeed extends Card {
     constructor(player) {
         super(player)
         this.title = "Boots of Speed"
-        this.description = 'Use this card to make the rest of your movements go further this round.'
+        this.description = 'Use this card to make your movements go further this round.'
         this.cost = 15
     }
     addUseFunction(i, player) {
@@ -318,6 +318,22 @@ export class BootsOfSpeed extends Card {
         action.addEventListener('click', function(){
             player.speedModifier += 5
             $('speed').innerText = `Speed: ${player.speed+player.speedModifier}`
+            player.cardUseRefresh(i, player)
+        })
+    }
+}
+export class Sharpen extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Sharpen"
+        this.description = 'Use this card to sharpen your weapon making your attacks do more damage this round.'
+        this.cost = 15
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            player.damageModifier += 5
+            $('damage').innerText = `Damage: ${player.damage+player.damageModifier}`
             player.cardUseRefresh(i, player)
         })
     }

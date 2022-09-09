@@ -1,5 +1,6 @@
 import { globalState } from "../main.js"
 
+//TODO add mute option for the game
 export const boardAudio = new Audio('assets/board-theme-remastered.mp3')
 boardAudio.loop = true
 export const TownAudio = new Audio('assets/townMusic.mp3')
