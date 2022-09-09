@@ -1,5 +1,8 @@
 import { globalState } from '../main.js'
-import { Attack, Movement, Action, SecondWind } from './Cards.js'
+import { Attack, Movement, Action, SecondWind, TenFootPole, BootsOfSpeed } from './Cards.js'
+import { refreshDecks } from '../components/playerModalDecksHtml.js'
+import {handModal} from '../components/playerHandModal.js'
+import {refreshCardDetails} from '../components/playerCardDetailsHtml.js'
 import {enemyInitiator} from '../game-logic/enemyInitiator.js'
 import { nextTurn } from '../game-logic/RoundAndTurnControl.js'
 import { $ } from '../components/quickFunctions.js'
@@ -16,11 +19,11 @@ class Player {
         this.decks = {
             draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
-            discard: [new SecondWind]
+            discard: [new SecondWind, new TenFootPole, new BootsOfSpeed]
         }
-        this.speedModifier = 1
-        this.damageModifier = 1
-        this.rangeModifier = 1
+        this.speedModifier = 0
+        this.damageModifier = 0
+        this.rangeModifier = 0
     }
     toggleTown() {
         if(this.location != 0){
@@ -76,9 +79,9 @@ class Player {
     resetStats() {
         this.attacks = 0
         this.movement = 0
-        this.speedModifier = 1
-        this.damageModifier = 1
-        this.rangeModifier = 1
+        this.speedModifier = 0
+        this.damageModifier = 0
+        this.rangeModifier = 0
     }
     advanceRound(globalOrder) {
         let count = 0
@@ -92,6 +95,13 @@ class Player {
             enemyInitiator(globalState)
             nextTurn(globalState)
         }
+    }
+    cardUseRefresh(i, player) {
+        player.discard(i, player)
+        $('hand-card-modal').remove()
+        handModal(player)
+        refreshDecks(player)
+        refreshCardDetails()
     }
     drawThree(player) {
         for(let i = 0; i < 3; i++) {
@@ -108,6 +118,7 @@ class Player {
             }
         }
     }
+    
 }
 
 export class Archer extends Player {

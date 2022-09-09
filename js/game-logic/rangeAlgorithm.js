@@ -78,11 +78,12 @@ export function showPlayerAttackRange(player) {
     highlightRangeArray = []
     let row = indexesOfboardMatrix[player.location].row
     let column = indexesOfboardMatrix[player.location].column
+    let range = Number(player.range + player.rangeModifier)
     addPlayerLocation(player)
-    fillRight(player.range, row, column)
-    fillLeft(player.range, row, column)
-    fillUp(player.range, row, column)
-    fillDown(player.range, row, column)
+    fillRight(range, row, column)
+    fillLeft(range, row, column)
+    fillUp(range, row, column)
+    fillDown(range, row, column)
     addDependentColorToBoard(highlightRangeArray, 'green')
     
 } 

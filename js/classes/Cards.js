@@ -8,7 +8,7 @@ import { globalState } from '../main.js'
 import { refreshMerchantDecks } from '../components/townModalDecksHtml.js'
 import { animatePurchase, animatePurchaseDecline } from '../game-logic/merchantFunctions.js'
 import { displayTownModal } from '../components/townModal.js'
-
+import { showPlayerAttackRange } from "../game-logic/rangeAlgorithm.js"
 
 export class Merchant {
     constructor() {
@@ -39,7 +39,7 @@ export class Merchant {
 
 class Card {
     constructor(){
-        //TO DO: figure out how to add "once" in the event handler of the keydown hotkey
+        //TODO: figure out how to add "once" in the event handler of the keydown hotkey
     }
     displayCardFunction(i, player) {
         const useHTML = this.use()
@@ -117,7 +117,8 @@ class Card {
         class="card-details-action column center card-details-purchase">
             <p>PURCHASE</p>  
         </div>`
-    } 
+    }
+    
 }
 export class Action extends Card {
     constructor(player) {
@@ -130,20 +131,12 @@ export class Action extends Card {
         const attack = $('card-attack')
         const movement = $('card-movement')
         attack.addEventListener('click', function(){
-            player.discard(i, player)
-            addAttack(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            addAttack(player) 
+            player.cardUseRefresh(i, player)
         })
         movement.addEventListener('click', function(){
-            player.discard(i, player)
             addMovement(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
         })
     }
     use() {
@@ -170,12 +163,8 @@ export class Attack extends Card {
     addUseFunction(i, player) {
         const action = $('card-action')
         action.addEventListener('click', function(){
-            player.discard(i, player)
             addAttack(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
         })
     }  
 }
@@ -189,12 +178,8 @@ export class Movement extends Card {
     addUseFunction(i, player) {
         const action = $('card-action')
         action.addEventListener('click', function(){
-            player.discard(i, player)
             addMovement(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
         })
     }
 }
@@ -263,13 +248,9 @@ export class MultiTask extends Card {
     addUseFunction(i, player) {
         const action = $('card-action')
         action.addEventListener('click', function(){
-            player.discard(i, player)
             addAttack(player)
             addMovement(player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
         })
     }
 }
@@ -289,10 +270,7 @@ export class TestCard extends Card {
         const cardButton = $('card-button')
         cardButton.addEventListener('click', function(){
             player.discard(i, player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
         })
     }   
 }
@@ -307,11 +285,40 @@ export class SecondWind extends Card {
         const action = $('card-action')
         action.addEventListener('click', function(){
             player.drawThree(player)
-            player.discard(i, player)
-            $('hand-card-modal').remove()
-            handModal(player)
-            refreshDecks(player)
-            refreshCardDetails()
+            player.cardUseRefresh(i, player)
+        })
+    }
+}
+export class TenFootPole extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "10ft Pole"
+        this.description = 'Use this card to extend the range of the rest of your attacks by 1 for the remainder of this round.'
+        this.cost = 15
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            player.rangeModifier += 1
+            $('range').innerText = `Range: ${player.range+player.rangeModifier}`
+            if(player.attacks > 0){showPlayerAttackRange(player)}
+            player.cardUseRefresh(i, player)
+        })
+    }
+}
+export class BootsOfSpeed extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Boots of Speed"
+        this.description = 'Use this card to make the rest of your movements go further this round.'
+        this.cost = 15
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            player.speedModifier += 5
+            $('speed').innerText = `Speed: ${player.speed+player.speedModifier}`
+            player.cardUseRefresh(i, player)
         })
     }
 }

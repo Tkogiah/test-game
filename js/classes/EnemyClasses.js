@@ -1,5 +1,6 @@
 import { $ } from "../components/quickFunctions.js"
 import { globalState } from "../main.js"
+import { animateAttack } from "../components/gifAnimations.js"
 
 export class Enemy {
     constructor() {
@@ -25,6 +26,7 @@ export class Enemy {
     takeDamage(i, damage) {
         let globalOrder = globalState.globalOrder
         this.health -= damage
+        animateAttack(globalOrder[0])
         if(this.health <= 0) {
             this.removeLocation()
             this.removeFromGlobalOrder(i, globalOrder)

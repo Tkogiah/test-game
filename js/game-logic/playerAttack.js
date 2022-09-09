@@ -61,7 +61,7 @@ function enemyTakeDamage(id, player){
         for(let i = 0; i < globalOrder.length; i++) {
             if(globalOrder[i].location === id && globalOrder[i].type === 'enemy') {
                 animateAttack(player)
-                globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
+                globalOrder[i].takeDamage(i, player.damage+player.damageModifier)
             }
         }
     }
@@ -84,8 +84,8 @@ function multipleEnemiesOnHex(id, player) {
             enemy.innerText = `${globalOrder[i].name}: hp ${globalOrder[i].health}`
             container.appendChild(enemy)
             enemy.addEventListener('click', function() {
-                animateAttack(player)
-                globalOrder[i].takeDamage(i, player.damage*player.damageModifier)
+                // animateAttack(player)
+                globalOrder[i].takeDamage(i, player.damage+player.damageModifier)
                 showRemainingEnemies(id)
                 $('hexboard').removeChild(container)
             })

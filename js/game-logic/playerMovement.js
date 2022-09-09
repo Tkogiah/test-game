@@ -7,7 +7,7 @@ import { addPlayerLocation } from './addRemoveDependentColors.js';
 
 
 export function addMovement(player) {
-    player.movement += player.speed * 1
+    player.movement += (player.speedModifier + (player.speed * 1))
     showPlayerMovementRange(player)
     playerMovement(player)
     addPlayerLocation(player)
