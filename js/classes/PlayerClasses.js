@@ -19,7 +19,7 @@ class Player {
         this.decks = {
             draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],
-            discard: [new SecondWind, new TenFootPole, new BootsOfSpeed]
+            discard: []
         }
         this.speedModifier = 0
         this.damageModifier = 0

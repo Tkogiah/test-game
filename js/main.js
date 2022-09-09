@@ -1,6 +1,6 @@
 import * as playerButton from '../js/components/mainButtons.js'
 import { Rogue, Fighter, Archer } from './classes/PlayerClasses.js'
-import { MultiTask, Attack, Merchant, Movement, SecondWind, Action, TenFootPole } from './classes/Cards.js'
+import { MultiTask, Attack, Merchant, Movement, SecondWind, Action, TenFootPole, BootsOfSpeed } from './classes/Cards.js'
 import { selectPlayer } from './components/openingModal.js'
 
 
@@ -25,7 +25,7 @@ export const globalState = {
         new SecondWind(),
         new MultiTask(),
         new TenFootPole(),
-        new SecondWind()
+        new BootsOfSpeed()
     ]
 }
 
