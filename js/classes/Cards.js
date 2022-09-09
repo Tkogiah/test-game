@@ -279,7 +279,7 @@ export class SecondWind extends Card {
         super(player)
         this.title = "2nd Wind"
         this.description = 'Use this card to draw 3 cards from the top of your deck.'
-        this.cost = 15
+        this.cost = 20
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -334,6 +334,38 @@ export class Sharpen extends Card {
         action.addEventListener('click', function(){
             player.damageModifier += 5
             $('damage').innerText = `Damage: ${player.damage+player.damageModifier}`
+            player.cardUseRefresh(i, player)
+        })
+    }
+}
+export class Ice extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Ice"
+        this.description = 'Use this card to attack and freeze the enemy, preventing movement for one round.'
+        this.cost = 20
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            player.freeze += 1
+            addAttack(player)
+            player.cardUseRefresh(i, player)
+        })
+    } 
+}
+export class DoubleMovement extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Double Movement"
+        this.description = 'Use this card to move twice your normal speed'
+        this.cost = 20
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            addMovement(player)
+            addMovement(player)
             player.cardUseRefresh(i, player)
         })
     }

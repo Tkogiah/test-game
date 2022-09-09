@@ -12,10 +12,11 @@ class Player {
         this.name = playerName,
         this.type = 'player'
         this.level = 1
-        this.coins = 0
+        this.coins = 1000
         this.location = 0
         this.attacks = 0
         this.movement = 0
+        this.freeze = 0
         this.decks = {
             draw:[new Action, new Action, new Action, new Action, new Action],
             hand:[],

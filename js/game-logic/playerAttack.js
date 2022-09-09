@@ -37,7 +37,6 @@ export function makeEnemiesVulnerable() {
                 }
                 let id = Number(e.id)
                 enemyTakeDamage(id, player)
-                
                 player.attacks -= 1
                 showPlayerAttackRange(player)
             }

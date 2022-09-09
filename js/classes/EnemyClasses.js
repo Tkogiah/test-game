@@ -10,10 +10,12 @@ export class Enemy {
     }
     advanceForward() {
         this.removeLocation()
-        let movement = Math.floor(Math.random() * 10) + 1
+        let movement = this.speed * (Math.floor(Math.random() * 10) + 1)
+        console.log(this.speed, movement, this.location)
         this.location -= movement
         this.checkIfEnemyWins()
         this.showLocation()
+        this.resetEnemyStats()
     }
     showLocation() {
         let enemyLocation = document.getElementById(`${this.location}`)
@@ -31,6 +33,11 @@ export class Enemy {
             this.removeLocation()
             this.removeFromGlobalOrder(i, globalOrder)
         }
+        if(globalOrder[0].freeze > 0){
+            globalOrder[i].frozen(globalOrder[i])
+            globalOrder[0].freeze -= 1
+            console.log(globalOrder[0].freeze)
+        }
     }
     removeFromGlobalOrder(i, globalOrder) {
         globalOrder.splice(i, 1)
@@ -42,6 +49,12 @@ export class Enemy {
             alert('you lose')
             $('player-button').classList.add('hidden')
         }
+    }
+    frozen(enemy) {
+        enemy.speed = 0
+    }
+    resetEnemyStats() {
+        this.speed = 1
     }
        
 }
