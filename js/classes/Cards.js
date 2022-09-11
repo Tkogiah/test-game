@@ -370,5 +370,22 @@ export class DoubleMovement extends Card {
         })
     }
 }
+export class tripleAttack extends Card {
+    constructor(player) {
+        super(player)
+        this.title = "Triple Attack"
+        this.description = 'Use this card to attack three times'
+        this.cost = 20
+    }
+    addUseFunction(i, player) {
+        const action = $('card-action')
+        action.addEventListener('click', function(){
+            addAttack(player)
+            addAttack(player)
+            addAttack(player)
+            player.cardUseRefresh(i, player)
+        })
+    }
+}
 
 
