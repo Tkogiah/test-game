@@ -125,7 +125,7 @@ export class Action extends Card {
         super(player)
         this.title = "Action"
         this.description = 'Use this to gain an extra attack or extra movement'
-        this.cost = 10
+        this.cost = 5
     }
     addUseFunction(i, player) {
         const attack = $('card-attack')
@@ -243,7 +243,7 @@ export class MultiTask extends Card {
         super(player)
         this.title = "MultiTask"
         this.description = 'Use this card to gain an attack and movement'
-        this.cost = 20
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -279,7 +279,7 @@ export class SecondWind extends Card {
         super(player)
         this.title = "2nd Wind"
         this.description = 'Use this card to draw 3 cards from the top of your deck.'
-        this.cost = 20
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -294,7 +294,7 @@ export class TenFootPole extends Card {
         super(player)
         this.title = "10ft Pole"
         this.description = 'Use this card to extend the range of the rest of your attacks by 1 for the remainder of this round.'
-        this.cost = 15
+        this.cost = 10
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -311,7 +311,7 @@ export class BootsOfSpeed extends Card {
         super(player)
         this.title = "Boots of Speed"
         this.description = 'Use this card to make your movements go further this round.'
-        this.cost = 15
+        this.cost = 10
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -327,7 +327,7 @@ export class Sharpen extends Card {
         super(player)
         this.title = "Sharpen"
         this.description = 'Use this card to sharpen your weapon making your attacks do more damage this round.'
-        this.cost = 15
+        this.cost = 10
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -343,7 +343,7 @@ export class Ice extends Card {
         super(player)
         this.title = "Ice"
         this.description = 'Use this card to attack and freeze the enemy, preventing movement for one round.'
-        this.cost = 20
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -359,7 +359,7 @@ export class DoubleMovement extends Card {
         super(player)
         this.title = "Double Movement"
         this.description = 'Use this card to move twice your normal speed'
-        this.cost = 20
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -375,7 +375,7 @@ export class tripleAttack extends Card {
         super(player)
         this.title = "Triple Attack"
         this.description = 'Use this card to attack three times'
-        this.cost = 20
+        this.cost = 15
     }
     addUseFunction(i, player) {
         const action = $('card-action')
@@ -388,4 +388,5 @@ export class tripleAttack extends Card {
     }
 }
 
-
+//TODO add enemy modal/buttons
+//TODO add equipment

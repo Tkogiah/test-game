@@ -16,7 +16,7 @@ export function makeEnemiesVulnerable() {
     board.forEach( e => {
         e.addEventListener('click', function() {
             let player = globalState.globalOrder[0]
-            if(e.classList.contains('green') && e.classList.contains('red') && player.attacks > 0) {
+            if(e.classList.contains('green') && e.classList.contains('red') && player.attacks > 0 && player.location > 0) {
                 if(player.location >= 1 && player.location <= 6) {
                     player.decks.discard.push(new Crystal(1))
                 }
