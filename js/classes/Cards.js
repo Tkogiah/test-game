@@ -289,10 +289,10 @@ export class SecondWind extends Card {
         })
     }
 }
-export class TenFootPole extends Card {
+export class Reach extends Card {
     constructor(player) {
         super(player)
-        this.title = "10ft Pole"
+        this.title = "Reach"
         this.description = 'Use this card to extend the range of the rest of your attacks by 1 for the remainder of this round.'
         this.cost = 10
     }

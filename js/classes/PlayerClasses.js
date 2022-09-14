@@ -1,5 +1,5 @@
 import { globalState } from '../main.js'
-import { Attack, Movement, Action, SecondWind, TenFootPole, BootsOfSpeed } from './Cards.js'
+import { Attack, Movement, Action, SecondWind, Reach, BootsOfSpeed } from './Cards.js'
 import { refreshDecks } from '../components/playerModalDecksHtml.js'
 import {handModal} from '../components/playerHandModal.js'
 import {refreshCardDetails} from '../components/playerCardDetailsHtml.js'
