@@ -357,8 +357,8 @@ export class Ice extends Card {
 export class DoubleMovement extends Card {
     constructor(player) {
         super(player)
-        this.title = "Double Movement"
-        this.description = 'Use this card to move twice your normal speed'
+        this.title = "Move Twice"
+        this.description = 'Use this card to move twice'
         this.cost = 15
     }
     addUseFunction(i, player) {

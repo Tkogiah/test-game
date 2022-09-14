@@ -2,9 +2,10 @@ import { addPlayerLocation, addTeammateLocation } from "./addRemoveDependentColo
 import { removeDependentColorsFromBoard } from '../game-logic/addRemoveDependentColors.js'
 import { showPlayerAttackRange } from '../game-logic/rangeAlgorithm.js'
 import { showPlayerMovementRange } from '../game-logic/movementAlgorithm.js'
-import { makeEnemiesVulnerable } from "./playerAttack.js"
+import { addAttack, makeEnemiesVulnerable } from "./playerAttack.js"
 import { globalState } from "../main.js"
 import { $ } from "../components/quickFunctions.js"
+import { addMovement } from "./playerMovement.js"
 
 export function startRound(player) {
     let playerImage = document.getElementById('player-image')
@@ -18,6 +19,8 @@ export function startRound(player) {
         player.shuffle(player.decks.draw)
         player.draw()
         addPlayerLocation(player)
+        addAttack(player)
+        addMovement(player)
         
         playerImage.style.backgroundImage = `url(${player.pictures.idle})`
     }

@@ -78,8 +78,8 @@ class Player {
         player.decks.hand.splice(i, 1)
     }
     resetStats() {
-        this.attacks = 0
-        this.movement = 0
+        this.attacks = 1
+        this.movement = 1
         this.speedModifier = 0
         this.damageModifier = 0
         this.rangeModifier = 0
